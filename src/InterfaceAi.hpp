@@ -6,3 +6,14 @@
 #include <opencv2/opencv.hpp>
 #include <unistd.h>
 #include <pthread.h>
+#include "HttpServer.hpp"
+
+class InterfaceAI{
+    public:
+    InterfaceAI();
+    ~InterfaceAI();
+    private:
+    HttpServer* httpServer = nullptr;
+
+
+};

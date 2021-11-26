@@ -34,6 +34,7 @@ Modified:
 HttpServer::HttpServer()
 {
     // this->monitorManager = monitorManager;
+    std::cout << "Constructor HttpServer" << std::endl;
     this->base = NULL;
     this->server = NULL;
     // this->first_reboot = false;
@@ -48,6 +49,7 @@ HttpServer::HttpServer()
 }
 HttpServer::~HttpServer()
 {
+    std::cout << "Destuctor HttpServer" << std::endl;
     if (this->server != NULL)
     {
         evhttp_free(this->server);
