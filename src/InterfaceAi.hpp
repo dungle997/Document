@@ -14,6 +14,8 @@ class InterfaceAI{
     ~InterfaceAI();
     private:
     HttpServer* httpServer = nullptr;
+    pthread_t thread_id;
+    static void thread_loop();
 
 
 };
