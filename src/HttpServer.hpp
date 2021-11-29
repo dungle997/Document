@@ -59,8 +59,8 @@ class HttpServer
         // json process_restore;
         // bool first_reboot;
         static void callback(struct evhttp_request* request, void* param);
-        // static const std::string readContent(struct evhttp_request* request);
-        // static const std::string readHeader(struct evhttp_request* request);
+        static const std::string readContent(struct evhttp_request* request);
+        static const std::string readHeader(struct evhttp_request* request);
         // bool standard_check();
         // static const std::string readIpClient(struct evhttp_request* request);
     protected:

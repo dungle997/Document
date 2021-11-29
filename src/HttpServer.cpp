@@ -195,16 +195,70 @@ void HttpServer::callback(struct evhttp_request *request, void *param)
         // PRINT_LOG(TAG, "IP: %s | method: %s | Path: %s", readIpClient(request).c_str(), readHeader(request).c_str(), path);
         if (startWith(&path, "/api/monitor")) 
         {
-            std::cout << "Funtion Callback " << std::endl;
-            sendError(request, 200, "ok");
+            if (readHeader(request) == "GET"){
+                std::cout << "Funtion Callback " << std::endl;
+                sendError(request, 200, "ok");
+            }
+            else if (readHeader(request) == "POST"){
+                std::string content = readContent(request);
+                if (!json::accept(content)){
+                    sendError(request, 400, "Invalid json message");
+                    goto CLEANUP;
+                }
+                json j = json::parse(content);
+                if (j.contains("type") && j.contains("status")){
+                    std::string type;
+                    bool status = false;
+                    REQUIRED(j, type);
+                    REQUIRED(j, status);
+                    std::cout << type << std::endl;
+                    std::cout << status << std::endl;
+                    sendError(request, 200, "Recieved");
+                }
+            }
         }
         else {
             std::cout << "Not Support"<< std::endl;
             sendError(request, 400, "Error");
         }
-    
+    CLEANUP:
     evhttp_uri_free(uri);
     }
+}
+const std::string HttpServer::readContent(struct evhttp_request *request)
+{
+    std::string content;
+    struct evbuffer *buffer;
+    buffer = evhttp_request_get_input_buffer(request);
+    while (evbuffer_get_length(buffer) > 0)
+    {
+        int n;
+        char cbuf[1024];
+        n = evbuffer_remove(buffer, cbuf, sizeof(cbuf));
+        if (n > 0)
+        {
+            content += std::string(cbuf, n);
+        }
+    }
+    //evbuffer_free(buffer); //|||||| TEST XOA KHI LOI
+    return content;
+}
+const std::string HttpServer::readHeader(struct evhttp_request *request)
+{
+    std::string cmdType;
+    switch (evhttp_request_get_command(request)) {
+    case EVHTTP_REQ_GET: cmdType = "GET"; break;
+    case EVHTTP_REQ_POST: cmdType = "POST"; break;
+    case EVHTTP_REQ_HEAD: cmdType = "HEAD"; break;
+    case EVHTTP_REQ_PUT: cmdType = "PUT"; break;
+    case EVHTTP_REQ_DELETE: cmdType = "DELETE"; break;
+    case EVHTTP_REQ_OPTIONS: cmdType = "OPTIONS"; break;
+    case EVHTTP_REQ_TRACE: cmdType = "TRACE"; break;
+    case EVHTTP_REQ_CONNECT: cmdType = "CONNECT"; break;
+    case EVHTTP_REQ_PATCH: cmdType = "PATCH"; break;
+    default: cmdType = "unknown"; break;
+    }
+    return cmdType;
 }
 void HttpServer::sendError(struct evhttp_request *request, int status, const std::string &message)
 {
