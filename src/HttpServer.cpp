@@ -31,10 +31,10 @@ Modified:
     <Date>
     <Change>
 -------------------------------------------------------------------------------*/
-HttpServer::HttpServer()
+HttpServer::HttpServer(MonitorManager* monitorManager)
 {
-    // this->monitorManager = monitorManager;
     std::cout << "Constructor HttpServer" << std::endl;
+    this->monitorManager = monitorManager;
     this->base = NULL;
     this->server = NULL;
     // this->first_reboot = false;
@@ -214,6 +214,8 @@ void HttpServer::callback(struct evhttp_request *request, void *param)
                     std::cout << type << std::endl;
                     std::cout << status << std::endl;
                     sendError(request, 200, "Recieved");
+                    // monitorManager->addProcessor();
+                    server->monitorManager->addProcessor(type, status);
                 }
             }
         }

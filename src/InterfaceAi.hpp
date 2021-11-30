@@ -7,15 +7,17 @@
 #include <unistd.h>
 #include <pthread.h>
 #include "HttpServer.hpp"
+#include "MonitorManager.hpp"
 
 class InterfaceAI{
     public:
-    InterfaceAI();
-    ~InterfaceAI();
+        InterfaceAI();
+        ~InterfaceAI();
     private:
-    HttpServer* httpServer = nullptr;
-    pthread_t thread_id;
-    static void* thread_loop(void* args);
+        MonitorManager* monitorManager = nullptr;
+        HttpServer* httpServer = nullptr;
+        pthread_t thread_id;
+        static void* thread_loop(void* args);
 
 
 };

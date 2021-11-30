@@ -41,7 +41,7 @@ Note: <Note>
 #include <event2/tag.h>
 #include <event2/tag_compat.h>
 #include "json.h"
-// #include "MonitorManager.hpp"
+#include "MonitorManager.hpp"
 // #include "../AiConfig/Config.hpp"
 
 #define PORT_SERVER 2001
@@ -49,13 +49,13 @@ Note: <Note>
 class HttpServer 
 {
     public:
-        HttpServer();
+        HttpServer(MonitorManager* monitorManager);
         virtual ~HttpServer();
         virtual void loop();
     private:
         // std::string buff_bad_request;
         // cv::Mat frame;
-        // MonitorManager* monitorManager = nullptr;
+        MonitorManager* monitorManager = nullptr;
         // json process_restore;
         // bool first_reboot;
         static void callback(struct evhttp_request* request, void* param);
