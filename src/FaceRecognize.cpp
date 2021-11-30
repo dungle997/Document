@@ -1,6 +1,6 @@
 #include "FaceRecognize.hpp"
 
-FaceRecognize::FaceRecognize(Processor& p){
+FaceRecognize::FaceRecognize(Processor& p) : AiEngine(){
     std::cout << "Create Process FaceRecognize" << std::endl;
     this->type   = p.type;
     this->status = p.status;

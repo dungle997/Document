@@ -1,7 +1,8 @@
 #include "AiEngine.hpp"
 
-AiEngine::AiEngine(){
+AiEngine::AiEngine() : Processor() {
     pthread_create(&this->handing_thread_id, NULL, AI_Handling,this);
+    std::cout << "Constructor AI Engines" << std::endl;
 }
 AiEngine::~AiEngine(){
     std::cout << "AiEngine Detroyed" << std::endl;

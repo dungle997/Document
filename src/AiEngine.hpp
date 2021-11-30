@@ -3,8 +3,9 @@
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
+#include "Processor.hpp"
 
-class AiEngine{
+class AiEngine : public Processor{
     private:
         pthread_t handing_thread_id;
         static void* AI_Handling(void* arg);
