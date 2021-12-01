@@ -185,6 +185,7 @@ bool nextInt(const char **src, int *out)
 }
 void HttpServer::callback(struct evhttp_request *request, void *param)
 {
+    std::cout << "-------------Http Server -----------------" << std::endl;
     auto server = static_cast<HttpServer*>(param);
     const char *urisz = evhttp_request_get_uri(request);
     struct evhttp_uri *uri = NULL;

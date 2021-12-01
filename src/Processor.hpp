@@ -13,9 +13,10 @@ class Processor{
             std::cout << "Init Processor new way" << std::endl;
         }
         Processor(){}
-        virtual ~Processor(){}
+        virtual ~Processor(){ std::cout << "Processor Destroyed" << std::endl;}
         std::string type;
         bool status;
+        virtual void stopThread(){}
 };
 // class Processor{
 //     public:

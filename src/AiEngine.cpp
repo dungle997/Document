@@ -22,3 +22,7 @@ void* AiEngine::AI_Handling(void* arg){
     EXIT_THREAD:
     pthread_exit(NULL);
 }
+void AiEngine::stopThread(){
+    Processor::status = false;
+    pthread_join(this->handing_thread_id, NULL);
+}

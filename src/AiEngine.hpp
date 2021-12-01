@@ -14,5 +14,6 @@ class AiEngine : public Processor{
         virtual ~AiEngine();
         virtual bool initAI() = 0;
         virtual void executeAI() = 0;
+        virtual void stopThread() override;
         
 };

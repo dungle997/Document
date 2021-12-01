@@ -12,5 +12,6 @@ class MonitorManager{
         void addProcessor(std::string& type, bool& status);
         void removeProcessor();
     private:
+        std::vector<Processor*> processors;
         
 };
