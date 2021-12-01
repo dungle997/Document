@@ -9,6 +9,6 @@ class FaceRecognize : public AiEngine{
     public: 
         FaceRecognize(Processor& p);
         ~FaceRecognize();
-        virtual void initAI() override;
+        virtual bool initAI() override;
         virtual void executeAI() override;
 };

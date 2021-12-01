@@ -10,9 +10,9 @@ class AiEngine : public Processor{
         pthread_t handing_thread_id;
         static void* AI_Handling(void* arg);
     public:
-        AiEngine();
+        AiEngine(Processor& p);
         virtual ~AiEngine();
-        virtual void initAI() = 0;
+        virtual bool initAI() = 0;
         virtual void executeAI() = 0;
         
 };

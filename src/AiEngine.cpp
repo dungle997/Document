@@ -1,6 +1,6 @@
 #include "AiEngine.hpp"
 
-AiEngine::AiEngine() : Processor() {
+AiEngine::AiEngine(Processor& p) : Processor(p) {
     pthread_create(&this->handing_thread_id, NULL, AI_Handling,this);
     std::cout << "Constructor AI Engines" << std::endl;
 }
@@ -10,7 +10,15 @@ AiEngine::~AiEngine(){
 void* AiEngine::AI_Handling(void* arg){
     std::cout << "This is a new thread in AI_Handling" << std::endl;
     auto process = static_cast<AiEngine*>(arg);
-    process->initAI();
-    process->executeAI();
+    bool init_finish = process->initAI();
+    if (!init_finish){
+        std::cout << "init AI fail"<< std::endl;
+        goto EXIT_THREAD;
+    }
+    while (process->status == true){
+        std::cout << "Runing AI ...." << std::endl;
+        process->executeAI();
+    }
+    EXIT_THREAD:
     pthread_exit(NULL);
 }

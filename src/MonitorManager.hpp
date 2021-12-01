@@ -10,6 +10,7 @@ class MonitorManager{
         MonitorManager();
         ~MonitorManager();
         void addProcessor(std::string& type, bool& status);
+        void removeProcessor();
     private:
         
 };

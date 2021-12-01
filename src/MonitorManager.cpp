@@ -7,10 +7,12 @@ MonitorManager::~MonitorManager(){
     std::cout << "Destructor Monitor Manager" << std::endl;
 }
 void MonitorManager::addProcessor(std::string& type, bool& status){
-
     Processor p(type, status);
     AiEngine* obj = nullptr;
     if (type == "facerecognize"){
         obj = new FaceRecognize(p);   
     }
+}
+void MonitorManager::removeProcessor(){
+
 }
