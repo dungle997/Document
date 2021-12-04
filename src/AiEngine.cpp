@@ -10,6 +10,10 @@ AiEngine::~AiEngine(){
 void* AiEngine::AI_Handling(void* arg){
     std::cout << "This is a new thread in AI_Handling" << std::endl;
     auto process = static_cast<AiEngine*>(arg);
+    // wait constructor init
+    std::unique_lock<std::mutex> lk(process->cv_m);
+    process->cv_init_done.wait(lk, [=]{return process->init_done;});
+    //
     bool init_finish = process->initAI();
     if (!init_finish){
         std::cout << "init AI fail"<< std::endl;

@@ -4,6 +4,9 @@ FaceRecognize::FaceRecognize(Processor& p) : AiEngine(p){
     std::cout << "Create Process FaceRecognize" << std::endl;
     this->type   = p.type;
     this->status = p.status;
+    // condictional variable
+    AiEngine::init_done = true;
+    AiEngine::cv_init_done.notify_all();
 }
 FaceRecognize::~FaceRecognize(){
     std::cout << "Process FaceRecognize Destroyed"<< std::endl;

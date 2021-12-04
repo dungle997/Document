@@ -8,7 +8,7 @@
 class MonitorManager{
     public:
         MonitorManager();
-        ~MonitorManager();
+        virtual ~MonitorManager();
         void addProcessor(std::string& type, bool& status);
         void removeProcessor();
     private:

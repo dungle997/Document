@@ -5,7 +5,7 @@
 class Processor{
     public:
         Processor(std::string type, bool status) : type(type), status(status){
-            std::cout << "Init Processor nomal way" << std::endl;
+            std::cout << "Init Processor normal way" << std::endl;
         }
         Processor(const Processor& p){
             this->type   = p.type;
