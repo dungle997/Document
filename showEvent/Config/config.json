@@ -1,0 +1,16 @@
+{
+    "profilePath" : "/home/dung/41120/1620_V1.9/Config/data/",
+    "language" : "VN",
+    "row" : 1,
+    "cols" : 1,
+    "fullscreen" : false,
+    "FullHD" : true,
+    "monitors" : [
+		{
+            "type" : "welcome",
+            "url" : "rtsp://admin:Bkav@2021@10.2.64.53:554/profile1/live",
+	    	"cameraId" : 1,
+            "screenId" : 0
+        }
+    ]
+}

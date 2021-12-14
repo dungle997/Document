@@ -1,0 +1,48 @@
+{
+    "profilePath" : "/home/dung/41120/1.5.8.0/build/data/",
+    "language" : "VN",
+    "row" : 2,
+    "cols" : 3,
+    "fullscreen" : false,
+    "FullHD" : true,
+    "monitors" : [
+		{
+            "type" : "facerecognize",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 1,
+            "screenId" : 0
+        },
+		{
+            "type" : "personcount",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 2,
+            "screenId" : 1
+        },
+		{
+            "type" : "license",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 3,
+            "screenId" : 2
+        },
+		{
+            "type" : "socialdistancing",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 4,
+            "screenId" : 3
+        },
+		{
+            "type" : "facemask",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 5,
+            "screenId" : 4
+        },
+		{
+            "type" : "firedetect",
+            "url" : "rtsp://admin:Bkav@2222@10.2.64.159:554/profile12/live",
+	    	"cameraId" : 6,
+            "screenId" : 5
+        }
+		
+
+    ]
+}

@@ -1,0 +1,10 @@
+facerecognize			1
+personcount			2		
+socialdistancing		4
+facemask			5
+objectdetect			7
+firedetect			6
+license				3
+facedetect			13
+display				no ID
+alarm 				18

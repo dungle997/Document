@@ -1,0 +1,51 @@
+else if (startWith(&path, "/count/") || startWith(&path,"/personcount/")) {
+            int cameraId;
+            std::string test_json;
+            if (nextInt(&path, &cameraId) && (path != NULL)) {
+                test_json = path;
+                if (test_json.empty()){
+                    std::cout << "path = " << test_json << std::endl;
+                    std::string content = readContent(request);
+                    std::cout << content << std::endl;
+                    // sendText(request, 200, "{}");
+                    // std::cout << " -----------Received data -----------" << std::endl;
+                    try {
+                        auto j = json::parse(content);
+                        // int frame;
+                        // REQUIRED(j, frame);
+                        std::string frame;
+                        frame = j["url_path"];
+                        auto jLocations = j["locations"];
+                        char timer[25];
+                        sprintf(timer, "%02d:%02d:%02d", ltm->tm_hour, ltm->tm_min, ltm->tm_sec);
+                        std::string time= std::string(timer);
+                        std::vector<cv::Rect> locations;
+                        for (auto jLocation : jLocations) {
+                            cv::Rect box(jLocation[0], jLocation[1], jLocation[2], jLocation[3]);
+                            locations.push_back(box);
+                        }
+                        CountEvent* event = new CountEvent(cameraId, locations, time, frame);
+                        server->eventManager->insertCountEvent(event);
+                    }
+                    catch (std::exception& e) {
+                        std::cout << e.what() << std::endl;
+                    }
+                }
+                else { //
+                    // sendText(request, 200, "{}");
+                    // std::cout << " -----------Received Image -----------" << std::endl;
+                    std::string frame;
+                    frame = path;
+                    std::cout << "frame = " << frame << std::endl;
+                    // std::cout << "cameraId " << cameraId << std::endl;
+                    // std::cout << "frame =" << frame << std::endl;
+                    cv::Mat image =readImage(request);
+                    // if (cameraId==1){
+                    //     std::cout << image.size() << std::endl;
+                    // }
+                    if (!image.empty()){
+                        server->eventManager->updateFrame(frame, image, cameraId);
+                    }
+                }
+            }
+        }
