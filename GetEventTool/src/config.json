@@ -1,0 +1,16 @@
+{
+    "profilePath" : "/home/dung/data/",
+    "language" : "VN",
+    "row" : 1,
+    "cols" : 1,
+    "fullscreen" : true,
+    "FullHD" : true,
+    "monitors" : [
+        {
+            "type" : "facedetect",
+            "url" : "rtsp://admin:Bkav_2020@10.2.64.56:555/live",
+            "cameraId" : 13, 
+            "screenId" : 0
+        }
+    ]
+}
