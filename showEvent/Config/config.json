@@ -7,8 +7,8 @@
     "FullHD" : true,
     "monitors" : [
 		{
-            "type" : "welcome",
-            "url" : "rtsp://admin:Bkav@2021@10.2.64.53:554/profile1/live",
+            "type" : "display",
+            "url" : "rtsp://admin:Bkav@2020@10.2.64.78:554/profile1/live",
 	    	"cameraId" : 1,
             "screenId" : 0
         }

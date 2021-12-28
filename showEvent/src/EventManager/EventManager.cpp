@@ -100,16 +100,16 @@ void EventManager::insertFaceDetectEvent(FaceDetectEvent* event) {
 
 void EventManager::insertLicenseEvent(LicenseEvent* event) {
 
-    // const std::string license_plate = event->number; 
-    // bool isOldEvent = false;
-    // for (auto event: this->licenseEvents) {
-    //     if (event->number == license_plate){
-    //         isOldEvent = true;
-    //         break;
-    //     }
+    const std::string license_plate = event->number; 
+    bool isOldEvent = false;
+    for (auto event: this->licenseEvents) {
+        if (event->number == license_plate){
+            isOldEvent = true;
+            break;
+        }
         
-    // }
-    // if (isOldEvent == false)
+    }
+    if (isOldEvent == false)
         this->licenseEvents.insert(this->licenseEvents.begin(), event);
 
     while (this->licenseEvents.size() > MAX_LICENSE_EVENT) {

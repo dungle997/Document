@@ -109,8 +109,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
 OpenGLRenderer::OpenGLRenderer() {
     GLFWmonitor* monitor = NULL;
-     this->jpegServer = new MJPEGWriter(DISPLAY_PORT);//
-     this->jpegServer->start();//
+    //  this->jpegServer = new MJPEGWriter(DISPLAY_PORT);//
+    //  this->jpegServer->start();//
     // this->i.open("video.json");
     // if (this->writer.isOpened()) {
     //     this->writer.release();
@@ -214,7 +214,7 @@ OpenGLRenderer::OpenGLRenderer() {
 }
 
 OpenGLRenderer::~OpenGLRenderer() {
-     this->jpegServer->stop();//
+    //  this->jpegServer->stop();//
     glfwTerminate();
 }
 
@@ -245,7 +245,7 @@ void OpenGLRenderer::prepare(const cv::Mat& frame) {
         //     this->writer << frame;
         // }
         
-         this->jpegServer->write(frame);//
+        //  this->jpegServer->write(frame);//
         
     }
 }

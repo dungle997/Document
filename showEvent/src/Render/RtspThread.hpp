@@ -16,7 +16,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
+#include <fstream>
 #include "../Processor/Processor.hpp"
 
 using namespace std;
@@ -33,9 +33,16 @@ private:
     Processor* processor;
     pthread_t thread;
     cv::Mat disconnectImage;
-
+    std::fstream myfile;
     void localThreadFunc();
     static void* threadFunc(void* arg);
+    static int countDisconnect;
+    static std::string getTime();
+    bool disconnectFlag = false;
+    std::vector<bool> statusConnect;
+    bool statusDisconnect = false;
+    bool statusReconnect = false;
+    static int countReconnect;
 };
 
 #endif /* RtspThread_hpp */

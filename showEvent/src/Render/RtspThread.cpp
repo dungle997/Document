@@ -17,10 +17,19 @@ RtspThread::RtspThread(const String& url, Processor* processor) {
 RtspThread::~RtspThread() {
     
 }
-
+std::string RtspThread::getTime(){
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	char timer[70];
+	sprintf(timer, "%02d/%02d/%02d   %02d:%02d:%02d", ltm->tm_mday,ltm->tm_mon + 1,ltm->tm_year + 1900 ,ltm->tm_hour, ltm->tm_min, ltm->tm_sec);
+	std::string time= std::string(timer);
+	return time;
+} 
 void RtspThread::start() {
     pthread_create(&this->thread, NULL, threadFunc, this);
 }
+int RtspThread::countDisconnect = 0;
+int RtspThread::countReconnect = 0;
 
 void RtspThread::localThreadFunc() {
     if (this->url.find("rtsp") == std::string::npos) {
@@ -57,16 +66,85 @@ void RtspThread::localThreadFunc() {
                 // cap.retrieve(image);
                 cap >> image;
                 if (image.empty()) {
+                    this->disconnectFlag = true;
+                    // this->licenseEvents.insert(this->licenseEvents.begin(), event);
+                    this->statusConnect.insert(this->statusConnect.begin(), this->disconnectFlag);
                     std::cout << "hello .." << std::endl;
                     // cv::Mat disconnect;    //
                     // this->disconnectVideo >> disconnect; //
                     // this->processor->process(this->disconnectImage); //
+                    // std::cout << "Number of Disconnect = " << countDisconnect << std::endl;
                     break;
                 }
-                //else
-                this->processor->process(image);
-                //sleep(0.1); 
+                else{
+                    this->disconnectFlag = false;
+                    this->statusConnect.insert(this->statusConnect.begin(), this->disconnectFlag);
+                    this->processor->process(image);
+                    //sleep(0.1);
+                    if (this->statusConnect.size() > 1 ){
+                        if (this->statusConnect[0] != this->statusConnect[1] && this->statusConnect[0] == true){
+                            this->countDisconnect++;
+                            this->statusDisconnect = true;
+                        }
+                        if (this->statusConnect[0] != this->statusConnect[1] && this->statusConnect[0] == false){
+                            this->countReconnect++;
+                            this->statusReconnect = true;
+                        }
+                    }
+                    while (this->statusConnect.size() > 2){
+                        this->statusConnect.pop_back();
+                    }
+                    if (this->statusDisconnect == true){
+                        std::cout << "111111111111111111" << std::endl;
+                        this->myfile.open("thongkeketnoi.csv", std::ios::out | std::ios::app);
+                        // std::cout << "adfadsf = " << RtspThread::getTime() << std::endl;
+                        this->myfile << "Disconnect"<< ";" << RtspThread::getTime() << ";" << this->countDisconnect << endl;
+                        // this->myfile << "Reconnect"<< ";" << RtspThread::getTime() << ";" << this->countReconnect << endl;
+                        this->myfile.close();
+                    }
+                    if (this->statusReconnect == true){
+                        std::cout << "22222222222222222222" << std::endl;
+                        this->myfile.open("thongkeketnoi.csv", std::ios::out | std::ios::app);
+                        // std::cout << "adfadsf = " << RtspThread::getTime() << std::endl;
+                        // this->myfile << "Disconnect"<< ";" << RtspThread::getTime() << ";" << this->countDisconnect << endl;
+                        this->myfile << "Reconnect"<< ";" << RtspThread::getTime() << ";" << this->countReconnect << endl;
+                        this->myfile.close();
+                    }
+                    this->statusDisconnect = false;
+                    this->statusReconnect = false;
+                } 
             }
+            if (this->statusConnect.size() > 1 ){
+                if (this->statusConnect[0] != this->statusConnect[1] && this->statusConnect[0] == true){
+                    this->countDisconnect++;
+                    this->statusDisconnect = true;
+                }
+                if (this->statusConnect[0] != this->statusConnect[1] && this->statusConnect[0] == false){
+                    this->countReconnect++;
+                    this->statusReconnect = true;
+                }
+            }
+            while (this->statusConnect.size() > 2){
+                this->statusConnect.pop_back();
+            }
+            if (this->statusDisconnect == true){
+                std::cout << "111111111111111111a" << std::endl;
+                this->myfile.open("thongkeketnoi.csv", std::ios::out | std::ios::app);
+                // std::cout << "adfadsf = " << RtspThread::getTime() << std::endl;
+                this->myfile << "Disconnect"<< ";" << RtspThread::getTime() << ";" << this->countDisconnect << endl;
+                // this->myfile << "Reconnect"<< ";" << RtspThread::getTime() << ";" << this->countReconnect << endl;
+                this->myfile.close();
+            }
+            if (this->statusReconnect == true){
+                std::cout << "22222222222222222222a" << std::endl;
+                this->myfile.open("thongkeketnoi.csv", std::ios::out | std::ios::app);
+                // std::cout << "adfadsf = " << RtspThread::getTime() << std::endl;
+                // this->myfile << "Disconnect"<< ";" << RtspThread::getTime() << ";" << this->countDisconnect << endl;
+                this->myfile << "Reconnect"<< ";" << RtspThread::getTime() << ";" << this->countReconnect << endl;
+                this->myfile.close();
+            }
+            this->statusDisconnect = false;
+            this->statusReconnect = false;
             printf("RTSP stream ended.\n");
             sleep(1);
             //TungDM add
