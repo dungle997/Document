@@ -42,5 +42,6 @@ void CountEvent::update(const cv::Mat& image) {
     std::string nameImage = "../Event/" + this->ipcamera + "/personcount/" + this->time + "_" + std::to_string(this->eventId) + "_size_" + size + ".jpg";
     // std::cout << "name Image = " <<nameImage << std::endl;
     cv::imwrite(nameImage, image);
+    std::cout << "--------writed done--------" << std::endl;
     }
 }

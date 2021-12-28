@@ -5,13 +5,13 @@
 
 #include "GlobalConfig.hpp"
 #include "CountProcessor.hpp"
-#include "FaceDetectProcessor.hpp"
-#include "FaceMaskProcessor.hpp"
-#include "FaceProcessor.hpp"
-#include "DistancingProcessor.hpp"
-#include "FireProcessor.hpp"
-#include "LicenseProcessor.hpp"
-#include "ObjectProcessor.hpp"
+// #include "FaceDetectProcessor.hpp"
+// #include "FaceMaskProcessor.hpp"
+// #include "FaceProcessor.hpp"
+// #include "DistancingProcessor.hpp"
+// #include "FireProcessor.hpp"
+// #include "LicenseProcessor.hpp"
+// #include "ObjectProcessor.hpp"
 
 
 class LoadProcessor {

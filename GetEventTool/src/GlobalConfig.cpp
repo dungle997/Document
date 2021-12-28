@@ -11,7 +11,7 @@ GlobalConfig::~GlobalConfig() {
 }
 
 void GlobalConfig::load() {
-    std::ifstream is("config.json");
+    std::ifstream is("../config/config.json");
     if (is.is_open()) {
         std::string content((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
         try {
