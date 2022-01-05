@@ -6,39 +6,14 @@
 #include <fstream>
 #include <ctime>
 #include <string>
-CountProcessor::CountProcessor(const std::string& ipcamera, const std::string& username, const std::string& userpwd) : GetImageEngine(){
-    this->ipcamera = ipcamera;
-    this->username = username;
-    this->userpwd = userpwd;
-    this->access_token = GetImageEngine::get_Token(this->ipcamera, this->username, this->userpwd);
-    this->dirLastEventID = "../Data_EventId/" + this->ipcamera + "/personcount.txt";
-    this->dirSaveJson = "../Json_Event/" + this->ipcamera + "/personcount.txt";
-    this->lastID = this->loadLastID(this->dirLastEventID); 
-    this->urlJson = "https://" + this->ipcamera + ":4004/api/event/persondetection?lastId="+ std::to_string(this->lastID) + "&access_token=" + this->access_token;
-    this->urlFrame = "https://"+ this->ipcamera + ":4004/api/event/frame/persondetection/";
-}
-CountProcessor::~CountProcessor(){
+CountProcessor::CountProcessor() : GetImageEngine(){
     
 }
-void CountProcessor::process() {
-    std::cout << "Get Count Event" << std::endl;
-    std::cout << "ipcamera = " << this->ipcamera << std::endl;
-    HttpSession* jsonSession = new HttpSession();
-    jsonSession->setUrl(this->urlJson);
-    jsonSession->addHeader("Content-Type: application/json");
-    jsonSession->start();
-    try {
-        std::string message((const char *)jsonSession->getData(), jsonSession->getSize());
-        handleRequest(message);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    std::cout << "Process Events Successfull" << std::endl;
-    delete jsonSession;
+CountProcessor::~CountProcessor(){
+    std::cout << "Destructor CountProcessor" << std::endl;
 }
 void CountProcessor::handleRequest(std::string& message){
+    std::cout << "Get Count Event" << std::endl;
     auto j = json::parse(message);
     std::cout << "path = " << this->dirSaveJson << std::endl;
     std::string Time = CountProcessor::getTime();
@@ -61,20 +36,9 @@ void CountProcessor::handleRequest(std::string& message){
             std::cout << "--------CountEvent-------" << std::endl;
             CountEvent* newEvent = new CountEvent( boxes, time, eventId, EventId, this->ipcamera);
             std::string currentFrameUrl = urlFrame + eventId + "?access_token=" + this->access_token;
-            HttpSession* imageSession = new HttpSession();
-            imageSession->addHeader("Content-Type: image/jpeg");
-            imageSession->setUrl(currentFrameUrl);
-            imageSession->start();
-            try {
-                std::string dataImage((const char *)imageSession->getData(), imageSession->getSize());
-                std::vector<uchar> uImage(dataImage.begin(), dataImage.end());
-                cv::Mat image = cv::imdecode(uImage, cv::IMREAD_COLOR);
-                newEvent->update(image);
-            }
-            catch(const std::exception& e){
-                std::cerr << e.what() << '\n';
-            }
-            delete imageSession;
+            this->getImage(currentFrameUrl);
+            // HttpSession* imageSession = new HttpSession();
+            newEvent->update(this->imageEvent);
             delete newEvent;
         }
         std::cout << "lastId new = "<< j[0]["eventId"] << std::endl;

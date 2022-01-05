@@ -6,7 +6,7 @@
 #include <fstream>
 #include <ctime>
 #include <string>
-LicenseProcessor::LicenseProcessor() : GetImageEngine(){
+LicenseProcessor::LicenseProcessor(const std::string& ipcamera, const std::string& username, const std::string& userpwd) : GetImageEngine(){
 
 }
 LicenseProcessor::~LicenseProcessor(){

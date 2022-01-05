@@ -35,7 +35,6 @@ void CountEvent::update(const cv::Mat& image) {
     }
     // CountProcessor* ip;
     // std::string ipcamera = ip->ipcamera;
-    std::cout << "I'm Here = "  << std::endl; 
     if (!image.empty()){
     int a = this->boxes.size();
     std::string size = std::to_string(a);

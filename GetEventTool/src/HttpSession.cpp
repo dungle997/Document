@@ -21,7 +21,7 @@ HttpSession::HttpSession() {
     curl_easy_setopt(this->handle, CURLOPT_WRITEFUNCTION, HttpSession::writecb);
     curl_easy_setopt(this->handle, CURLOPT_WRITEDATA, this);
     curl_easy_setopt(this->handle, CURLOPT_PRIVATE, this);
-    curl_easy_setopt(this->handle, CURLOPT_TIMEOUT, 300L);
+    curl_easy_setopt(this->handle, CURLOPT_TIMEOUT, 30L);
 }
 
 HttpSession::~HttpSession() {

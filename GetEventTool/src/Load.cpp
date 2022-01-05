@@ -8,6 +8,8 @@
 
 #include "Load.hpp"
 
+#define DEFINE(x,y) std::string("../Data_EventId/" + x + std::string(y) + ".txt")
+
 LoadProcessor::LoadProcessor() {
 }
 
@@ -22,7 +24,17 @@ void LoadProcessor::load() {
                 std::string ipcamera = monitor["ipcamera"];
                 std::string username = monitor["username"];
                 std::string userpwd = monitor["userpwd"];
-                obj = new CountProcessor(ipcamera, username, userpwd);
+                obj = new CountProcessor();
+                obj->ipcamera = ipcamera;
+                obj->username = username;
+                obj->userpwd = userpwd;
+                obj->access_token = obj->get_Token(ipcamera, username, userpwd); 
+                obj->dirLastEventID = "../Data_EventId/" + ipcamera + "/personcount.txt";
+                obj->dirLastEventID = DEFINE(ipcamera,"personcount");
+                obj->dirSaveJson = "../Json_Event/" + ipcamera + "/personcount.txt";
+                obj->lastID = obj->loadLastID(obj->dirLastEventID); 
+                obj->urlJson = "https://" + ipcamera + ":4004/api/event/persondetection?lastId="+ std::to_string(obj->lastID) + "&access_token=" + obj->access_token;
+                obj->urlFrame = "https://"+ ipcamera + ":4004/api/event/frame/persondetection/";
                 obj->process();
             }
             

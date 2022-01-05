@@ -12,9 +12,9 @@
 
 class CountProcessor : public GetImageEngine{
 public: 
-    CountProcessor(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
+    CountProcessor();
     ~CountProcessor();
-    void process();
+    // void process();
     void handleRequest(std::string& message);
 };
 #endif 

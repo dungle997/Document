@@ -13,7 +13,7 @@
 
 class LicenseProcessor : public GetImageEngine{
 public: 
-    LicenseProcessor();
+    LicenseProcessor(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
     ~LicenseProcessor();
     void process(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
 };

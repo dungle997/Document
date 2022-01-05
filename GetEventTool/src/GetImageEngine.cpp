@@ -1,7 +1,22 @@
 #include "GetImageEngine.hpp"
 
 GetImageEngine::GetImageEngine(){
-
+	std::cout << "Constructor GET IMAGE ENGINE " << std::endl;
+	this->jsonSession = new HttpSession();
+}
+GetImageEngine::~GetImageEngine(){
+    if (this->jsonSession){ 
+        delete this->jsonSession;
+        std::cout << "Delete jsonSession" << std::endl; 
+    }
+	std::cout << "Destructor GetImageEngine" << std::endl;
+}
+void GetImageEngine::process(){
+	std::cout << "ipcamera = " << this->ipcamera << std::endl;
+    std::string message = this->getJson();
+    // std::cout << "message = " << message << std::endl;
+    handleRequest(message);
+	std::cout << "Process Events Successfull" << std::endl;
 }
 int GetImageEngine::loadLastID (std::string& path){
 	int lastId;
@@ -53,7 +68,7 @@ std::string GetImageEngine::get_Token(const std::string& ipcamera,const std::str
 	get_token->setPostString(content);
 	get_token->start();
 	std::string message((const char *)get_token->getData(), get_token->getSize());
-    std::cout << "[LOG]  Response of Camera: " << message << std::endl;
+    // std::cout << "[LOG]  Response of Camera: " << message << std::endl;
 	auto j1 = json::parse(message);
 	std::string access_token;
 	if (message != "[]"){
@@ -62,9 +77,6 @@ std::string GetImageEngine::get_Token(const std::string& ipcamera,const std::str
 	}
 	delete get_token;
     return access_token;
-}
-GetImageEngine::~GetImageEngine(){
-    
 }
 int GetImageEngine::convertTimeStamp(std::string& time)
 {
@@ -87,4 +99,36 @@ int GetImageEngine::convertTimeStamp(std::string& time)
     {
         return std::mktime(&t);
     }
+}
+
+void GetImageEngine::getImage(std::string& currentFrameUrl){
+	this->imageSession = new HttpSession();
+	this->imageSession->addHeader("Content-Type: image/jpeg");
+    this->imageSession->setUrl(currentFrameUrl);
+    this->imageSession->start();
+	try {
+		std::string dataImage((const char *)imageSession->getData(), imageSession->getSize());
+		std::vector<uchar> uImage(dataImage.begin(), dataImage.end());
+		this->imageEvent.clone();
+		this->imageEvent = cv::imdecode(uImage, cv::IMREAD_COLOR);
+	}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';
+	}
+    delete this->imageSession;
+	this->imageSession = nullptr;
+}
+std::string GetImageEngine::getJson(){
+	this->jsonSession->setUrl(this->urlJson);
+    this->jsonSession->addHeader("Content-Type: application/json");
+    this->jsonSession->start();
+	std::string message;
+    try {
+    	std::string message1((const char *)jsonSession->getData(), jsonSession->getSize());  
+		message = message1;  
+    }
+    catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+    }
+	return message;
 }
