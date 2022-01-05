@@ -15,7 +15,11 @@ void GetImageEngine::process(){
 	std::cout << "ipcamera = " << this->ipcamera << std::endl;
     std::string message = this->getJson();
     // std::cout << "message = " << message << std::endl;
+	std::cout << "path = " << this->dirSaveJson << std::endl;
+    std::string Time = getTime();
+    this->saveJson(this->dirSaveJson, message, Time);
     handleRequest(message);
+	this->overrideLastID(this->dirLastEventID, this->lastID);
 	std::cout << "Process Events Successfull" << std::endl;
 }
 int GetImageEngine::loadLastID (std::string& path){

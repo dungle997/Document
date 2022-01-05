@@ -1,3 +1,0 @@
-/home/dung/Get_Event/personcount111/build/CMakeFiles/rebuild_cache.dir
-/home/dung/Get_Event/personcount111/build/CMakeFiles/Get_Event_Tool.dir
-/home/dung/Get_Event/personcount111/build/CMakeFiles/edit_cache.dir

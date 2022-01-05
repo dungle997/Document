@@ -15,9 +15,6 @@ CountProcessor::~CountProcessor(){
 void CountProcessor::handleRequest(std::string& message){
     std::cout << "Get Count Event" << std::endl;
     auto j = json::parse(message);
-    std::cout << "path = " << this->dirSaveJson << std::endl;
-    std::string Time = CountProcessor::getTime();
-    this->saveJson(this->dirSaveJson, message, Time);
     if (message != "[]"){
         std::cout << "j.size() = " << j.size() << std::endl;
         for (int i = j.size() - 1; i > -1; i--) {
@@ -42,8 +39,7 @@ void CountProcessor::handleRequest(std::string& message){
             delete newEvent;
         }
         std::cout << "lastId new = "<< j[0]["eventId"] << std::endl;
-        int id = j[0]["eventId"];
-        this->overrideLastID(this->dirLastEventID, id);
+        this->lastID = j[0]["eventId"];
     }   
 }
 
