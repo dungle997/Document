@@ -26,6 +26,10 @@ public:
     std::string urlJson;
     std::string urlFrame;
     std::string dirSaveJson;
+    std::string currentFrameUrl;
+    std::vector<cv::Rect> boxes;
+    std::string timeEvent;
+    int eventID;        
     HttpSession* jsonSession = nullptr;
     HttpSession* imageSession = nullptr;
     cv::Mat imageEvent;
@@ -41,4 +45,8 @@ public:
     void getImage(std::string& currentFrameUrl);
     std::string getJson();
     int convertTimeStamp(std::string& time);
+    void drawBox();
+    virtual std::string nameImage() = 0; 
+    void writeImage(std::string& nameImage);
+    void extractInformation(std::string& message, int& i);
 };

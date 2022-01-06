@@ -136,3 +136,30 @@ std::string GetImageEngine::getJson(){
     }
 	return message;
 }
+void GetImageEngine::drawBox(){
+	for (auto box: this->boxes) {
+        cv::rectangle(this->imageEvent, box, cv::Scalar(0, 255, 0), 4);
+    }  
+}
+void GetImageEngine::writeImage(std::string& nameImage){
+	if (!this->imageEvent.empty()){
+		cv::imwrite(nameImage, this->imageEvent);
+		std::cout << "--------writed done--------" << std::endl;
+	}
+}
+
+void GetImageEngine::extractInformation(std::string& message, int& i){
+	auto j = json::parse(message);
+	auto jlocations = j[i]["extras"]["objects"];
+	for (auto jlocations1 : jlocations){
+		auto p1 = jlocations1["locations"];
+		cv::Rect box(p1[0], p1[1], p1[2], p1[3]);
+		this->boxes.push_back(box);
+	}  
+	this->eventID = j[i]["eventId"];
+	this->timeEvent = j[i]["time"];
+	std::cout <<" eventId = " << j[i]["eventId"] << std::endl;
+	std::string imageID = j[i]["image_id"];
+	std::cout << "imageID = "<< imageID << std::endl;
+	this->currentFrameUrl = this->urlFrame + imageID + "?access_token=" + this->access_token;
+}
