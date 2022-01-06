@@ -17,7 +17,7 @@
 
 class CountEvent {
 public:
-    CountEvent(const std::vector<cv::Rect>& boxes, const std::string& time, std::string frame, int eventId, std::string ipcamera);
+    CountEvent(const std::vector<cv::Rect>& boxes, const std::string& time, int eventId, std::string ipcamera);
     ~CountEvent();
     
     void update(const cv::Mat& image);
@@ -26,7 +26,7 @@ public:
     std::vector<cv::Rect> boxes;
     std::string time;
     std::string ipcamera;
-    std::string frame;
+    // std::string frame;
     int eventId;
     cv::Mat image;
 };

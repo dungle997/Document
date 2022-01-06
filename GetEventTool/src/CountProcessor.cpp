@@ -31,7 +31,7 @@ void CountProcessor::handleRequest(std::string& message){
             std::cout << "imageID = "<<eventId << std::endl;
             std::string time = j[i]["time"];
             std::cout << "--------CountEvent-------" << std::endl;
-            CountEvent* newEvent = new CountEvent( boxes, time, eventId, EventId, this->ipcamera);
+            CountEvent* newEvent = new CountEvent( boxes, time, EventId, this->ipcamera);
             std::string currentFrameUrl = urlFrame + eventId + "?access_token=" + this->access_token;
             this->getImage(currentFrameUrl);
             // HttpSession* imageSession = new HttpSession();

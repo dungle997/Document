@@ -9,12 +9,12 @@
 #include "CountEvent.hpp"
 
 
-CountEvent::CountEvent( const std::vector<cv::Rect>& boxes, const std::string& time, std::string frame, int eventId, std::string ipcamera) {
+CountEvent::CountEvent( const std::vector<cv::Rect>& boxes, const std::string& time, int eventId, std::string ipcamera) {
     // this->cameraId = cameraId;
     this->boxes = boxes;
     this->time = time;
     this->ipcamera = ipcamera;
-    this->frame = frame;
+    // this->frame = frame;
     this->eventId = eventId;
     std::cout << "Add count event with count: " << this->boxes.size() << std::endl;
     
