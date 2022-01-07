@@ -2,12 +2,12 @@
 #include "json.h"
 #include "HttpSession.hpp"
 // #include "CountEvent.hpp"
-#include "FaceDetectProcessor.hpp"
+// #include "FaceDetectProcessor.hpp"
 #include "FaceMaskProcessor.hpp"
 #include "FaceProcessor.hpp"
 #include "FireProcessor.hpp"
 #include "LicenseProcessor.hpp"
-#include "ObjectProcessor.hpp"
+// #include "ObjectProcessor.hpp"
 #include "DistancingProcessor.hpp"
 #include <fstream>
 #include <ctime>

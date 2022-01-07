@@ -4,7 +4,7 @@
 #include <iostream>
 #include "json.h"
 #include "HttpSession.hpp"
-#include "FaceEvent.hpp"
+// #include "FaceEvent.hpp"
 #include <fstream>
 #include <ctime>
 #include <string>
@@ -14,6 +14,9 @@ class FaceProcessor : public GetImageEngine{
 public: 
     FaceProcessor();
     ~FaceProcessor();
-    void process(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
+    void handleRequest(std::string& message);
+    std::string nameImage();
+
+    std::vector<std::string> profileId;
 };
 #endif 

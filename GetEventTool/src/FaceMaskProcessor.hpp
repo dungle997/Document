@@ -4,7 +4,7 @@
 #include <iostream>
 #include "json.h"
 #include "HttpSession.hpp"
-#include "FaceMaskEvent.hpp"
+// #include "FaceMaskEvent.hpp"
 #include <fstream>
 #include <ctime>
 #include <string>
@@ -13,6 +13,9 @@ class FaceMaskProcessor : public GetImageEngine{
 public: 
     FaceMaskProcessor();
     ~FaceMaskProcessor();
-    void process(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
+    void handleRequest(std::string& message);
+    std::string nameImage();
+
+    std::vector<int> fmask;
 };
 #endif 

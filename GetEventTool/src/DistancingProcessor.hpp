@@ -4,7 +4,6 @@
 #include <iostream>
 #include "json.h"
 #include "HttpSession.hpp"
-#include "DistancingEvent.hpp"
 #include <fstream>
 #include <ctime>
 #include <string>
@@ -14,6 +13,9 @@ class DistancingProcessor : public GetImageEngine{
 public: 
     DistancingProcessor();
     ~DistancingProcessor();
-    void process(const std::string& ipcamera, const std::string& username, const std::string& userpwd);
+    void handleRequest(std::string& message);
+    std::string nameImage();
+    void drawBoxDistancing(cv::Mat& image);
+    std::vector<std::vector<float>> distances;
 };
 #endif 
