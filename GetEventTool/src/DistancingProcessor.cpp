@@ -55,12 +55,12 @@ void DistancingProcessor::drawBoxDistancing(cv::Mat& image){
     // Draw box
     if (this->boxes.size() != 0) {
         for (auto distance : distances) {
-            int tx = boxes[(int)distance[0]].x;
-            int ty = boxes[(int)distance[0]].y - 10;
+            int tx = boxes[(int)distance[0] - 1].x;
+            int ty = boxes[(int)distance[0] - 1].y - 10;
             cv::putText(this->imageEvent, std::to_string((int)distance[0]), cv::Point(tx, ty), fontFace, fontScale, cv::Scalar(0, 255, 0), thickness);
 
-            tx = boxes[(int)distance[1]].x;
-            ty = boxes[(int)distance[1]].y - 10;
+            tx = boxes[(int)distance[1] - 1].x;
+            ty = boxes[(int)distance[1] - 1].y - 10;
             cv::putText(this->imageEvent, std::to_string((int)distance[1]), cv::Point(tx, ty), fontFace, fontScale, cv::Scalar(0, 255, 0), thickness);
 
             distance[2] = distance[2];

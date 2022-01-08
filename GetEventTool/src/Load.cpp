@@ -144,8 +144,8 @@ void LoadProcessor::load() {
                 // obj->dirLastEventID = DEFINE(ipcamera,"personcount");
                 obj->dirSaveJson = "../Json_Event/" + ipcamera + "/license.txt";
                 obj->lastID = obj->loadLastID(obj->dirLastEventID); 
-                obj->urlJson = "https://" + ipcamera + ":4004/api/event/license?lastId="+ std::to_string(obj->lastID) + "&access_token=" + obj->access_token;
-                obj->urlFrame = "https://"+ ipcamera + ":4004/api/event/frame/license/";
+                obj->urlJson = "https://" + ipcamera + ":4004/api/event/vehicledetection?lastId="+ std::to_string(obj->lastID) + "&access_token=" + obj->access_token;
+                obj->urlFrame = "https://"+ ipcamera + ":4004/api/event/frame/vehicledetection/";
                 obj->process();
             }
         }

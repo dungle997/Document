@@ -22,7 +22,10 @@ void LicenseProcessor::handleRequest(std::string& message){
             auto jLicenses = j[i]["extras"]["objects"];
             for (auto jLicense : jLicenses){
                 auto license1 = jLicense["license"];
-                this->licenses.push_back(license1);
+                if (license1.is_null()){ 
+                    auto license2 = license1["label"];
+                    this->licenses.push_back(license2);
+                }
             }
             this->getImage(this->currentFrameUrl);
             drawBox();
@@ -37,8 +40,10 @@ void LicenseProcessor::handleRequest(std::string& message){
 }
 std::string LicenseProcessor::nameImage(){
     std::string name = "";
-    for (auto numbers : this->licenses){
-        name = name + numbers;   
+    if (this->licenses.size()){
+        for (auto numbers : this->licenses){
+            name = name + numbers;   
+        }
     }
     std::string nameImage = "../Event/" + this->ipcamera +"/license/" + name + "_" + this->timeEvent + "_" + std::to_string(this->eventID) + ".jpg";
     return nameImage;

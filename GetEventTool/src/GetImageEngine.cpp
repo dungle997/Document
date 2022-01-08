@@ -138,6 +138,7 @@ std::string GetImageEngine::getJson(){
 }
 void GetImageEngine::drawBox(){
 	for (auto box: this->boxes) {
+		// std::cout << "afdasf" << std::endl;
         cv::rectangle(this->imageEvent, box, cv::Scalar(0, 255, 0), 4);
     }  
 }
@@ -162,4 +163,5 @@ void GetImageEngine::extractInformation(std::string& message, int& i){
 	std::string imageID = j[i]["image_id"];
 	std::cout << "imageID = "<< imageID << std::endl;
 	this->currentFrameUrl = this->urlFrame + imageID + "?access_token=" + this->access_token;
+	// std::cout << currentFrameUrl << std::endl;
 }
