@@ -35,7 +35,7 @@ std::string FaceProcessor::nameImage(){
     for (auto profile : profileId){
         name = name + profile + "_";
     }
-    std::string nameImage = "../Event/" + this->ipcamera + "/facerecognize/" + name + "_"+this->timeEvent + "_" + std::to_string(this->eventID) + ".jpg";
+    std::string nameImage = "../Event/" + this->ipcamera + "/facerecognition/" + name + "_"+this->timeEvent + "_" + std::to_string(this->eventID) + ".jpg";
     return nameImage;
 }
 

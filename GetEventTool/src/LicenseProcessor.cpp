@@ -45,7 +45,7 @@ std::string LicenseProcessor::nameImage(){
             name = name + numbers;   
         }
     }
-    std::string nameImage = "../Event/" + this->ipcamera +"/license/" + name + "_" + this->timeEvent + "_" + std::to_string(this->eventID) + ".jpg";
+    std::string nameImage = "../Event/" + this->ipcamera +"/vehicledetection/" + name + "_" + this->timeEvent + "_" + std::to_string(this->eventID) + ".jpg";
     return nameImage;
 }
 

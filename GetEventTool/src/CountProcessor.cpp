@@ -26,7 +26,7 @@ void CountProcessor::handleRequest(std::string& message){
 }
 std::string CountProcessor::nameImage(){
     int a = this->boxes.size();
-    std::string nameImage = "../Event/" + this->ipcamera + "/personcount/" + this->timeEvent + "_" + std::to_string(this->eventID) + "_size_" + std::to_string(a) + ".jpg";
+    std::string nameImage = "../Event/" + this->ipcamera + "/persondetection/" + this->timeEvent + "_" + std::to_string(this->eventID) + "_size_" + std::to_string(a) + ".jpg";
     return nameImage;
 }
 
