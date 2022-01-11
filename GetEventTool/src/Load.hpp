@@ -19,6 +19,9 @@ public:
     LoadProcessor();
     ~LoadProcessor();
     void load();
+    void setParam(std::string& type, GetImageEngine* obj, std::string& ipcamera, std::string& username, std::string& userpwd, std::string& port);
+private: 
+    GetImageEngine* LoadSubClass(std::string& type, GetImageEngine* obj);
 };
 
 #endif

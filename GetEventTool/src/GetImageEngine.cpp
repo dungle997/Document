@@ -59,7 +59,7 @@ std::string GetImageEngine::getTime(){
 	return time;
 } 
 std::string GetImageEngine::get_Token(const std::string& ipcamera,const std::string& username,const std::string& userpwd){
-    std::string url_login = "https://" + ipcamera + ":4004/api/login";
+    std::string url_login = "https://" + ipcamera + ":" + this->port + "/api/login";
     std::cout << "[LOG]  " << url_login << std::endl;
     json j;
     j["username"] = username;

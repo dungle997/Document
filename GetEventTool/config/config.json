@@ -1,10 +1,11 @@
 {
     "monitors" : [	
 {
-            "type" : "personcount",
-            "ipcamera" : "10.2.64.53",   
-			"username" : "admin",   
-			"userpwd"  : "Bkav@2021"
+            "type" : "persondetection",
+            "ipcamera" : "10.2.64.159",   
+			"port"	   : "4004",
+ 			"username" : "admin",   
+			"userpwd"  : "Bkav@2222"
         }
 
     ]

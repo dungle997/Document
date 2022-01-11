@@ -22,6 +22,7 @@ public:
     std::string ipcamera;
     std::string username;
     std::string userpwd;
+    std::string port;
     std::string dirLastEventID;
     std::string urlJson;
     std::string urlFrame;
