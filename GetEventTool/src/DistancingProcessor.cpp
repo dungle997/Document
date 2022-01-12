@@ -34,8 +34,6 @@ void DistancingProcessor::handleRequest(std::string& message){
             this->boxes.clear();
             this->distances.clear();
         }
-        std::cout << "lastId new = "<< j[0]["eventId"] << std::endl;
-        this->lastID = j[0]["eventId"];
     } 
 }
 std::string DistancingProcessor::nameImage(){

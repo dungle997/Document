@@ -32,8 +32,6 @@ void FaceMaskProcessor::handleRequest(std::string& message){
             this->boxes.clear();
             this->fmask.clear();
         }
-        std::cout << "lastId new = "<< j[0]["eventId"] << std::endl;
-        this->lastID = j[0]["eventId"];
     } 
 }
 std::string FaceMaskProcessor::nameImage(){

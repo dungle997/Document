@@ -19,18 +19,69 @@ void GetImageEngine::process(){
     std::string Time = getTime();
     this->saveJson(this->dirSaveJson, message, Time);
     handleRequest(message);
-	this->overrideLastID(this->dirLastEventID, this->lastID);
+	SaveLastEventID(message);
+	// this->overrideLastID(this->dirLastEventID, this->lastID);
 	std::cout << "Process Events Successfull" << std::endl;
 }
-int GetImageEngine::loadLastID (std::string& path){
-	int lastId;
-	this->myfile.open(path, std::ios::in);
-	if (this->myfile.is_open()){
-		this->myfile >> lastId;
+// int GetImageEngine::loadLastID (std::string& path){
+// 	int lastId;
+// 	this->myfile.open(path, std::ios::in);
+// 	if (this->myfile.is_open()){
+// 		this->myfile >> lastId;
+// 	}
+// 	std::cout << "lastID = " << lastId << std::endl;
+// 	this->myfile.close();
+// 	return lastId; 
+// }
+void GetImageEngine::SaveLastEventID(std::string& message){
+	std::string content1;
+	auto j = json::parse(message);
+	if (message != "[]"){
+		int a = j[0]["eventId"];
+		this->lastID = std::to_string(a);
+		std::cout << "lastId new = "<< this->lastID << std::endl;
+		
 	}
-	std::cout << "lastID = " << lastId << std::endl;
+	this->myfile.open("../config/config.json");
+	if (this->myfile.is_open()) {
+        std::string content((std::istreambuf_iterator<char>(this->myfile)), std::istreambuf_iterator<char>());
+		// std::cout << "content = " << content << std::endl;
+        try {
+            auto j = json::parse(content);
+			json jj;
+			json jjj;
+            auto monitors = j["monitors"];
+            for (auto monitor : monitors){
+				std::cout << "load object config" << std::endl;
+				jj["type"]     = monitor["type"];
+				jj["ipcamera"] = monitor["ipcamera"];
+				jj["port"]     = monitor["port"];
+				jj["username"] = monitor["username"];
+				jj["userpwd"]  = monitor["userpwd"];
+				jj["lastID"]   = monitor["lastID"];
+				if (monitor["type"] == this->type && monitor["ipcamera"] == this->ipcamera && monitor["port"] == this->port){
+					// std::cout << "aaaaaaaaaaaaaa" << std::endl;
+					jj["lastID"] = this->lastID;
+					std::cout << "config json lastId = "<< jj["lastID"] << std::endl;
+					
+				}
+				jjj["monitors"].push_back(jj);
+					// std::string a = jj.dump();
+					// std::cout << a << std::endl;
+			}
+			content1 = jjj.dump();
+			std::cout << "content1 = " << content1 << std::endl;			
+        }
+        catch(const std::exception& e) {
+            std::cerr << e.what() << '\n';
+        } 
+    }
 	this->myfile.close();
-	return lastId; 
+	this->myfile.open("../config/config.json", std::ios::out | std::ios::trunc);
+	if (this->myfile.is_open()){
+		this->myfile << content1;
+	}
+	this->myfile.close();
 }
 void GetImageEngine::overrideLastID (std::string& path, int& lastID){
 	this->myfile.open(path, std::ios::out | std::ios::trunc);

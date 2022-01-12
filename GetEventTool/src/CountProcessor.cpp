@@ -20,8 +20,6 @@ void CountProcessor::handleRequest(std::string& message){
             writeImage(name);
             this->boxes.clear();
         }
-        std::cout << "lastId new = "<< j[0]["eventId"] << std::endl;
-        this->lastID = j[0]["eventId"];
     }   
 }
 std::string CountProcessor::nameImage(){

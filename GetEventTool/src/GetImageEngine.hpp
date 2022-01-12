@@ -19,11 +19,12 @@ public:
     virtual ~GetImageEngine();
     std::fstream myfile;
     std::string access_token;
+    std::string type;
     std::string ipcamera;
     std::string username;
     std::string userpwd;
     std::string port;
-    std::string dirLastEventID;
+    // std::string dirLastEventID;
     std::string urlJson;
     std::string urlFrame;
     std::string dirSaveJson;
@@ -34,8 +35,8 @@ public:
     HttpSession* jsonSession = nullptr;
     HttpSession* imageSession = nullptr;
     cv::Mat imageEvent;
-    int lastID = 1;
-    int loadLastID (std::string& path);
+    std::string lastID;
+    // int loadLastID (std::string& path);
     void saveJson(std::string& path, std::string& message, std::string& time);
     void overrideLastID (std::string& path, int& lastID);
     static std::string getTime(); 
@@ -50,4 +51,5 @@ public:
     virtual std::string nameImage() = 0; 
     void writeImage(std::string& nameImage);
     void extractInformation(std::string& message, int& i);
+    void SaveLastEventID(std::string& message);
 };
