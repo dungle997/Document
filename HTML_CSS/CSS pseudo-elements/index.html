@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS PSEUDO-ELEMENTS</title>
+        <meta charset="utf-8">
+        <style>
+            .box{
+                width: 100%;
+                height: 120px;
+                background: rgb(255,125,255);
+            }
+            .box:hover{
+                background-color: red ;
+            }
+            .box:active{
+                background-color: purple ;
+            }
+            h1:hover{
+                background-color: green;
+                color: yellow;
+            }
+            li:last-child{
+                color: red;
+            }
+            li:first-child{
+                color: blue;
+            }
+            .box::before{
+                content: "";
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: #fff ;
+            }
+            .box::after{
+                content: "Hello World";
+                color: blue;
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: #fff ;
+            }
+            h1::first-letter{
+                font-size: 50px;
+                color: blue;
+            }
+            h1::first-line{
+                font-size: 20px;
+            }
+            h1::selection{
+                background-color: violet;
+                color: #000;
+            }
+            /* ::selection chọn vào tất cả các phần từ, phần tử gốc, */
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>CSS PSEUDO-ELEMENTS <br /> Dòng thứ 2</h1>
+        <ol>
+            <li>::before</li>
+            <li>::after</li>
+            <li>::first-letter</li>
+            <li>::first-line</li>
+            <li>::selection</li>
+        </ol>
+        
+    </body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Units</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+        <style>
+            /* .box{
+                width: 100px;
+                height: 100px;  
+                background-color: red;
+            } */
+            html{
+                font-size: 100%;
+            }
+            .box{
+                width: 100%;
+                /* width: 10vw; */
+                width: calc(50px*2 + 60px*2);
+                height: 100px;
+                background: rgb(255, 255, 0);
+                /* background-color: blue; */
+            }
+            h1{
+                font-size: 3rem;
+                /* % phụ thuộc vào kích thước của thẻ gần nhất */
+                /* rem phụ thuộc vào thuộc tish của thẻ html 
+                em phụ thuộc vào thuộc tính của thẻ gần nhất */
+                /* vw - width, vh - viewport height  */
+                /* viewport */
+                /* vw, vh phụ thuộc kích thước màn hình */
+            }
+            a::after{
+                content: " (" attr(href)")";
+            }
+            .box::after{
+                content: attr(data-title);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" data-title="Day la chu nhat"></div>
+        <a href="https://fullstack.edu.vn">Go Go Go</a>
+        <div>
+            <h1>CSS Funtions</h1>
+            <ul>
+                <li>var</li>   <!---->
+                <li>linear-gradient</li>
+                <li>rgba</li>
+                <li>rgb</li>
+                <li>calc</li>
+                <li>attr</li>
+        </div>
+    </body>
+
+</html>

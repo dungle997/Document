@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Units</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+        <style>
+            /* .box{
+                width: 100px;
+                height: 100px;  
+                background-color: red;
+            } */
+            html{
+                font-size: 100%;
+            }
+            .box{
+                width: 1vw;
+                width: 100%;
+                height: 100px;
+                background-color: blue;
+            }
+            h1{
+                font-size: 3rem;
+                /* % phụ thuộc vào kích thước của thẻ gần nhất */
+                /* rem phụ thuộc vào thuộc tish của thẻ html 
+                em phụ thuộc vào thuộc tính của thẻ gần nhất */
+                /* vw - width, vh - viewport height  */
+                /* viewport */
+                /* vw, vh phụ thuộc kích thước màn hình */
+            }
+        </style>
+    </head>
+    <body style="width: 50px; height: 50px; background-color: green ;">
+        <div class="box"></div>
+
+        <div style="font-size: 30px;">
+            <h1>CSS units</h1>
+            <h2>1. Absolute units</h2>
+            <ul>
+                <li>px</li>   <!---->
+                <li>pt</li>
+                <li>cm</li>
+                <li>mm</li>
+                <li>inch</li>
+                <li>pc</li>
+            </ul>
+            <h2>2. Relative units</h2>
+            <ul>
+                <li>%</li>    <!---->
+                <li>rem</li>  <!---->
+                <li>em</li>   <!---->
+                <li>vw</li>   <!---->
+                <li>vh</li>   <!---->
+                <li>vmin</li>
+                <li>vmax</li>
+                <li>ex</li>
+                <li>ch</li>
+            </ul>
+        </div>
+    </body>
+
+</html>
