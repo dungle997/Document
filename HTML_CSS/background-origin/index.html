@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Background-origin</title>
+        <meta charset="utf-8">
+        <style>
+            html, body{
+                margin: 0;
+            }
+            .header{
+                width: 100%;
+                height: 100vh;
+                background-image: 
+                url(https://toigingiuvedep.vn/wp-content/uploads/2021/01/hinh-anh-girl-xinh-toc-ngan-de-thuong.jpg);
+                background-repeat: no-repeat;
+                background-size: 100vh;
+                border: 20px dashed #ccc;
+                padding: 20px;
+                box-sizing: border-box;
+                background-origin: padding-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
+
+
+<!-- áp dụng cho lấy image làm background
+Sử dụng giống background clip để đổ background vào phần mong muốn (border, padding, content)
+background-origin mặc định sẽ đổ background vào padding-box. Còn background-clip mặc định đẩy vào border-box -->

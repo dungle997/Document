@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Background-clip</title>
+        <meta charset="utf-8">
+        <style>
+            html, body{
+                margin: 0;
+            }
+            .header{
+                width: 100%;
+                height: 100vh;
+                background-image: 
+                /* url(https://upload.wikimedia.org/wikipedia/commons/6/63/Star%2A.svg); */
+                /* background-size: 100vh; */
+                
+                /* background-repeat: no-repeat; */
+                linear-gradient(0deg, rgba(255,255,0,0.5), rgba(0,255,255,0.5)),
+                url(https://toigingiuvedep.vn/wp-content/uploads/2021/01/hinh-anh-girl-xinh-toc-ngan-de-thuong.jpg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                /* để theo pixel, %, vw, vh */
+                background-size: contain;
+                /* lấy theo kích thước lớn nhất, tương ứng theo 2 chiều khung hình và chấp nhận có khoảng trắng */
+                background-size: cover; 
+                /* lấy theo kích thước lớn nhất của ảnh để full màn hình, bất chấp việc bị chèn mất hình */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header"></div>
+    </body>
+</html>
