@@ -3,12 +3,16 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+    font-family: Arial;
+}
 #main{
 
 }
 
 #header{
-
+    height: 46.5px;
+    background-color: black;
 }
 #nav .subnav{
     list-style-type: none; 
@@ -18,11 +22,39 @@
     display: inline-block;
     /* trang thai doc hay ngang cua list li */
 }
+#nav li{
+    position: relative;
+}
+#nav li a{
+    color: red;   
+    text-decoration: none;
+    line-height: 46.5px;  
+}
+#nav > li:hover > a, 
+#nav .subnav li:hover a{
+    color: #000;
+    background-color: #ccc;
+    display: block;
+}
+#nav li:hover .subnav{
+    display: block;
+}
+#nav li:hover a {
+    /* background-color: #ccc; */
+}
+#nav > li > a{
+    text-transform: uppercase;
+    padding: 0 24px;
+    display: block;
+} 
 #slider{
-
+    min-height: 500px;
+    background-color: #333;;
 }
 #nav .subnav{
     display: none;
+    position: absolute;
+    background-color: #fff;
 }
 
 #content{
