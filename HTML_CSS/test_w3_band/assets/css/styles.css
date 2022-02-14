@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#main{
+
+}
+
+#header{
+
+}
+#nav .subnav{
+    list-style-type: none; 
+    /* hien an dau gach dau dong trong danh sach list  */
+}
+#nav > li{
+    display: inline-block;
+    /* trang thai doc hay ngang cua list li */
+}
+#slider{
+
+}
+#nav .subnav{
+    display: none;
+}
+
+#content{
+
+}
+
+#footer{
+
+}
