@@ -7,6 +7,7 @@
 }
 html{
     font-family: Arial;
+    height: 5000px;
 }
 /*
 1. Từ ngoài vào trong
@@ -22,7 +23,22 @@ html{
 #main{
 
 }
-
+#header .search-btn{
+    float: right;
+    padding: 0.25px 21px;
+    
+}
+#header .search-btn:hover{
+    cursor: pointer;
+    background-color: #f44336!important;
+}
+#header .search-icon{
+    line-height: 46.5px;
+}
+/* #header .search-icon */
+#nav{
+    display: inline-block;
+}
 #nav, .subnav{
     list-style-type: none;
     /* hien an dau gach dau dong trong danh sach list  */
@@ -87,17 +103,74 @@ html{
 #header{
     height: 46.5px;
     background-color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; 
+    z-index: 1;
 }
 
 #slider{
+    margin-top: 46.5px;
+    padding-top: 50%;
+    background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
     /* min-height: 500px;
     background-color: #333; */
+    position: relative;
+}
+
+#slider .text-content{
+    color: white;
+    position: absolute;
+    bottom: 48px;
+    /* left: 50%;
+    transform: translate(-50%); */
+    width: 100%;
+    text-align: center;
+}
+
+#slider .text-heading{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#slider .text-description{
+    font-size: 15px;
+    margin-top: 25px;
 }
 
 #content{
 
 }
+#content .content-section{
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 64px 0px;
+}
+
+#content .section-heading{
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading{
+    font-size: 15px;
+    text-align: center;
+    margin: 25px;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+#content .about-text{
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.4;
+}
 
 #footer{
 
 }
+
