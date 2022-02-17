@@ -25,11 +25,13 @@ html{
 }
 #header .search-btn{
     float: right;
+    /* Bỏ các thuộc tính kết thừa từ trước đó. VD: nếu là thẻ div ban đâu sẽ chiếm hết width */
     padding: 0.25px 21px;
     
 }
 #header .search-btn:hover{
     cursor: pointer;
+    /* Chỉnh hình ảnh con trỏ chuột hiển thị khi di chuột vào một đối tượng nhất định */
     background-color: #f44336!important;
 }
 #header .search-icon{
@@ -108,11 +110,13 @@ html{
     left: 0;
     right: 0; 
     z-index: 1;
+    /* Chỉnh header khi nó bị background image đè lên */
 }
 
 #slider{
     margin-top: 46.5px;
     padding-top: 50%;
+    /* Chỉnh chiều cao bằng 1 nửa chiều ngang */
     background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
     /* min-height: 500px;
     background-color: #333; */
@@ -131,6 +135,7 @@ html{
 
 #slider .text-heading{
     font-weight: 500;
+    /* Chỉnh độ dày chữ */
     font-size: 24px;
 }
 
@@ -146,7 +151,7 @@ html{
     width: 800px;
     margin-right: auto;
     margin-left: auto;
-    padding: 64px 0px;
+    padding: 64px 16px;
 }
 
 #content .section-heading{
@@ -154,6 +159,7 @@ html{
     font-weight: 500;
     text-align: center;
     letter-spacing: 4px;
+    /* căn cách dòng  */
 }
 
 #content .section-sub-heading{
@@ -162,15 +168,92 @@ html{
     margin: 25px;
     font-style: italic;
     opacity: 0.6;
+    /* Chỉnh độ đậm nhật của chữ */
 }
 
 #content .about-text{
     font-size: 15px;
     text-align: justify;
+    /* Căn văn bản chuẩn kín chữ 2 bên  */
     line-height: 1.4;
 }
+#content .member-item{
+    float: left;
+    /* Bỏ kế thừa và chuyển các đối tượng xếp vào phía trái */
+    width: 33.33333%;
 
+}
+#content .member-name{
+    font-size: 15px;
+}
+#content .member-list{
+    margin-top: 48px;
+    text-align: center;
+    /* các thafh viên bên trong dùng float thì class cha sẽ bị văng ra ko bao các class con
+    Cách khắc phục: overflow : hidden; */
+    /* overflow: hidden; */
+}
+#content .member-img{
+    margin-top: 15px;
+    width: 154px;
+    height: 154px;
+    border-radius: 4px;
+}
+#content .tour-section{ 
+    background-color: black;
+}
+.tickets-list{
+    
+    background-color: #fff;
+}
+.tickets-list li{
+    list-style-type: none;
+    color: #757575;
+    font-size: 15px;
+    height: 39px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+}
+.tickets-list .sold-out{
+    background-color: red;
+    padding: 2px 2px;
+    color: white;
+    margin-left: 16px;
+}
+.tickets-list .quantity{
+    background-color: black;
+    color: white;
+    /* padding: 8px; */
+    float: right;
+    margin-right: 16px;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    line-height: 24px;
+    text-align: center;
+}
 #footer{
 
 }
+.tour-section .ticket-section{
+    /* float: left; */
+    color: #fff;
+}
+.clear{
+    clear: both;
+}
+.text-white{
+    color: #fff !important;
+}
+.ticket-section{
+    padding: 32px 0px;
+}
+.ticket-img{
+    width: 245.33px;
+    height:183.98px; 
+}
+.ticket-section h2{
+    font-size: 15px;
+}
+
 
