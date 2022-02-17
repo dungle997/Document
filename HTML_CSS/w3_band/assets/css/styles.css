@@ -245,15 +245,59 @@ html{
 .text-white{
     color: #fff !important;
 }
+
+/* tickets */
 .ticket-section{
     padding: 32px 0px;
+    margin: -8px;
+    margin-bottom: 32px;
 }
-.ticket-img{
-    width: 245.33px;
-    height:183.98px; 
+.ticket-img{ 
+    width: 100%;
+    display: block;
+}
+.ticket-img:hover{ 
+    opacity: 0.6;
 }
 .ticket-section h2{
     font-size: 15px;
+}
+.ticket-section-content{
+    float: left;
+    width: 33.33333%;
+    padding: 0 8px;
+}
+
+.ticket-content{
+    background-color:   #fff;
+    padding: 16px;
+    font-size: 15px;
+    color: black;
+}
+
+.ticket-heading{
+ 
+}
+
+.ticket-date{
+    margin-top: 15px;
+    opacity: 0.4;
+
+}
+
+.ticket-about{
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+.buy-tickets-btn{
+    text-decoration: none;
+    background-color:#000;
+    color: white;
+    padding: 8px 16px;
+    display: inline-block;
+    margin-top: 15px;
+    
 }
 
 
