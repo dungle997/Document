@@ -299,5 +299,126 @@ html{
     margin-top: 15px;
     
 }
+.buy-tickets-btn:hover{
+    opacity: 0.3;
+    
+}
+.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container{
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+}
+
+.modal-close{
+    position: absolute;
+    padding: 16px;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-weight: 100;
+    
+}
+.modal-close:hover{
+    background-color: #ccc;
+    cursor: pointer;
+    color: #000;
+}
+
+.modal-header{
+    background-color: #009688;
+    height: 130px;
+    /* căn giữa nội dung bên trong header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 2px;
+  
+}
+
+.modal-body{
+    padding: 16px;
+}
+
+.modal-label{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.modal-input{
+    height: 40px;
+    width: 100%;
+    padding: 8px;
+    display: block;
+    font-size: 15px;
+    border: 1px solid #ccc; 
+    margin-bottom: 24px;
+}
 
 
+.modal-label{
+
+}
+
+.modal-input{
+
+}
+
+.modal-footer{
+
+}
+
+.modal.open{
+    display: flex;
+}
+
+.modal-help{
+    margin-bottom: 15px;
+    padding: 16px;
+    text-align: right;
+}
+.modal-help a {
+    color: #2196F3;
+}
+#buy-ticket{
+    width: 100%;
+    background-color: #009688;
+    border: none;
+    height: 54px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+}
+#buy-ticket:hover{
+    cursor: pointer;
+    opacity: 0.6;
+    background-color: red;
+    color: yellow;
+}
+#buy-ticket .ti-check{
+    font-weight: 1000;
+    /* color: #000; */
+
+}
+
+.modal-heading-icon{
+    margin-right: 16px;
+    font-weight: 300;
+}   
