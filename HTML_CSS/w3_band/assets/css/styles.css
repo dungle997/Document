@@ -7,7 +7,7 @@
 }
 html{
     font-family: Arial;
-    height: 5000px;
+    /* height: 5000px; */
 }
 /*
 1. Từ ngoài vào trong
@@ -20,6 +20,44 @@ html{
 3. Màu sắc
 4. Kiểu dáng (kiểu chữ, hình tròn, vuông,...) 
 */
+/* Common */
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.row::after{
+    content: "";
+    display: block;
+    clear:both;
+    /* psudo element, thay cho thẻ <div class="clear"></div> trong html */
+    /* khi thấy class cha không bao trùm hết class con */
+}
+.col{
+    float: left;
+    padding: 0 8px;
+}
+
+.col-full{
+    width: 100%;
+}
+
+.col-half{
+    width: 50%;
+}
+
+.col-third{
+    width: 33.33333%;
+}
+.text-center{
+    text-align: center !important;
+}
+.clear{
+    clear: both;
+}
+.mt-8{
+    margin-top: 8px !important; 
+}
+/*  */
 #main{
 
 }
@@ -188,7 +226,6 @@ html{
 }
 #content .member-list{
     margin-top: 48px;
-    text-align: center;
     /* các thafh viên bên trong dùng float thì class cha sẽ bị văng ra ko bao các class con
     Cách khắc phục: overflow : hidden; */
     /* overflow: hidden; */
@@ -232,16 +269,11 @@ html{
     line-height: 24px;
     text-align: center;
 }
-#footer{
-
-}
 .tour-section .ticket-section{
     /* float: left; */
     color: #fff;
 }
-.clear{
-    clear: both;
-}
+
 .text-white{
     color: #fff !important;
 }
@@ -249,7 +281,6 @@ html{
 /* tickets */
 .ticket-section{
     padding: 32px 0px;
-    margin: -8px;
     margin-bottom: 32px;
 }
 .ticket-img{ 
@@ -261,11 +292,6 @@ html{
 }
 .ticket-section h2{
     font-size: 15px;
-}
-.ticket-section-content{
-    float: left;
-    width: 33.33333%;
-    padding: 0 8px;
 }
 
 .ticket-content{
@@ -301,7 +327,7 @@ html{
 }
 .buy-tickets-btn:hover{
     opacity: 0.3;
-    
+    cursor: pointer;
 }
 .modal{
     position: fixed;
@@ -423,6 +449,7 @@ html{
     margin-right: 16px;
     font-weight: 300;
 }   
+/* Tạo animation chuyển động */
 @keyframes modalFadeIn{
     from{
         opacity: 0;
@@ -432,4 +459,69 @@ html{
         opacity: 1;
         transform: translateY(0px);
     }
+}
+
+/* Contact form */
+.contact-content{
+    margin-top: 48px;
+}
+.contact-info{
+    font-size: 18px;
+    line-height: 1.4;
+}
+.contact-info i[class*="ti-"]{
+    width: 30px;
+    display: inline-block;
+}
+.contact-form{
+    font-size: 15px;
+}
+.contact-form .form-control{
+    padding: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+.send-button{
+    background-color: #000;
+    color: #fff;
+    font-size: 15px;
+    padding: 8px 16px;
+    margin: 16px 0;
+    float: right;
+    border: 1px solid #ccc;
+}
+.send-button:hover{
+    opacity: 0.6;
+    cursor: pointer;;
+}
+
+/* footer */
+.map-picture img{
+    width: 100%;
+}
+
+#footer{
+    padding: 64px 16px ;
+   text-align: center; 
+}
+.icons{
+   font-size: 24px;
+   color: #ccc;
+}
+.icons a{
+    text-decoration: none;
+    color: #ccc;
+ 
+ }
+.text-icon{
+    text-align: center;
+    color: #ccc;
+}
+#footer .text-icon {
+    margin-top: 15px;
+    color: #ccc;
+}
+#footer .text-icon a{
+    color: #ccc;
+    font-size: 15px;
 }
