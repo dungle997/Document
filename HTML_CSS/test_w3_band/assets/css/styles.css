@@ -5,63 +5,43 @@
 }
 html{
     font-family: Arial;
+    height: 5000px;
 }
 #main{
 
 }
 
 #header{
-    height: 46.5px;
+    height: 46px;
     background-color: black;
 }
-#nav .subnav{
-    list-style-type: none; 
-    /* hien an dau gach dau dong trong danh sach list  */
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav a{
+    text-decoration: none ;
+}
+
+#nav > li > a{
+    font-size: 15px;
+    padding: 12px 24px;
+    display: block;
+    height: 46;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+#nav {
+    display: block;
 }
 #nav > li{
     display: inline-block;
-    /* trang thai doc hay ngang cua list li */
 }
-#nav li{
-    position: relative;
-}
-#nav li a{
-    color: red;   
-    text-decoration: none;
-    line-height: 46.5px;  
-}
-#nav > li:hover > a, 
-#nav .subnav li:hover a{
-    color: #000;
-    background-color: #ccc;
-    display: block;
-}
-#nav li:hover .subnav{
-    display: block;
-}
-#nav li:hover a {
-    /* background-color: #ccc; */
-}
-#nav > li > a{
-    text-transform: uppercase;
-    padding: 0 24px;
-    display: block;
-} 
-#slider{
-    /* min-height: 500px; */
-    /* background-color: #333;; */
-}
-#nav .subnav{
+
+.subnav li a{
     display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-/* #nav .subnav a{
-    color: #000;
-    padding: 0 12px;
-    line-height: 38px;
-} */
 
 #content{
 
