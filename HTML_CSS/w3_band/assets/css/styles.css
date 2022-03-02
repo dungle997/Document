@@ -152,10 +152,12 @@ html{
 }
 
 #slider{
+    /* MDN referentce tai lieu*/
     margin-top: 46.5px;
     padding-top: 50%;
     /* Chỉnh chiều cao bằng 1 nửa chiều ngang */
     background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
+    /* Cần dấu / trước size; cover là bao phủ hết màn hình, contain , top center là background position*/
     /* min-height: 500px;
     background-color: #333; */
     position: relative;

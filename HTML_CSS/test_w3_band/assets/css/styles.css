@@ -10,12 +10,21 @@ html{
 #main{
 
 }
+.clear{
+    clear: both;
+}
+.text-white{
+    color: #fff;
+}
 
+/* header start*/
 #header{
     height: 46px;
     background-color: black;
     position: fixed;
+    top: 0;
     width: 100%;
+    z-index: 1;
 
 }
 #nav, .subnav{
@@ -51,7 +60,11 @@ html{
 #nav li{
     position: relative;
 }
-.subnav{
+#nav li a{
+    display: block;
+    /* Để cho tất cả thẻ a đều hiện ở dạng block */
+}
+#nav .subnav{
     position: absolute;
     /* color: #000; */
     top: 100%;
@@ -61,6 +74,7 @@ html{
     line-height: 1.5;
     background-color: #fff;
     display: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
     
 }
 .subnav > li {
@@ -88,7 +102,6 @@ html{
     font-size: 20px;
     font-weight: 600;
     line-height: 46px;
-
 }
 
 #header .search-btn:hover{
@@ -97,10 +110,31 @@ html{
 .search-icon{
 
 }
+/* header end*/
+
+/* SLIDER start*/
 #slider{
-    background-color: #333;
-    height: 500px
+   margin-top: 46px;
+   padding-top: 50%;
+   background: url('/assets/img/slider/slider1.jpg') top center /cover no-repeat;
+   position: relative;
+
+   /* Note: Phải có padding-top trước thì phần slider mới có kích thước => mới hiện ảnh */
 }
+#slider .text-content{
+    position: absolute;
+    bottom: 48px;
+    text-align: center;
+    width: 100%
+}
+#slider .text-header{
+    font-weight: 600;
+}
+#slider .text-sub-header{
+    margin-top: 25px;
+    font-weight: 500;
+}
+/* SLIDER end*/
 
 #content{
 
@@ -109,3 +143,8 @@ html{
 #footer{
 
 }
+
+
+/* Note: 
+Với các thẻ có chữ, icon muốn căn giữa thì cần css thẳng và các thẻ này với thuộc
+tính line-height: xpx */
