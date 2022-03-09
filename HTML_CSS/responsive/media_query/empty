@@ -1,0 +1,23 @@
+@media not|only mediatype and (mediafeature and|or|not mediafeature){
+	CSS-Code;
+}
+
+1. Keywords:
+- not
+- only
+- and
+- or
+
+2. Mediatypes: 
+- print (dùng cho chế độ in )
+- screen
+- speech (thiết bị nói)
+- all - default
+
+3. Media Features: tra trên w3-school
+- min-width
+- max-width
+- ..........
+
+4. Polyfill?
+Dùng để chạy cho các trinh duyệt cũ

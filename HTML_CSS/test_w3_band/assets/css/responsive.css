@@ -1,0 +1,26 @@
+@media only screen and (max-width: 46.1875em){
+    /* mobile */
+    #nav > li{
+        display:block;
+    }
+    #header{
+        overflow: hidden;
+        /* Thuộc tính overflow khi đối tượng con mà trờm ra ngoài vùng của đối tượng cha thì sẽ bị ẩn đi khi dùng hidden, auto là không  */
+    }
+    #header .search-btn{
+        display: none;
+    }
+
+    #header .mobile-menu-btn{
+        display: block;
+    }
+
+}
+
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    /* table */
+}
+    
+@media only screen and (min-width: 64em){
+    /* pc */
+}

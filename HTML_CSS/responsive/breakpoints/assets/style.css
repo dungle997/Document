@@ -1,0 +1,51 @@
+body{
+    height: 500px;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.pc,
+.tablet,
+.mobile{
+    margin: auto;
+    font-size: 100px;
+    color: #000;
+    display: inline-block;
+    letter-spacing: 4px;
+    margin-right: 50px;
+    margin-left: 50px;
+    display: none;
+   
+}
+
+
+/* Mobile: width < 740 px 
+
+Tablet: width > 740px and width < 1024px
+
+PC: width > 1024px */
+
+@media only screen and (max-width: 46.1875em){
+    .mobile{
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    .tablet{
+        display: inline-block;
+    }
+}
+    
+@media only screen and (min-width: 64em){
+    .pc{
+        display: inline-block;
+    }
+}
+
+
+/* giữa Px, rem và em thì nên dùng em vì dùng media queri không bị lỗi  */
+/* 1em = 16px; */

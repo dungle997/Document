@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- PC -->
+        <link rel="stylesheet" media="(min-width: 1024px)" href="./assets/css/style1.css">
+        <!-- Mobile -->
+        <link rel="stylesheet" media="(max-width: 740px)" href="./assets/css/style2.css">
+        <!-- Không nên dùng cách này vì nó tạo thêm connection ra bên ngoài, thêm 1 file style nữa -->
+        <!--[if lte IE 9]>
+            <script> src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js" </script>
+            
+        <![endif]-->
+    </head>
+    <body>
+        <h1>Responsive web design</h1>
+    </body>
+</html>
+
+
+<!-- ĐỐi với IE 6 không hỗ trợ media query thì cần làm như sau
+
+repond.js polyfill cnd
+
+html comment condictional là câu lệnh điều kiệm comment sử dụng cho IE cũ -->
+
