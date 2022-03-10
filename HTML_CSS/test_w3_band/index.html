@@ -264,7 +264,7 @@
         // Cách 2:
         var header = document.getElementById('header');
         var mobileMenu = document.getElementById('mobile-menu');
-        console.log(mobileMenu)
+        // console.log(mobileMenu)
         var headerHeight = header.clientHeight
         mobileMenu.onclick = function(){
             //  alert('Thong Bao nay la cua tao');
@@ -277,6 +277,29 @@
                 header.style.height = '46px'
             }
         }
+
+        // Tự động đóng khi chọn menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
+        // console.log(menuItems)
+        for (var i=0; i < menuItems.length; i++){
+            var menuItem = menuItems[i]
+            // console.log(menuItem)
+            menuItem.onclick = function(){
+            var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav')
+                // console.log(this)
+                if (isParentMenu){
+                    event.preventDefault()
+                }else{
+                    header.style.height = null
+                }
+            }
+            console.log(menuItem.nextElementSibling)
+            
+        }
+
+
+
+
     </script>
 </body>
 </html>

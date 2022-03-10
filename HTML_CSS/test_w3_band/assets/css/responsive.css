@@ -1,8 +1,5 @@
 @media only screen and (max-width: 46.1875em){
     /* mobile */
-    #nav > li{
-        display:block;
-    }
     #header{
         overflow: hidden;
         /* Thuộc tính overflow khi đối tượng con mà trờm ra ngoài vùng của đối tượng cha thì sẽ bị ẩn đi khi dùng hidden, auto là không  */
@@ -14,6 +11,38 @@
     #header .mobile-menu-btn{
         display: block;
     }
+
+    #header .mobile-menu-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    #nav > li{
+        display:block;
+    }
+
+    #nav > li > a{
+        text-align: left;
+        /* width: 100%; */
+    }
+    #nav{
+        display: block;
+    }
+
+    #nav > li:first-child{
+        display: inline-block;
+    }
+    #nav .subnav{
+        position: initial;
+    }
+ 
+    .subnav a{
+        padding: 5px 36px;
+        background-color: #333;
+        color: #fff;
+    }
+
+
 
 }
 
