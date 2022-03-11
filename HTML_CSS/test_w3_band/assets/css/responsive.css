@@ -1,5 +1,14 @@
 @media only screen and (max-width: 46.1875em){
     /* mobile */
+    .s-col-full{
+        width: 100%;
+    }
+    .s-mt-8{
+        margin-top: 8px;
+    }
+    .s-mt-16{
+        margin-top: 16px;
+    }
     #header{
         overflow: hidden;
         /* Thuộc tính overflow khi đối tượng con mà trờm ra ngoài vùng của đối tượng cha thì sẽ bị ẩn đi khi dùng hidden, auto là không  */
@@ -41,6 +50,10 @@
         background-color: #333;
         color: #fff;
     }
+
+
+
+   
 
 
 

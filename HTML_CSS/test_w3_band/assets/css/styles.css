@@ -52,6 +52,9 @@ html{
 .mt-8{
     margin-top: 8px;
 }
+.mt-16{
+    margin-top: 16px;
+}
 /* header start*/
 #header{
     height: 46px;
@@ -274,7 +277,7 @@ html{
 }
 /* Buy Ticket */
 .ticket-list{
-    padding: 32px 0 48px;
+    padding: 16px 0 48px;
 }
 .ticket-list .ticket-image{
     width: 100%;
@@ -346,6 +349,9 @@ html{
     padding: 10px 16px;
     font-size: 15px;
     border: none;
+    appearance: none;
+    -webkit-appearance: none; 
+    /* bỏ cấu hình mặc định */
 }
 
 .send-button:hover{
