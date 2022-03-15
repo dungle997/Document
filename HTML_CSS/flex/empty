@@ -1,0 +1,15 @@
+display: flex | inline-flex
+flex-direction: row | column
+flex-wrap: nowrap | wrap | wrap-reverse
+flex-basis: <length> 
+justify-content: flex-start | flex-end | center | space-between |  scpace-around
+justify-self: flex-start | flex-end | center
+align-content: flex-start | flex-end | center
+align-self: flex-start | flex-end | center
+flex-grow: <number>
+flex-shrink: <number>
+flex: <number>  kích thước chiều main axis, tính theo trọng số
+flex: <flex-grow> | <flex-shrink> | <flex-basis>
+flex-flow: <flex-direction> | <flex-wrap>
+order: <number> thứ tự hiện thị các item
+
