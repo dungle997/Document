@@ -2,10 +2,10 @@ display: flex | inline-flex
 flex-direction: row | column
 flex-wrap: nowrap | wrap | wrap-reverse
 flex-basis: <length> 
-justify-content: flex-start | flex-end | center | space-between |  scpace-around
-justify-self: flex-start | flex-end | center
-align-content: flex-start | flex-end | center
-align-self: flex-start | flex-end | center
+justify-content: flex-start | flex-end | center | space-between |  scpace-around           chỉnh vị trí cho trục main với đối tượng là flex container
+justify-self: flex-start | flex-end | center	chỉnh vị trí cho trục main với đối tượng là flex items
+align-content: flex-start | flex-end | center chỉnh vị trí cho trục cross với đối tượng là flex container
+align-self: flex-start | flex-end | center    chỉnh vị trí cho trục cross với đối tượng là flex items
 flex-grow: <number>
 flex-shrink: <number>
 flex: <number>  kích thước chiều main axis, tính theo trọng số
