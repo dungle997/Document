@@ -284,7 +284,7 @@
         for (var i=0; i < menuItems.length; i++){
             var menuItem = menuItems[i]
             // console.log(menuItem)
-            menuItem.onclick = function(){
+            menuItem.onclick = function(event){
             var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav')
                 // console.log(this)
                 if (isParentMenu){
