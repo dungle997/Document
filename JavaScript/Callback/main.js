@@ -37,11 +37,11 @@
 //     return outputArray;
 // }
 
-var courses = [
-    'JavaScript',
-    'PHP',
-    'Ruby'
-];
+// var courses = [
+//     'JavaScript',
+//     'PHP',
+//     'Ruby'
+// ];
 
 // courses.map(function(courses){ // function vô danh
 //     console.log(courses);
@@ -54,12 +54,12 @@ var courses = [
 // console.log(htmls.join(''))
 // --------------------------------
 // filter2 , reduce2, find2,  forEach.
-
+// ----------------------------- ForEach ----------------------------------------
 // ForEach 1. Object Prototype 2. For /in duyệt cả qua nhưng PT và thuộc tính trong prototype
 // sample_origin
-courses.forEach(function(course, index){
-    console.log('course_forEach:',course,'index_forEach:', index);
-});
+// courses.forEach(function(course, index){
+//     console.log('course_forEach:',course,'index_forEach:', index);
+// });
 
 // B1:
 // Array.prototype.forEach2 = function(callback){ // callback này là một hàm tương ứng với đối số function(courses)
@@ -72,37 +72,118 @@ courses.forEach(function(course, index){
 // });
 
 // B2:
-Array.prototype.forEach2 = function(callback){ // callback này là một hàm tương ứng với đối số function(courses) 
-    // console.log(Array.prototype);
-    // console.log(this); // this chính là đối tượng gọi đến forEach2, ở đây là courses
-    for(var index in this){ // for in sẽ duyệt qua tất cả element thường mà còn duyệt cả element trong prototype
-        // this.hasOwnProperty(index) kieerm tra xem co index  nao thuoc prototype khong
-        // console.log('index:', index);
-        // console.log('index:', this.hasOwnProperty(index));
+// Array.prototype.forEach2 = function(callback){ // callback này là một hàm tương ứng với đối số function(courses) 
+//     // console.log(Array.prototype);
+//     // console.log(this); // this chính là đối tượng gọi đến forEach2, ở đây là courses
+//     for(var index in this){ // for in sẽ duyệt qua tất cả element thường mà còn duyệt cả element trong prototype
+//         // this.hasOwnProperty(index) kieerm tra xem co index  nao thuoc prototype khong
+//         // console.log('index:', index);
+//         // console.log('index:', this.hasOwnProperty(index));
         
-        if(this.hasOwnProperty(index)){
-            // console.log('index:', index);
-            callback(this[index], index);
-        }
+//         if(this.hasOwnProperty(index)){
+//             // console.log('index:', index);
+//             callback(this[index], index);
+//         }
 
-        // DO sử dụng prototype để thêm phương thức forEach2 nên khi duyệt qua index thì có thêm cả thằng forEach2
-        // output.push(result);
-    }
-    return undefined;
+//         // DO sử dụng prototype để thêm phương thức forEach2 nên khi duyệt qua index thì có thêm cả thằng forEach2
+//         // output.push(result);
+//     }
+//     return undefined;
+// }
+
+// courses.forEach2(function(course, index){
+//     console.log(course, index)
+
+//     // return course;
+// });
+// ------------------------------------------------Filter------------------------------------------------
+// var courses = [
+//     'JavaScript',
+//     'PHP',
+//     'Ruby',
+//     'Ruby',
+// ];
+// // ----------origin method----------------
+// var isFree = courses.filter(function(course, index){
+//     return course === 'Ruby'
+// })
+// // console.log(typeof isFree)
+// console.log(isFree)
+
+// ------------- new method --------------------
+
+// Array.prototype.filter1 = function(callback){
+//     // console.log(this)
+//     var output = [];
+
+//     for (var index in this){
+//         if(this.hasOwnProperty(index)){
+//             var result = callback(this[index], index);
+//             // console.log(result)
+//             if (result !== false){
+//                 output.push(this[index])
+//             }
+//         }
+//     } 
+//     // console.log(output)
+
+//     // return output === undefined ? undefined : output
+//     return output
+
+// }
+
+// var listFilter = courses.filter1(function(course, index){
+//     return course === 'Ruby' ;
+    
+// });
+// console.log(listFilter) 
+// // console.log(typeof listFilter) 
+
+// --------------------------- find ------------------------------
+var courses = [
+    'JavaScript',
+    'PHP',
+    'Ruby',
+    'Ruby',
+];
+
+// ----------------------------origin method-----------------------------
+var test = courses.find(function(course, index){
+    return course === 'Ruby'
+})
+console.log(test)
+
+// -------------------------------new method---------------------------------
+Array.prototype.filter1 = function(callback){
+    // console.log(this)
+    var output;
+
+    for (var index in this){
+        if(this.hasOwnProperty(index)){
+            var result = callback(this[index], index);
+            // console.log(result)
+            if (result !== false){
+                output = this[index]
+                // console.log(index)
+                break;
+            }
+        }
+    } 
+    // console.log(output)
+
+    // return output === undefined ? undefined : output
+    return output
 }
 
-courses.forEach2(function(course, index){
-    console.log(course, index)
-
-    // return course;
+var listFilter = courses.filter1(function(course, index){
+    return course === 'Ruby' ;
+    
 });
+console.log(listFilter) 
+// console.log(typeof listFilter) 
 
 
-
-
-
-
-
+// -------------------------------------------------------------------------------------------------------------------------------------------
 //!!!! -------------------------Nen dung cach nao de dung voi array--------for/in -----for/of   ------------------!!!!
 
 // console.log(courses);
@@ -127,3 +208,4 @@ courses.forEach2(function(course, index){
 // for(var index in courses1){
 //     console.log(courses1[index]); // chỉ chạy qua các phần tử thật => nên dùng cách này để duyệt mảng 
 // }
+// ---------------------------------------------------------------------------------------------------------------------------------------------
