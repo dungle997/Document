@@ -1,0 +1,2 @@
+innerText, textContent để thay đổi nội dung trong text node
+innerHTML, outerHTML để thay đổi, thêm các element, attribute, text vào các element khác 

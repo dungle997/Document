@@ -50,7 +50,7 @@
 //     document.querySelectorAll('.box-1 li');
 
 //     console.log(listItemNodes);
-// // --------------------------------
+//// --------------------------------
 // var boxNode = 
 //     document.querySelector('.box-1');
 
@@ -92,18 +92,18 @@
 // Text node: Nội dung text trong các thẻ 
 
 // ------------------------------DOM attribute----------------------------------
-var headingElement = 
-    document.querySelector('h1');
+// var headingElement = 
+//     document.querySelector('h1');
 
 
-// use seter
-headingElement.title = "Heading";
-headingElement.id = "Heading";
-headingElement.className = "Heading"; // dùng className để tránh nhầm với khái niệm khác là class
+// // use seter
+// headingElement.title = "Heading";
+// headingElement.id = "Heading";
+// headingElement.className = "Heading"; // dùng className để tránh nhầm với khái niệm khác là class
 
-// use method
-headingElement.setAttribute('href', 'heading') // thêm thuộc tính (attribute) href cho thẻ h1
-console.log(headingElement.getAttribute('class')); // lấy ra value
+// // use method
+// headingElement.setAttribute('href', 'heading') // thêm thuộc tính (attribute) href cho thẻ h1
+// console.log(headingElement.getAttribute('class')); // lấy ra value
 
 // alert(headingElement.title) // Hợp lệ 
 // alert(headingElement.href) // Không Hợp lệ, do bản chất href không phải thụộc tính hợp lệ của thẻ h1 
@@ -116,4 +116,65 @@ console.log(headingElement.getAttribute('class')); // lấy ra value
 // - 2 cách truy xuất: 
 //   + qua thuộc tính (VD .title .id sử dụng dấu '.')
 //   + qua phương thức (sử dụng hàm và phải truyền đối số vào)
+// --------------------- Inner TExt , textContent Property--------------------------
+// Lấy ra element chứa attribute node và text node
+// var headingElement = document.querySelector('.heading'); 
+// console.log(headingElement.innerText);
+// console.log(headingElement.textContent);
+
+// headingElement.innerText = 'new Heading'; // seter
+// // trực tiếp thông qua thuộc tính innerText hoặc textContent
+// console.log(headingElement.innerText);
+// sử dụng seter để thay đổi, geter để show value
+
+// ---------------------Khác nhau giữa innerText và TextContent-------------------------
+// Khi sử dụng geter lấy ra innerText thì sẽ trả về giá trị giống những gì hiện tại trên màn hình
+// Với textContent sẽ trả về nội dung thât của nó. Nội dung text thật của nó nằm trong DOM
+
+// var headingElement = document.querySelector('.heading-h1'); 
+// console.log(headingElement.innerText); // trả về giá trị giống như được hiên thị trên màn hình
+// console.log(headingElement.textContent); // trả về nội dung text thật của nó, trong trường hợp này có cả khoảng trắng, hiên tất cả thậm chí cả mã HTML, CSS luôn
+
+// innerText là thuộc tính của Element node => nên bắt buộc phải lây ra Element node thì mới dùng đc innerText
+// textContent là thuộc tính tồn tại trên cả Element node và text node
+
+// headingElement.innerText = `
+
+
+// new Heading
+
+
+// `; 
+// console.log(headingElement.innerText); 
+
+
+// headingElement.textContent = `
+
+
+// new Heading
+
+
+// `; 
+// console.log(headingElement.textContent); 
+
+// --------------------------------InnerHTML vs OuterHTML Property---------------------------
+
+var boxElement = document.querySelector('.box1');
+boxElement.innerHTML = '<h1 title="Heading1">Hello World</h1>'  // innerHTML có thể thêm 1 element, attribute và text node vào một element gốc
+console.log(boxElement)
+
+console.log(document.querySelector('.box1 h1').innerText)
+
+console.log(boxElement.innerHTML) // geter
+
+// ------------- OuterHTML -------------
+
+boxElement.outerHTML = '<span>Test</span>';
+console.log(boxElement)
+console.log(boxElement.innerHTML) // lưu giá trị cũ từ trước đó lúc vẫn có thẻ h1. Thời điêm hiện tại ko còn trong DOM nữa mà đã đc thay bằng thẻ span
+
+// THực tế: Khi đã sử dụng với outerHTML thì không nên sử dụng Element.innerHTML nữa, vì lúc đó nó trả gía trị không còn tồn tại nữa
+// Cũng ko hay sử dụng outerHTML để ghi đè như VD trên. Thường chỉ sử dụng inerHTML để thêm nội dung vào element khác thôi. Để ghi đè nội dung thì có các cách khác
+
+
 
