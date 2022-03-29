@@ -44,19 +44,19 @@
 // 2. Key up / down
 // ----------------1----------------- 
 // VD1
-var inputValue;
-var inputElement =
-    document.querySelector('input[type="text"]');
+// var inputValue;
+// var inputElement =
+//     document.querySelector('input[type="text"]');
 
-    // console.log(inputElement);
+//     // console.log(inputElement);
 
-inputElement.onchange = function(e){ // oninput
-    console.log(e)
-    console.log(e.target);
-    console.log(e.target.value);
-    inputValue = e.target.value;
+// inputElement.onchange = function(e){ // oninput
+//     console.log(e)
+//     console.log(e.target);
+//     console.log(e.target.value);
+//     inputValue = e.target.value;
 
-}
+// }
 
 //VD2
 // var inputElement =
@@ -95,15 +95,85 @@ inputElement.onchange = function(e){ // oninput
 
 // VD với cả đối tượng document
 // onkeypress giữ phím 
-document.onkeydown = function(e){
-    console.log(e);
-    console.log(e.which);
-    switch(e.which){
-        case 27: 
-            console.log('Exit');
-            break;
-        case 13:
-            console.log("lam sao");
-            break;
-    }
+// document.onkeydown = function(e){
+//     console.log(e);
+//     console.log(e.which);
+//     switch(e.which){
+//         case 27: 
+//             console.log('Exit');
+//             break;
+//         case 13:
+//             console.log("lam sao");
+//             break;
+//     }
+// }
+// ------------------------PreventDefault and StopPropagation----------------------------
+// 1. preventDefault   // bỏ hành vi mặc định của trình duyệt
+// 2. stopPropagation   // dừng hành vi nổi bọt khi dùng click
+// VD 1:
+// var aElements = document.querySelectorAll('a');
+// var aElements = document.anchors;   // thẻ a phải có thẻ name 
+// var aElements = document.links; 
+// // console.log(aElements)
+
+// for (var i =0; i<aElements.length; i++){
+//     aElements[i].onclick = function(e){
+//         console.log(e.target.href)
+//         if (!e.target.href.startsWith('https://f8.edu.vn')){
+//             e.preventDefault();
+//         }
+//     }
+// }
+
+// VD2
+// var ulElement = document.querySelector('ul')
+//     ulElement.onmousedown = function(e){
+//         e.preventDefault();
+//     }
+//     ulElement.onclick = function(e){
+//         console.log(e.target)
+//         console.log(e.target.innerText)
+
+//     }
+// VD3
+
+// document.querySelector('div').onclick = function(){
+//     console.log('DIV')
+// }
+// document.querySelector('button').onclick = function(e){
+//     e.stopPropagation();
+//     console.log('click on me!')
+// }
+
+// ------------------- Event Listener --------------------
+// 1. Event listener / DOM Event (onclick)
+// 2. JSON
+// 3. Fetch
+// 4. DOM location
+// 5. Local Storage
+// 6. Sesion storage
+// 7. Coding convention
+// 8. Best Practices
+// 9. Mistakes
+// 10. Performance
+// 
+// 1. Xử kí nhiều việc khi 1 event xảy ra  (DOM Event)
+// 2. Lắng nghe / Hủy bỏ lắng nghe             
+
+// click vào thì thực hiện 1 loại công viêc
+
+var btn = document.getElementById('btn');
+
+btn.onclick = function(){
+    // Viec 1
+    console.log('Viec 1');
+    // Viec 2
+    console.log('Viec 2');
+    // Viec 3
+    alert('Viec 3');
+
 }
+
+// sau 3s mới thực hiện lệnh 
+
+

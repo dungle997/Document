@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML DOM</title>
 </head>
 <body>
     <!-- Attribute Event -->
@@ -35,15 +35,54 @@
     <!-- ------------------- -->
 
     <!-- DOM events example -->
-        <input type="text">
+        <!-- <input type="text">
         <input type="checkbox">
 
         <select>
             <option value="value1">1</option>
             <option value="value2">2</option>
             <option value="value3">3</option>
-        </select>
+        </select> -->
     <!-- ------------ -->
+    <!-- PreventDefault and StopPropagation -->
+    <!-- VD1 -->
+        <!-- <a href="https://f8.edu.vn" name="f8">
+            Học lập trình 
+        </a>
+        <br />  
+        <a href="https://google.com" name="google">
+            Tìm kiếm
+        </a> -->
+
+    <!-- VD 2 về input và ul. Kịch bản: focus vào input thì hiện ul, bấm vào ul thì ul bị mất do lúc đó ko focus vào input nữa => bài toán -->
+        <!-- <br/>
+        <input placeholder="Tìm kiếm" type="text">
+        <ul>
+            <li>Toán</li>
+            <li>Văn</li>
+            <li>Anh</li>
+        </ul>
+        <style>
+            ul{
+                display: none;
+            }
+            input:focus ~ ul{
+                display: block;
+            }
+        </style> -->
+    <!-- VD3: Dừng hành vi nổi bọt StopPropagation -->
+        <!-- <br/>
+        <div>
+            DIV
+            <button>Click on me!</button>
+        </div> -->
+    <!------------------------ ------------- -->
+
+    <!-- Event Listener -->
+        <div>
+            <button id="btn">Click me!</button>
+        </div>
+    <!-- -------------- -->
 </body>
 
 <script src="main.js"></script>
