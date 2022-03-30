@@ -160,20 +160,74 @@
 // 1. Xử kí nhiều việc khi 1 event xảy ra  (DOM Event)
 // 2. Lắng nghe / Hủy bỏ lắng nghe             
 
-// click vào thì thực hiện 1 loại công viêc
+
+// ----------------------- Theo cách của DOM Event ------------------
+// click vào thì thực hiện 1 loạt công viêc
+
+// var btn = document.getElementById('btn');
+
+// btn.onclick = function(){
+//     // Viec 1
+//     console.log('Viec 1');
+//     // Viec 2
+//     console.log('Viec 2');
+//     // Viec 3
+//     alert('Viec 3');
+
+// }
+
+// sau 3s mới thực hiện lệnh 
+// setTimeout(function(){
+//     btn.onclick = function(){
+//         // Viec 1
+//         console.log('Viec 1');
+//         // Viec 2
+//         console.log('Viec 2');
+//         // Viec 3
+//         alert('Viec 3');
+    
+//     }
+// }, 3000)
+
+// Hủy bỏ lắng nghe bằng cách sau
+
+// btn.onclick = function(){
+//     // Viec 1
+//     console.log('Viec 1');
+//     // Viec 2
+//     console.log('Viec 2');
+//     // Viec 3
+//     alert('Viec 3');
+// }
+// setTimeout(function(){
+//     btn.onclick = function(){};
+// }, 3000)
+
+// --------------- Theo cách Event Listener ------------
 
 var btn = document.getElementById('btn');
 
-btn.onclick = function(){
-    // Viec 1
-    console.log('Viec 1');
-    // Viec 2
-    console.log('Viec 2');
-    // Viec 3
-    alert('Viec 3');
+// btn.addEventListener('click', function(e){
+//     console.log(Math.random());
+// });
+// btn.addEventListener('click', function(e){
+//     console.log(Math.random());
+// });
 
+// Sử dụng remove listenerEvent funtion
+
+function viec1(e){
+    console.log('Viec 1')
 }
 
-// sau 3s mới thực hiện lệnh 
+btn.addEventListener('click', viec1);
+
+setTimeout(function(){
+    btn.removeEventListener('click', viec1)
+}, 3000)
 
 
+// => KẾT LUẬN: Khi sử dụng trong các trường hợp lắng nghe sự kiện mà không cần gỡ bỏ, hủy bỏ
+// sự lắng nghe đó thì sử dụng thẳng DOM event (onclick,.....) Vì cú pháp ngắn gọn
+// Nếu muốn hủy bỏ lắng nghe thì phải dùng Event Listener (addEventListener)
+// Dùng event listener thì sẽ có thể tường minh, bóc tách các hàm ra dễ dàng 
