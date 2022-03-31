@@ -348,6 +348,11 @@ var comments = [
         id: 2,
         user_id: 2,
         content: 'Content 2'
+    },
+    {
+        id: 3,
+        user_id: 1,
+        content: 'A the ma a'
     }
 ];
 
@@ -356,12 +361,18 @@ var comments = [
 // từ user_id lấy ra user tương ứng 
 
 // fake API
+// 1. Array
+// 2. Function, callback
+// 3. Promise
+// 4. DOM
 function getUsersByIds(userIds){
     return new Promise(function(resolve){
         var result = users.filter(function(user){
             return userIds.includes(user.id)
         });
-        resolve(result);
+        setTimeout(function(){
+            resolve(result);
+        }, 1000)
     })
 }
 
@@ -378,13 +389,29 @@ getComments()
         // console.log(comments)
         var userIds = comments.map(function(comment){
             return comment.user_id;
-        })
-        console.log(userIds);
-        getUsersByIds(userIds)
+        });
+        // console.log(userIds);
+        return getUsersByIds(userIds)
             .then(function(users){
-                console.log(users)
+                // console.log(users)
+                return {
+                users : users,
+                comments : comments,
+                };
+            })
     })
-    });
+    .then(function(data){
+        console.log(data);
+        var commentBlock = document.getElementById('comment-block');
+        var html ='';
+        data.comments.forEach(function(comment){
+            var user = data.users.find(function(user){
+                return user.id === comment.user_id;
+            })
+            html += `<li>${user.name}: ${comment.content}</li>`
+        })
+        commentBlock.innerHTML = html;
+    })
 
 
 
