@@ -480,7 +480,9 @@ var listCoursesBlock = document.querySelector('#comment-block');
 var courseAPI = 'http://localhost:3000/courses'
 
 function start(){
-
+    getCourses1(function(course){
+        console.log(course)
+    })
 }
 
 start();
@@ -493,4 +495,12 @@ function getCourses(){
         .then(function(course){
             console.log(course)
         })
+}
+
+function getCourses1(callback){
+    fetch(courseAPI)
+        .then(function(response){
+            return response.json()
+        })
+        .then(callback)
 }
