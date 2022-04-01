@@ -452,6 +452,8 @@
 // npm-v
 // npm-init
 // npm i json-server
+// thêm key start vào scripts trong file package.json
+// npm start
 // var postsApi = 'http://localhost:3000/posts'
 
 // fetch(postsApi)
@@ -469,3 +471,26 @@
     // - Update: Chỉnh sửa -> PUT/PATCH
     // - Delete: Xóa dữ liệu -> DELETE
     // Giao thức http, phương thức get, post, patch, delete
+
+// ================= Example Thêm sửa xóa khóa học với Fetch và REST API =============
+
+
+var listCoursesBlock = document.querySelector('#comment-block');
+
+var courseAPI = 'http://localhost:3000/courses'
+
+function start(){
+
+}
+
+start();
+
+function getCourses(){
+    fetch(courseAPI)
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(course){
+            console.log(course)
+        })
+}
