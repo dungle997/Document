@@ -324,37 +324,37 @@
 //     })
 // ====================== Promise Example ======================
 
-var users = [
-    {
-        id: 1,
-        name: 'Kien Dam',
-    }, 
-    {
-        id: 2,
-        name: 'Son Dang'
-    },
-    {
-        id: 3,
-        name: 'Hung Dam',
-    }
-];
-var comments = [
-    {
-        id: 1,
-        user_id: 1,
-        content: 'Content 1'
-    },
-    {
-        id: 2,
-        user_id: 2,
-        content: 'Content 2'
-    },
-    {
-        id: 3,
-        user_id: 1,
-        content: 'A the ma a'
-    }
-];
+// var users = [
+//     {
+//         id: 1,
+//         name: 'Kien Dam',
+//     }, 
+//     {
+//         id: 2,
+//         name: 'Son Dang'
+//     },
+//     {
+//         id: 3,
+//         name: 'Hung Dam',
+//     }
+// ];
+// var comments = [
+//     {
+//         id: 1,
+//         user_id: 1,
+//         content: 'Content 1'
+//     },
+//     {
+//         id: 2,
+//         user_id: 2,
+//         content: 'Content 2'
+//     },
+//     {
+//         id: 3,
+//         user_id: 1,
+//         content: 'A the ma a'
+//     }
+// ];
 
 // 1. Lấy comments
 // 2. Từ comments lấy ra user_id,
@@ -365,54 +365,107 @@ var comments = [
 // 2. Function, callback
 // 3. Promise
 // 4. DOM
-function getUsersByIds(userIds){
-    return new Promise(function(resolve){
-        var result = users.filter(function(user){
-            return userIds.includes(user.id)
-        });
-        setTimeout(function(){
-            resolve(result);
-        }, 1000)
-    })
-}
+// function getUsersByIds(userIds){
+//     return new Promise(function(resolve){
+//         var result = users.filter(function(user){
+//             return userIds.includes(user.id)
+//         });
+//         setTimeout(function(){
+//             resolve(result);
+//         }, 1000)
+//     })
+// }
 
-function getComments(){
-    return new Promise(function(resolve){
-        setTimeout(function(){
-            resolve(comments);
-        },1000);
-    });
-}
+// function getComments(){
+//     return new Promise(function(resolve){
+//         setTimeout(function(){
+//             resolve(comments);
+//         },1000);
+//     });
+// }
 
-getComments()
-    .then(function(comments){
-        // console.log(comments)
-        var userIds = comments.map(function(comment){
-            return comment.user_id;
-        });
-        // console.log(userIds);
-        return getUsersByIds(userIds)
-            .then(function(users){
-                // console.log(users)
-                return {
-                users : users,
-                comments : comments,
-                };
-            })
-    })
-    .then(function(data){
-        console.log(data);
-        var commentBlock = document.getElementById('comment-block');
-        var html ='';
-        data.comments.forEach(function(comment){
-            var user = data.users.find(function(user){
-                return user.id === comment.user_id;
-            })
-            html += `<li>${user.name}: ${comment.content}</li>`
-        })
-        commentBlock.innerHTML = html;
-    })
+// getComments()
+//     .then(function(comments){
+//         // console.log(comments)
+//         var userIds = comments.map(function(comment){
+//             return comment.user_id;
+//         });
+//         // console.log(userIds);
+//         return getUsersByIds(userIds)
+//             .then(function(users){
+//                 // console.log(users)
+//                 return {
+//                 users : users,
+//                 comments : comments,
+//                 };
+//             })
+//     })
+//     .then(function(data){
+//         console.log(data);
+//         var commentBlock = document.getElementById('comment-block');
+//         var html ='';
+//         data.comments.forEach(function(comment){
+//             var user = data.users.find(function(user){
+//                 return user.id === comment.user_id;
+//             })
+//             html += `<li>${user.name}: ${comment.content}</li>`
+//         })
+//         commentBlock.innerHTML = html;
+//     })
 
+// ------------------------- 4. Fetch ----------------------------
+// Lấy dữ liệu từ phía BE trả về 
+// 1. Front-end: Xây dựng giao diện
+// 2. Back-end: Xây dựng logic xử lí + Cơ sở dữ liệu
+// API (URL) -> Application programing interface
+// Cổng giao tiếp giữa các PM
 
+// Backend -> API (URL) -> Fetch -> JSON/XML
+// -> JSON.parse -> Javascript types
+// -> Render ra giao diện với HTML
 
+// var postAPI = 'https://jsonplaceholder.typicode.com/posts'
 
+// // stream
+// fetch(postAPI)
+//     .then(function(response){
+//         return response.json()
+//         // JSON.parse -> JSON -> Javascipt types
+//     })
+//     .then(function(posts){
+//         console.log(posts) //Javascipt types
+//         var html = posts.map(function(post){
+//             return `<li>
+//                 <h2>${post.title}</h2>
+//             </li>`
+//         })
+//         var htmls = html.join('');
+//         document.getElementById('comment-block').innerHTML = htmls;
+//     })
+//     .catch(function(err){
+//         console.log(err)
+//     })
+// ==================== 4.1 JSON server: Fake API Server / Mock API ========================
+
+//- Cài nodejs
+// tạo thư mục json_server
+// npm-v
+// npm-init
+// npm i json-server
+// var postsApi = 'http://localhost:3000/posts'
+
+// fetch(postsApi)
+//     .then(function(response){
+//         return response.json();
+//     })
+//     .then(function(post){
+//         console.log(post)
+//     })
+// ============ Dùng Postman làm viêc với Rest API ==========
+// - 4 hành động thao tác với dữ liệu
+// - CRUD
+    // - Create: Tạo mới dữ liệu -> POST
+    // - Read: Lấy dữ liệu -> GET
+    // - Update: Chỉnh sửa -> PUT/PATCH
+    // - Delete: Xóa dữ liệu -> DELETE
+    // Giao thức http, phương thức get, post, patch, delete
