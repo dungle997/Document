@@ -479,24 +479,30 @@ var listCoursesBlock = document.querySelector('#comment-block');
 
 var courseAPI = 'http://localhost:3000/courses'
 
+// function start(){
+//     getCourses1(function(courses){
+//         renderCourses(courses)
+//     })
+// }
+
+// start();
+
+// function getCourses(){
+//     fetch(courseAPI)
+//         .then(function(response){
+//             return response.json()
+//         })
+//         .then(function(course){
+//             console.log(course)
+//         })
+// }
+
 function start(){
-    getCourses1(function(course){
-        console.log(course)
-    })
+    getCourses1(renderCourses);
 }
 
 start();
-
-function getCourses(){
-    fetch(courseAPI)
-        .then(function(response){
-            return response.json()
-        })
-        .then(function(course){
-            console.log(course)
-        })
-}
-
+handleCreateForm();
 function getCourses1(callback){
     fetch(courseAPI)
         .then(function(response){
@@ -504,3 +510,60 @@ function getCourses1(callback){
         })
         .then(callback)
 }
+function renderCourses(courses){
+    // c1
+    // var html = ``
+    // courses.forEach(function(course){
+    //     html += `<li>${course.name} : ${course.author}</li>`
+    // })
+    // listCoursesBlock.innerHTML = html;
+    // c2 
+    var htmls = courses.map(function(course){
+        return `
+                <li>
+                    <h4>${course.name}</h4>
+                    <p>${course.author}</p> 
+                </li>
+                `
+    })
+    listCoursesBlock.innerHTML = htmls.join('');
+
+}
+
+function handleCreateForm(){
+    var createBtn = document.querySelector('#creat')
+    createBtn.onclick = function(){
+        // alert('alo')
+        var name = document.querySelector('input[name="name"]').value;
+        console.log(name)
+        var author = document.querySelector('input[name="author"]').value;
+        console.log(author)
+        var formData = {
+            name: name,
+            author: author,
+        };
+        console.log(formData)
+        // createCourse(formData, renderCourses);
+        createCourse(formData, function(){
+            getCourses1(renderCourses);
+        });
+
+
+    }
+}
+function createCourse(data, callback){
+    var options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    }
+    fetch(courseAPI, options)
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback)
+}
+
