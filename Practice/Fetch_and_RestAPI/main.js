@@ -3,15 +3,13 @@
 var linkAPI = 'http://localhost:3000/courses'
 var dataHTMLs; // dùng cho trường hợp không càn fetch get lại trang
 var listElements // dùng cho trường hợp không càn fetch get lại trang
-var deleteBtn = document.getElementById('delete-btn');
-    console.log(deleteBtn)
 function start(){
     getData(renderData)
+    
 }
 
 start()
 handleCreateData()
-handleDeleteData()
 
 function getData(callback){
     fetch(linkAPI)
@@ -30,16 +28,17 @@ function renderData(datas){
     // console.log(data)
     dataHTMLs = datas.map(function(data){
         return `
-                <li>
+                <li id="item-delete-${data.id}">
                     <h4>${data.name}</h4>
                     <p>${data.author}</p>
-                    <button id="delete-btn">Xóa</button>
+                    <button onclick = handleDeleteDatas(${data.id})>Xóa</button>
                 </li>
                 `
     })
     // console.log(dataHTMLs)
     // console.log(htmls)
     listElements.innerHTML = dataHTMLs.join('');
+    
 }
 
 function handleCreateData(){
@@ -63,10 +62,10 @@ function handleCreateData(){
             // console.log(respond) // giá trị vừa mới đc post vào, trả về kiểu đối tượng, ko phải array
         // console.log(dataHTMLs)
         newData = `
-                <li>
+                <li id="item-delete-${respond.id}">
                     <h4>${respond.name}</h4>
                     <p>${respond.author}</p>
-                    <button id="delete-btn">Xóa</button>
+                    <button onclick = handleDeleteDatas(${respond.id})>Xóa</button>
                 </li>
                 `   
         dataHTMLs.push(newData)
@@ -93,15 +92,26 @@ function creatDatas(data, callback){
 
 }
 
-function handleDeleteData(){
-    // var deleteBtn = document.querySelector('#delete-btn');
-    // console.log(deleteBtn)
-    // deleteBtn.onclick = function(){
-    //     console.log(deleteBtn)
-    // }
-    // deleteDatas()
+function handleDeleteDatas(id){
+    option = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
+    
+    fetch(linkAPI + '/' + id, option)
+        .then(function(respond){
+            return respond.json()
+        })
+        .then(function(){
+            // getData(renderData) //C1 load lai api
+            // C2 xu li ngay trong DOM
+            var deleteElements = document.querySelector('#item-delete-' + id)
+            deleteElements.remove()
+        })
 }
 
-function deleteDatas(){
 
-}
+
