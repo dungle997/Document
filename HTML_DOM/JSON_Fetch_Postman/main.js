@@ -518,6 +518,7 @@ function renderCourses(courses){
     // })
     // listCoursesBlock.innerHTML = html;
     // c2 
+    console.log("course_post",courses)
     var htmls = courses.map(function(course){
         return `
                 <li>
@@ -542,8 +543,8 @@ function handleCreateForm(){
             name: name,
             author: author,
         };
-        console.log(formData)
-        // createCourse(formData, renderCourses);
+        // console.log(formData)
+        // createCourse(formData);
         createCourse(formData, function(){
             getCourses1(renderCourses);
         });
@@ -562,8 +563,11 @@ function createCourse(data, callback){
     }
     fetch(courseAPI, options)
         .then(function(response){
+            // console.log('reponse.json() =', response.json()) // 1 promise
             return response.json();
         })
         .then(callback)
 }
 
+// Khi post vào thì sẽ nhận lại được dữ liệu vừa thêm vào
+// Làm cách nào đó để đẩy ngay cái kết quả đó vao trong array html đang hiển thị, không cần phải gọi lại hàm start để load lại database
