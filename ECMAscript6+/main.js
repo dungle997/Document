@@ -373,19 +373,39 @@
 // // thực tế 
 // logger4(...exempale)
 // ==================================== Sử dụng cả rest và spread =================================
-var array = ["JavaScript","PHP", "Ruby", "RectJS"];
+// var array = ["JavaScript","PHP", "Ruby", "RectJS"];
 
-function logger(...array) { // Đây là dùng toán tử rest khi là tham số
-    // console.log(array)
-    // console.log(a)
+// function logger(...array) { // Đây là dùng toán tử rest khi là tham số
+//     // console.log(array)
+//     // console.log(a)
 
-    for(var i = 0; i < array.length; ++i) {
-        console.log(array[i]);
-    }
+//     for(var i = 0; i < array.length; ++i) {
+//         console.log(array[i]);
+//     }
+// }
+// // console.log(...array)
+// logger(...array); // Đây là dùng toán tử Spread khi truyền vào đối số. Khi truyền như vậy tương ứng với truyền 
+// // "JavaScript","PHP", "Ruby", "RectJS" là 3 đối số vào hàm logger. Và ...array(tham số) lúc này là toán tử rest sẽ đóng 
+// // các đối số này vào 1 mảng.
+// // logger(array)
+// // Mình đã cố tình đặt trung tên đối số và tham số cho bạn thấy
+// ============================== Tagged template literals ===========================
+
+function highlight([first, ...strings], ...values){
+    // console.log(rest);
+    console.log(first);
+    console.log(strings);
+    console.log(values);
+    return values.reduce (
+        (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()]
+        , [first] // để first vào trong [] để được 1 mảng để sau cộng vào cho dễ 
+    ).join('') // phá bỏ dấu [] và thay dấu , bằng dấu ''(ko có gì)
+
 }
-// console.log(...array)
-logger(...array); // Đây là dùng toán tử Spread khi truyền vào đối số. Khi truyền như vậy tương ứng với truyền 
-// "JavaScript","PHP", "Ruby", "RectJS" là 3 đối số vào hàm logger. Và ...array(tham số) lúc này là toán tử rest sẽ đóng 
-// các đối số này vào 1 mảng.
-// logger(array)
-// Mình đã cố tình đặt trung tên đối số và tham số cho bạn thấy
+var brand = 'F8'
+var course = 'Javascript!'
+
+const html = highlight`Học lâp trình ${course} tại ${brand}!`
+// ${course}: biến nội suy
+
+console.log(html)   
