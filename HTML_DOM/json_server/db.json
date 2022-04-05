@@ -1,69 +1,19 @@
 {
   "courses": [
     {
-      "id": 1,
-      "name": "JavaScript",
-      "author": "Le Dung"
-    },
-    {
       "name": "Sonar way1",
-      "author": "s1",
+      "author": "llll",
       "id": 2
     },
     {
       "name": "Sonar way1",
-      "author": "ss",
+      "author": "llll",
       "id": 3
     },
     {
-      "name": "s",
-      "author": "s",
-      "id": 4
-    },
-    {
       "name": "Sonar way1",
-      "author": "s",
+      "author": "llll",
       "id": 5
-    },
-    {
-      "name": "10.2.64.155",
-      "author": "ssss",
-      "id": 6
-    },
-    {
-      "name": "10.2.64.155",
-      "author": "ssss",
-      "id": 7
-    },
-    {
-      "name": "ss1",
-      "author": "ss2",
-      "id": 8
-    },
-    {
-      "name": "lan 2",
-      "author": "lan 2",
-      "id": 9
-    },
-    {
-      "name": "10.2.64.50",
-      "author": "sss",
-      "id": 10
-    },
-    {
-      "name": "sssss",
-      "author": "222",
-      "id": 11
-    },
-    {
-      "name": "s",
-      "author": "s",
-      "id": 12
-    },
-    {
-      "name": "yy",
-      "author": "uu",
-      "id": 13
     }
   ],
   "comments": [
