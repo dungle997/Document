@@ -372,7 +372,7 @@
 // logger4(1,2,3) // cách làm thông thường 
 // // thực tế 
 // logger4(...exempale)
-// ==================================== Sử dụng cả rest và spread =================================
+// ====================================  Sử dụng cả rest và spread =================================
 // var array = ["JavaScript","PHP", "Ruby", "RectJS"];
 
 // function logger(...array) { // Đây là dùng toán tử rest khi là tham số
@@ -389,23 +389,76 @@
 // // các đối số này vào 1 mảng.
 // // logger(array)
 // // Mình đã cố tình đặt trung tên đối số và tham số cho bạn thấy
-// ============================== Tagged template literals ===========================
+//------------------------------------------------------------------------ 11. Tagged template literals--------------------------------------------------------------------------
+// function highlight([first, ...strings], ...values){
+//     // console.log(rest);
+//     console.log(first);
+//     console.log(strings);
+//     console.log(values);
+//     return values.reduce (
+//         (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()]
+//         , [first] // để first vào trong [] để được 1 mảng để sau cộng vào cho dễ 
+//     ).join('') // phá bỏ dấu [] và thay dấu , bằng dấu ''(ko có gì)
 
-function highlight([first, ...strings], ...values){
-    // console.log(rest);
-    console.log(first);
-    console.log(strings);
-    console.log(values);
-    return values.reduce (
-        (acc, curr) => [...acc, `<span>${curr}</span>`, strings.shift()]
-        , [first] // để first vào trong [] để được 1 mảng để sau cộng vào cho dễ 
-    ).join('') // phá bỏ dấu [] và thay dấu , bằng dấu ''(ko có gì)
+// }
+// var brand = 'F8'
+// var course = 'Javascript!'
 
-}
-var brand = 'F8'
-var course = 'Javascript!'
+// const html = highlight`Học lâp trình ${course} tại ${brand}!`     // tagged template literals
+// // ${course}: biến nội suy
 
-const html = highlight`Học lâp trình ${course} tại ${brand}!`
-// ${course}: biến nội suy
+// console.log(html)  
+// --------------------------------------------------------------------- 12.Modules Import / Export---------------------------------------------------------------------------------------
+// Cách viết 2:
+import * as constant from './constant.js'   // Thay thế cách dùng phía trên 
+console.log(constant)
+// -----------------------------------------------------------------
+import logger from './logger.js'   // import cái module export default
+console.log(logger)
+logger('Looix roi', constant.TYPE_LOG)
+// ===================================================
+// // Cách viết 1:
+// import {   
+//     TYPE_LOG,
+//     TYPE_WARN,
+//     TYPE_ERROR
+// } from './constant.js'; // import sử dụng destructuring đê nhận các export, import không phải là export default
+// logger('Looix roi', TYPE_WARN)
 
-console.log(html)   
+
+
+
+// -----------------------------------------------------------14. Optional chaining (?.)---------------------Dùng cho object, function, array----------------------------------------
+// console.log(' ------------------------- Optional chaining------------------------------')
+// const obj = {
+//     name: 'Alice',
+//     cat: {
+//         name: 'Dinah',
+//         cat2: {
+//             name: 'Dinah2',
+//             cat3: {
+//                 name: 'Dinah3',
+//             }
+//         }
+//     }
+// }
+
+// cách làm thông thường để check
+// if(
+//     obj.cat && 
+//     obj.cat.cat2 && 
+//     obj.cat.cat2.cat3
+// ){
+//     console.log(obj.cat.cat2.cat3.name)
+// }
+
+// cách làm sử dụng (?.)
+// if(
+//     // obj.cat && 
+//     // obj.cat.cat2 && 
+//     obj?.cat?.cat2?.cat3
+// ){
+//     console.log(obj.cat.cat2.cat3.name)
+// }
+
+
