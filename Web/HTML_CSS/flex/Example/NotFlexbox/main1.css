@@ -17,10 +17,6 @@ body {
 .nav {
     min-height: 42px;
     background-color: #EF5122;
-    /* add */
-    display: flex;
-    justify-content: space-between;
-
 }
 
 .nav-list {
@@ -45,21 +41,12 @@ body {
 
 .form__row {
     padding: 8px 0;
-    /* add */
-    display: flex;
-    /* min-width: 90px; */
-    justify-content: left;
 }
 
 .form__label {
-    /* add */
-
-    min-width: 90px;
 }
 
 .form__input {
-    /* add */
-    flex: 1;
 }
 
 /* Column layout */
@@ -67,62 +54,39 @@ body {
     margin-top: 36px;
     padding: 12px 0;
     background-color: #fff;
-    /* add */
-    display: flex;
-    flex: 1;
 }
 
 .column-item {
     padding: 0 16px;
 }
-    /* add */
 
 .sidebar-one {
-    flex: 1;
-    order: 2;
 }
 
 .sidebar-two {
-    flex: 1;
-    order: 3;
 }
 
 .main-column {
-    flex: 3;
-    order: 1;
 }
 
 /* Feature layout */
 .feature-layout {
     margin-top: 36px;
-    /* add */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    /* space-around: giãn cách các dối tượng và cách mép bằng một nửa các đối tượng với nhau */
-    /* space-between: giãn cách đều giữa các đối tượng nhưng lại sát mép */
-    /* space-evenly: giãn cách đều giữa các item và 2 mép  */
-
 }
 
 /* PC, Tablet */
 @media (min-width: 740px) {
     .feature-layout {
-        flex-direction: row;
     }
 }
 
 .feature-item {
     padding: 12px 16px;
     margin-top: 16px;
-    /* add */
-    flex-basis: 30%; 
-    /* set main size của các item */
-
 }
 
 .feature-item:nth-child(1) {
-    background-color: rgb(192, 227, 0);
+    background-color: rgb(192, 227, 222);
 }
 
 .feature-item:nth-child(2) {
@@ -138,11 +102,6 @@ body {
     background-color: #fff;
     margin-top: 36px;
     padding: 12px 0 32px 0;
-    /* add */
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    /* Nhảy dòng  */
 }
 
 .wrap-layout__item {
@@ -164,15 +123,11 @@ body {
     padding: 32px 0;
     max-width: 640px;
     height: 360px;
-    /* add */
-    display: flex;
 }
 
 .center-layout__item {
     font-size: 42px;
     font-weight: 700;
-    /* add */
-    margin: auto;
 }
 
 /* Chart layout */
@@ -181,10 +136,6 @@ body {
     padding: 32px 0;
     height: 320px;
     background-color: #fff;
-    /* add */
-    display: flex; 
-    justify-content:space-around;
-    /* align-items: flex-end; */
 }
 
 .chart-layout__item {
@@ -193,20 +144,6 @@ body {
     text-align: center;
     height: var(--percent);
     background-color: #EF5122;
-    /* add */
-    align-self:flex-end;
-    animation: growth ease-in 2.5s;
-}
-    /* add */
-@keyframes growth{
-    from {
-        opacity: 0;
-        height: cacl(var(--percent) - 50%);
-    }
-    to{
-        opacity: 1;
-        height: var(--percent);
-    }
 }
 
 /* End */
@@ -215,50 +152,23 @@ body {
     padding: 32px 0;
     max-width: 740px;
     min-height: 360px;
-    /* add */
-    display: flex;
 }
 
 .the-end__first {
     padding: 4px 16px;
     background-color: #fff;
-    /* add */
-    
-    flex: 1;
-    order: 2;
 }
 
 .the-end__second {
-    /* add */
-
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    order: 1;
 }
 
 .the-end__second-one {
     padding: 4px 16px;
     background-color: rgb(227, 192, 214);
-    /* add */
-    
-    flex: 1;
-
 }
 
 .the-end__second-two {
     padding: 4px 16px;
     background-color: rgb(192, 210, 227);
-    /* add */
-    
-    flex: 1;
 }
 
-/* 
-    flex:1;
-
-    cú pháp short hand của 
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
-*/
