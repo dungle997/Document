@@ -1,0 +1,14 @@
+padding-top: để xây dựng chiều cao của ảnh. Dùng cách này thay cho height vì có thể thay đổi chiều cao của ảnh theo chiều rộng. VD: 50% thì height sẽ bằng 50 % width.
+Nếu dùng height thì chỉ fix cứng được hoặc phải dùng đơn vị vh, vw thì phụ thuộc vào trình duyệt
+-------------------------------------------
+position fixed 
+
+Tương tự như thuộc tính Absolute, Fixed cũng hoạt động dựa vào một thẻ cha làm chuẩn bên ngoài. Chỉ có khác một điều là đối với Fixed thì khi bạn scrolling thì nó sẽ nằm luôn trên màn hình ngay tại vị trí chuẩn đó và đè lên trên các phần tử bên dưới.
+
+Theo mặc định thì Fixed sẽ lấy luôn cửa sổ trình duyệt làm nơi để làm chuẩn. Nhưng nếu các thẻ cha của nó có khai báo position: relative thì nó sẽ lấy thẻ cha đó chứ không lấy của sổ trình duyệt nữa. Tuy nhiên nếu bạn khai báo một trong bốn thuộc tính sau: top - left- bottom - right thì lúc này nó sẽ không lấy thẻ cha đó nữa mà nó sẽ lấy cửa sổ trình duyệt làm chuẩn
+-----------------------------------------------
+
+fontawesome cdn để lấy icon miễn phí
+https://fontawesome.com/icons/ellipsis?s=solid
+-----------------------------------------------
+List danh sách. Dùng flex để các item theo hàng ngang. DÙng padding, margin để chỉnh vị trí content ở giữa

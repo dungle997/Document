@@ -5,30 +5,86 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music player</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">    
   <link rel="stylesheet" href="./styles.css">
 
 </head>
 <body>
-    <div class="dashboard">
-      <header>
-        <h4>Now playing</h4>
-        <h2>String 57th & 9th</h2>
-      </header>
+    <div class="player">
+      <div class="dashboard">
+        <header>
+          <h4>Now playing:</h4>
+          <h2>String 57th & 9th</h2>
+        </header>
+  
+        <div class="image">
+          <div class="image-cd"></div>
+        </div>
+  
+        <div class="control">
+          <div class="btn btn-redo">
+            <i class="fa-solid fa-rotate-right"></i>
+          </div>
 
-      <div class="image">
-        <div class="image-cd"></div>
+          <div class="btn btn-backward">
+            <i class="fa-solid fa-backward-step"></i>
+          </div>
+
+          <div class="btn btn-play">
+          <i class="fa-solid fa-circle-play"></i>
+          </div>
+
+          <div class="btn btn-forward">
+          <i class="fa-solid fa-forward-step"></i>
+          </div>
+
+          <div class="btn btn-random">
+            <i class="fa-solid fa-shuffle"></i>
+          </div>
+        </div>
+        
+        <input type="range" id="progress" class="progress" value="0" step="1" min="0" max="100">
+        <audio src="" id="audio"></audio>
       </div>
+  
+      <div class="playlist">
+        <div class="song">
+          <div class="song-image"></div>
+          <div class="song-body">
+              <h3 class="title">Music name</h3>
+              <p class="author">Singer</p>
+          </div>
+          <div class="song-option">
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
 
-      <div class="control">
+        <div class="song">
+          <div class="song-image"></div>
+          <div class="song-body">
+              <h3 class="title">Music name</h3>
+              <p class="author">Singer</p>
+          </div>
+          <div class="song-option">
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
 
+        <div class="song">
+          <div class="song-image"></div>
+          <div class="song-body">
+              <h3 class="title">Music name</h3>
+              <p class="author">Singer</p>
+          </div>
+          <div class="song-option">
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
+       
       </div>
-
-    </div>
-
-    <div class="playlist">
-      <div class="song">Music name</div>
-      <div class="song">Music name</div>
-      <div class="song">Music name</div>
     </div>
     <script src="./main.js"></script>
 </body>
