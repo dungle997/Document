@@ -7,7 +7,8 @@
 //     [emailKey]: 'quagdung145',
 //     getName: function(){
 //         return this.name;
-//     }
+//     },
+//     array : [1,2,3,4]
 // };
 // // C1
 // myInfo.email = 'fadsjflkja@gmail.com';
