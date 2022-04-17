@@ -12,3 +12,12 @@ fontawesome cdn để lấy icon miễn phí
 https://fontawesome.com/icons/ellipsis?s=solid
 -----------------------------------------------
 List danh sách. Dùng flex để các item theo hàng ngang. DÙng padding, margin để chỉnh vị trí content ở giữa
+------------------------------------------
+.player.playing .btn.btn-pause
+player và playing cùng cấp
+btn btn-pause là con của player
+ selector cùng cấp thì viết liền, khác cấp thì phải có thêm dấu cách
+------------------------------------------
+animate web api sử dụng làm hiệu ứng quay ảnh. quay element
+-------------------------------------------
+scroll in to view

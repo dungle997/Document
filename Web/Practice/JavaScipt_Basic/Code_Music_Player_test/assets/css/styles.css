@@ -28,6 +28,13 @@ html {
   margin: 0 auto;
   max-width: 480px;
 }
+.player.playing .btn.btn-pause{
+/* selector cùng cấp thì viết liền, khác cấp thì phải có thêm dấu cách */
+  display: flex;
+}
+.player.playing .btn.btn-play{
+  display: none;
+}
 /* dashboard */
 .dashboard{
   padding: 16px;
@@ -171,6 +178,15 @@ header h2{
 }
 .song-body .author{
   font-size: 12px;
+}
+.btn-redo.active,
+.btn-random.active{
+  color: var(--primary-color);
+}
+.song.active{
+  color: #fff;
+  background-color: var(--primary-color);
+
 }
 
 
