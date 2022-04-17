@@ -19,6 +19,7 @@ const image = $('.image');
 
 
 const app = {
+    currentIndex : 0,
     songs : [
         {
             name: 'Song 1',
@@ -99,7 +100,7 @@ const app = {
         playlist.innerHTML = htmls.join('');      
         // show background
         const pathImage = playlist.querySelectorAll('.song-image');
-        this.songs.map(function(song, index){ 
+        this.songs.forEach(function(song, index){ 
             pathImage[index].style.backgroundImage = `url(${song.image})`;
         })
     },
@@ -120,7 +121,15 @@ const app = {
             image.style.opacity = newWidth / imageWidth;
         }
     },
+    defineProperty: function(){
+        Object.defineProperty(this, 'currentSong', {
+            get : function(){
+                return this.songs[this.currentIndex];
+            }
+        })
+    },
     start: function(){
+        this.defineProperty();
         this.handleEvents();
 
         this.render();
