@@ -104,7 +104,7 @@ const app = {
             return `
                 <div class="song ${
                     index === this.currentIndex ? "active" : ""
-                  }">
+                  }" data-index=${index}>
                     <div class="song-image"></div>
                     <div class="song-body">
                         <h3 class="title">${song.name}</h3>
@@ -234,6 +234,7 @@ const app = {
             _this.render(); // có thể làm cách remove class active đi rồi thêm lại cho song sau
             // Chọn tất cả thẻ song, tìm song có chứa class .active rồi xóa đi
             // Chọn song có index bằng currentIndex rồi thêm class active vào
+            _this.scrollToActiveSong();
         }
         // Xử lí khi bấm pre
         backwardBtn.onclick = function(){
@@ -244,6 +245,7 @@ const app = {
             }
             audio.play();
             _this.render();
+            _this.scrollToActiveSong();
         }
 
         // Xử lí khi kết thúc bài hát và repeat bài hát 
@@ -257,6 +259,26 @@ const app = {
                 audio.play()
             }else{
                 forwardBtn.onclick()
+            }
+        }
+        // Xử lí sự kiện khi click vào playlist 
+        playlist.onclick = function(e){
+            const songElement = e.target.closest('.song:not(.active)');
+            if(songElement || e.target.closest('.song-option')){
+                // Xử lí khi click vào bài hát
+                if(songElement){
+                    // console.log(typeof songElement.getAttribute('data-index')) 
+                    // _this.currentIndex = songElement.getAttribute('data-index') // c1
+                    _this.currentIndex = Number(songElement.dataset.index) // c2
+                    _this.loadCurentSong()
+                    _this.render()
+                    audio.play()
+
+                }
+                // Xử lí khi click vào nút option
+                if ( e.target.closest('.song-option')){
+
+                }
             }
         }
 
@@ -295,6 +317,15 @@ const app = {
     //     this.loadCurentSong();
     //     audio.play()
     // },
+    scrollToActiveSong: function(){
+        setTimeout(() => {
+            $('.song.active').scrollIntoView({
+                behavior: "smooth", 
+                block: "center", 
+                inline: "nearest",
+            })
+        }, 500)
+    },
 
     defineProperty: function(){
         Object.defineProperty(this, 'currentSong', {

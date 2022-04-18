@@ -20,4 +20,33 @@ btn btn-pause là con của player
 ------------------------------------------
 animate web api sử dụng làm hiệu ứng quay ảnh. quay element
 -------------------------------------------
-scroll in to view
+scroll into view element
+-------------------------------------------
+element.closest(selectors)
+khái niệm closest. Kiểm tra element này có phải là con của element kia không
+// Return
+Phần tử tổ tiên gần nhất hoặc chính phần tử, phù hợp với (các) bộ chọn CSS được chỉ định. Nếu không tìm thấy kết quả khớp, null được trả lại. Ném một ngoại lệ cú pháp nếu (các) bộ chọn không hợp lệ.
+
+playlist.onclick = function(e){
+e.target trả về chính đối tượng vừa được click vào
+
+e.target.closest('.song:not(.active)') 
+trả về đối tượng cha hoặc đối tượng thỏa mãn là con hoặc là chính .song
+---------------------------------------------
+sử dụng data-abcxyz trong element  và lấy ra bằng element.dataset.abcxyz  
+cách khác là dùng getAttribute('tên class')
+dom data attribute
+
+-------------------------------------------------
+active psudo class
+VD: a:active
+--------------------------------------------
+deligate pattern w3
+------------------------------------------
+Phần click vào bài rồi chuyển bài có 2 hướng giải quyết
+1. Lắng nghe onclick trên từng song => chuyển giá trị index lúc đó = currentIndex => load Song
+2. Lắng nghe sự kiện trên playlist rồi truy ngược về có phải thuộc element .song không, trừ các 
+trường hợp là .song.active và .option thì không đổi bà. Cái này check dùng closest để xác định 
+1 thành phần nào đó mình bấm vào có thuộc 1 element cần dùng không.
+- Sau khi check được thành phần đúng tiêu chuẩn thì lấy ra index của element đó thông qua việc 
+đặt trước 1 attribute vào từng element song trước đó. Sau đó gán cho currentIndex

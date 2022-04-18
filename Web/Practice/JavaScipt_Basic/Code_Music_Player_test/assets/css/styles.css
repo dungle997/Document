@@ -188,5 +188,8 @@ header h2{
   background-color: var(--primary-color);
 
 }
+.song:active{
+  opacity: 0.6;
+}
 
 
