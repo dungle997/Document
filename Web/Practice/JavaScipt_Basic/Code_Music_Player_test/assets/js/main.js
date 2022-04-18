@@ -14,6 +14,8 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const PlAYER_STORAGE_KEY = "F8_PLAYER";
+
 const playlist = $('.playlist');
 const image = $('.image');
 const headerH2 = $('header h2');
@@ -35,6 +37,9 @@ const app = {
     currentIndex : 0,
     isRandom : false,
     isRepeat : false,
+    // config: {},
+      // (1/2) Uncomment the line below to use localStorage
+    config: JSON.parse(localStorage.getItem(PlAYER_STORAGE_KEY)) || {},
     songs : [
         {
             name: 'Song 1',
@@ -97,6 +102,10 @@ const app = {
             image: './assets/img/image10.jpeg'
         },
     ],
+    setConfig: function(key, value){
+        this.config[key] = value;
+        localStorage.setItem(PlAYER_STORAGE_KEY, JSON.stringify(this.config));
+    },
     render: function(){
         // const htmls = this.songs.map(function(song,index) {
         // console.log(this) // Viết như này thì không lấy được con trỏ this nên ko thêm đc class active
@@ -215,12 +224,14 @@ const app = {
         // Xử lí khi click vào nút ramdom cho nút ramdom sáng lên
             randomBtn.onclick = function(e){
             _this.isRandom = !_this.isRandom
+            _this.setConfig('isRandom', _this.isRandom)
             randomBtn.classList.toggle('active', _this.isRandom)
             
         }
           // Xử lí bật tắt hiển thị khi click repeat bài hát
           redoBtn.onclick = function(){
             _this.isRepeat = !_this.isRepeat
+            _this.setConfig('isRepeat', _this.isRepeat)
             redoBtn.classList.toggle('active', _this.isRepeat)
         }
         // Xử lí khi bấm next 
@@ -281,14 +292,12 @@ const app = {
                 }
             }
         }
+    },
+    loadConfig: function(){
+        this.isRandom = this.config.isRandom
+        this.isRepeat = this.config.isRepeat
 
-      
-
-      
-
-
-
-
+        // Object.assign(this, this.config)
     },
     nextSong: function(){
         this.currentIndex++
@@ -340,11 +349,14 @@ const app = {
         audio.src = this.currentSong.path
     },
     start: function(){
+        this.loadConfig();
         this.defineProperty();
         this.loadCurentSong();
         this.handleEvents();
 
         this.render();
+        randomBtn.classList.toggle('active', this.isRandom)
+        redoBtn.classList.toggle('active', this.isRepeat)
     },
 }
 
