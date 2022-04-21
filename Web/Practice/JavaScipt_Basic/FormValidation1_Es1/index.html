@@ -13,7 +13,7 @@
        <h3>Thành Viên Đăng Ký</h3>
        <p class="desc">Hội phát cuồng với những người tên Dũng</p>
         
-       <div class="form-group invalid">
+       <div class="form-group">
         <label for="fullName" class="form-label">Tên đầy đủ</label>
         <input type="text" id="fullName" class="form-control" name="fullName" placeholder="VD: Trần Văn A"> 
         <span class="form-message"></span>
@@ -47,9 +47,14 @@
 <script>
   Validator({
     form: '#form-1',
+    errorSelector: '.form-message',
     rules: [
       Validator.isRequired('#fullName'),
       Validator.isEmail('#email'),
+      Validator.isMinLength('#password', 8),
+      Validator.isConfirm('#password_confirmation', function(){
+        return document.querySelector('#form-1 #password').value
+      })
 
     ]
   });
