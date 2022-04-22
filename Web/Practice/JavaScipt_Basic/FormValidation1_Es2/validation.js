@@ -10,10 +10,19 @@
 
 // Đối tượng validator (Constructor function)
 function Validator(options){
+    var selectorRules = {}
 // Hàm thực hiện validate
     function validate (inputElement, rule){
-        var errorMessage = rule.test(inputElement.value)
+        var rules = selectorRules[rule.selector]
         var messageElement = inputElement.parentElement.querySelector(options.errorSelector)
+        var errorMessage
+        console.log(rules)
+        for(var i =0 ; i<rules.length; i++){
+            // console.log(rules[i])
+            errorMessage = rules[i](inputElement.value)
+            if (errorMessage) break;
+        }
+
         if (errorMessage){
             messageElement.innerHTML = errorMessage
             inputElement.parentElement.classList.add('invalid')
@@ -21,6 +30,7 @@ function Validator(options){
             messageElement.innerHTML = ''
             inputElement.parentElement.classList.remove('invalid')
         }
+
     }
     
     // console.log(options)
@@ -30,6 +40,16 @@ function Validator(options){
     // console.log(formElement)
     if (formElement){
         options.rules.forEach(function(rule){
+            // Lưu lại các rules cho mỗi input
+
+            if (Array.isArray(selectorRules[rule.selector])){
+                selectorRules[rule.selector].push(rule.test) 
+            }else {
+                selectorRules[rule.selector] = [rule.test]
+            }
+
+            // selectorRules[rule.selector] = rule.test
+
             // console.log(rule)
             var inputElement = formElement.querySelector(rule.selector);
             if (inputElement){
@@ -46,45 +66,46 @@ function Validator(options){
             }
         
         })
+        // console.log(selectorRules)
     }
 
 }
 
 
 // Định nghĩa các rule
-Validator.isRequired = function(selector){
+Validator.isRequired = function(selector, message){
     return {
         selector: selector,
         test: function(value){
-            return value.trim() ? undefined : 'Vui lòng nhập tên vào ô trống'
+            return value.trim() ? undefined : message || 'Vui lòng nhập tên vào ô trống'
         }
     }
 }
 
-Validator.isEmail = function(selector){
+Validator.isEmail = function(selector, message){
     return {
         selector: selector,
         test: function(value){
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-            return regex.test(value) ? undefined : 'Vui lòng nhập đúng dịnh dạng email'
+            return regex.test(value) ? undefined : message || 'Vui lòng nhập đúng dịnh dạng email'
         }
     }
 }
 
-Validator.isMinLength = function (selector, lenght){
+Validator.isMinLength = function (selector, lenght, message){
     return{
         selector: selector,
         test: function(value){
-            return value.length > lenght ? undefined : `Mật khẩu phải lớn hơn ${lenght} ký tự`
+            return value.length > lenght ? undefined : message || `Mật khẩu phải lớn hơn ${lenght} ký tự`
         }
     }
 }
 
-Validator.isConfirm = function (selector, getConfirmation){
+Validator.isConfirm = function (selector, getConfirmation, message){
     return{
         selector: selector,
         test: function(value){
-            return value === getConfirmation() ? undefined : 'Giá trị nhập vào không chính xác'
+            return value === getConfirmation() ? undefined : message || 'Giá trị nhập vào không chính xác'
         }
     }
 }

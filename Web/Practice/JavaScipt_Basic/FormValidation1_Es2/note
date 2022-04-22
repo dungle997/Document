@@ -1,10 +1,1 @@
-1. Function thực chất là 1 object trong javascript
-2. Mà đã là object thì có thể thêm thuộc tính cũng như method.
-3. Validator.isRequired() giống như obj.method()
-4. Giá trị trả về của Validator.isRequired() và các rule khác sẽ được
-lưu vào array lại chính là đối số truyền vào Validator
-5. Khi nhận được đối số thì Validator bắt đầu làm công việc validate và hiển thị
-kết quả validate của thằng test, khi đã đủ các options truyền vào rồi 
-thì công việc là hiển thị các invalid input nhờ vào 1 vài logic và 
-thao tác DOM
-6. Khá khoai và ảo ma Canada :))))
+- Thêm phần custom message

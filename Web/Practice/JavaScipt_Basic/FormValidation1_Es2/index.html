@@ -54,7 +54,9 @@
       Validator.isMinLength('#password', 8),
       Validator.isConfirm('#password_confirmation', function(){
         return document.querySelector('#form-1 #password').value
-      })
+      }, 'Mật khẩu nhập lại không chính xác'),
+      Validator.isRequired('#password_confirmation'),
+
 
     ]
   });
