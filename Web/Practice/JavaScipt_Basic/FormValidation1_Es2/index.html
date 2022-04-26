@@ -15,7 +15,11 @@
         
        <div class="form-group">
         <label for="fullName" class="form-label">Tên đầy đủ</label>
-        <input type="text" id="fullName" class="form-control" name="fullName" placeholder="VD: Trần Văn A"> 
+        <!-- <div> -->
+            <!-- <div> -->
+        <input type="text" id="fullName" class="form-control" name="fullName" placeholder="VD: Trần Văn A">   
+            <!-- </div> -->
+        <!-- </div> -->
         <span class="form-message"></span>
        </div>
        
@@ -37,6 +41,20 @@
         <span class="form-message"></span>
        </div>
 
+       <div class="form-group">
+        <label for="password_confirmation" class="form-label">Giới tính</label>
+        <div>
+          <input type="radio" class="form-control" name="gender" value="male">Nam
+        </div>
+        <div>
+          <input type="radio" class="form-control" name="gender" value="female">Nữ
+        </div>
+        <div>
+          <input type="radio" class="form-control" name="gender" value="other">Khác
+        </div>
+        <span class="form-message"></span>
+       </div>
+
        <button class="form-submit">Đăng ký</button>
 
     </form>
@@ -48,17 +66,22 @@
   Validator({
     form: '#form-1',
     errorSelector: '.form-message',
+    formGroupSelector: '.form-group',
     rules: [
       Validator.isRequired('#fullName'),
+      Validator.isRequired('input[name="gender"]'),
+      Validator.isRequired('#email'),
       Validator.isEmail('#email'),
       Validator.isMinLength('#password', 8),
       Validator.isConfirm('#password_confirmation', function(){
         return document.querySelector('#form-1 #password').value
       }, 'Mật khẩu nhập lại không chính xác'),
       Validator.isRequired('#password_confirmation'),
-
-
-    ]
+    ],
+    onSubmit: function(data){
+      // call PPI
+      console.log(data)    
+    },
   });
 </script>
 </html>

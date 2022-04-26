@@ -8,3 +8,9 @@ kết quả validate của thằng test, khi đã đủ các options truyền v�
 thì công việc là hiển thị các invalid input nhờ vào 1 vài logic và 
 thao tác DOM
 6. Khá khoai và ảo ma Canada :))))
+
+
+
+- Lắng nghe sự kiện onblur và nhập input vào các ô rồi trả lại thông báo
+- Tạo ra một đối tượng lưu trữ các element node và các rule tương ứng với các element này.
+Đảm bảo các rule cuối không hiên thị đè lên các rule trước. => Setup 1 element có nhiều rule

@@ -1,1 +1,6 @@
 - Thêm phần custom message
+- NodeList không hỗ trợ các phương thức reduce, map, forEach
+
+Khi bấm nút submit thì :
+- Báo lỗi nếu các trường thông tin không đủ
+- Nếu các trường đủ thì gửi thông tin trong các ô input đóng thành 1 đối tượng và gửi đi

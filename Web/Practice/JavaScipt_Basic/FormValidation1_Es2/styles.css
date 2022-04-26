@@ -80,3 +80,7 @@ h3{
 .form-group.invalid .form-message{
   color: red;
 }
+
+.form-group.invalid .form-control{
+  border: 1px solid red
+}
