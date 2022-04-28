@@ -4,3 +4,5 @@
 Khi bấm nút submit thì :
 - Báo lỗi nếu các trường thông tin không đủ
 - Nếu các trường đủ thì gửi thông tin trong các ô input đóng thành 1 đối tượng và gửi đi
+
+sử dụng phương thức a.matches(b) để so sánh selector b có khớp selector a không. b có thể là con của a 
