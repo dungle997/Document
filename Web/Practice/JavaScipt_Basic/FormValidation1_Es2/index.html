@@ -35,22 +35,38 @@
         <span class="form-message"></span>
        </div>
        
-       <div class="form-group">
+      <div class="form-group">
         <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
         <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="Nhập lại mật khẩu"> 
         <span class="form-message"></span>
        </div>
 
        <div class="form-group">
+          <label for="province" class="form-label">Tỉnh/TP</label>
+          <select id="province" class="form-control" name="province"> 
+            <option value="">-- Chọn Tỉnh/TP --</option>
+            <option value="hni">Hà Nội</option>
+            <option value="hpg">Hải Phòng</option>
+          </select>
+          <span class="form-message"></span>
+       </div>
+
+       <div class="form-group">
+        <label for="avatar" class="form-label">Ảnh đại diện</label>
+        <input id="avatar" class="form-control" type = "file" name="avatar"> 
+        <span class="form-message"></span>
+     </div>
+
+       <div class="form-group">
         <label for="password_confirmation" class="form-label">Giới tính</label>
         <div>
-          <input type="radio" class="form-control" name="gender" value="male">Nam
+          <input type="checkbox" class="form-control" name="gender" value="male">Nam
         </div>
         <div>
-          <input type="radio" class="form-control" name="gender" value="female">Nữ
+          <input type="checkbox" class="form-control" name="gender" value="female">Nữ
         </div>
         <div>
-          <input type="radio" class="form-control" name="gender" value="other">Khác
+          <input type="checkbox" class="form-control" name="gender" value="other">Khác
         </div>
         <span class="form-message"></span>
        </div>
@@ -68,15 +84,17 @@
     errorSelector: '.form-message',
     formGroupSelector: '.form-group',
     rules: [
-      Validator.isRequired('#fullName'),
-      Validator.isRequired('input[name="gender"]'),
-      Validator.isRequired('#email'),
-      Validator.isEmail('#email'),
-      Validator.isMinLength('#password', 8),
-      Validator.isConfirm('#password_confirmation', function(){
-        return document.querySelector('#form-1 #password').value
-      }, 'Mật khẩu nhập lại không chính xác'),
-      Validator.isRequired('#password_confirmation'),
+      // Validator.isRequired('#fullName'),
+      // Validator.isRequired('input[name="gender"]'),
+      // Validator.isRequired('#email'),
+      Validator.isRequired('#avatar'),
+      // Validator.isRequired('#province'),
+      // Validator.isEmail('#email'),
+      // Validator.isMinLength('#password', 8),
+      // Validator.isConfirm('#password_confirmation', function(){
+        // return document.querySelector('#form-1 #password').value
+      // }, 'Mật khẩu nhập lại không chính xác'),
+      // Validator.isRequired('#password_confirmation'),
     ],
     onSubmit: function(data){
       // call PPI

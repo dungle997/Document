@@ -84,11 +84,28 @@ function Validator(options){
                         
                         switch(input.type){
                             case 'checkbox':
+                                if (!input.matches(':checked')){
+                                    values[input.name] = ''
+                                    return values
+                                }
+
+                                if (!Array.isArray(values[input.name])){
+                                    values[input.name] = []
+                                }
+                                values[input.name].push(input.value)
+                                // console.log('log 1' ,values[input.name])
+                                break;
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value
                                 break
+
+                            case 'file':
+                                values[input.name] = input.files
+                                break
                             default: 
                                 values[input.name] = input.value
+                                // console.log('log 2' ,input.value)
+
                         }
 
                         return values
@@ -144,7 +161,7 @@ Validator.isRequired = function(selector, message){
     return {
         selector: selector,
         test: function(value){
-            return value ? undefined : message || 'Vui lòng nhập tên vào ô trống'
+            return value ? undefined : message || 'Vui lòng nhập trường thông tin này'
         }
     }
 }
