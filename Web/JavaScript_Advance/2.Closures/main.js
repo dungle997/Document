@@ -65,3 +65,30 @@
 // console.log(increase1())
 
 // ---------------------------------------------------------------------------- Closure ----------------------------------------------------------
+
+// function makeCounter(){
+//     let counter = 0
+//     function increase(){
+//         return ++counter
+//     }
+//     return increase
+// }
+
+// const increase1 = makeCounter()
+
+// console.log(increase1())
+// console.log(increase1())
+// console.log(increase1())
+// console.log(increase1())
+// console.log(increase1())
+
+// Ví dụ 
+
+function createLogger(namespace){
+    
+    function logger(message){
+        console.log(`[${namespace}] ${message}`)
+    }
+    return logger
+}
+

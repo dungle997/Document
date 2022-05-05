@@ -53,3 +53,16 @@ const a= 18 // Biến global
 }
 
 Đã tìm thấy biến a trong phạm vi, nhưng biến a chưa được cấp giá trị khởi tạo nên bị lỗi 
+
+---------------------------------------------------------------------------------------------------------------------------------
+#Closure 
+Là một hàm có thể ghi nhớ nơi nó được tạo và truy cập được biến ở bên ngoài phạm vi của nó
+
+## Ứng dụng 
+- Viết code ngắn gọn hơn
+- Biểu diễn, ứng dụng tính Private trong OOP
+
+## Tóm tắt 
+## Lưu ý 
+- Biến được tham chiếu (refer) trong closure sẽ không được xóa khỏi bộ nhớ khi hàm cha thực thi xong 
+- Các khái niệm JavaScript nâng cao rất dễ gây nhâm lẫn 
