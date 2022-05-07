@@ -84,11 +84,81 @@
 
 // Ví dụ 
 
-function createLogger(namespace){
+// function createLogger(namespace){
     
-    function logger(message){
-        console.log(`[${namespace}] ${message}`)
+//     function logger(message){
+//         console.log(`[${namespace}] ${message}`)
+//     }
+//     return logger
+// }
+
+// // ============== App =================
+
+// // Register.js
+
+// const infoLogger = createLogger('Info')
+
+// infoLogger('Bắt đầu gửi mail thông báo')
+
+// const infoLogger1 = createLogger('Warning')
+// infoLogger1('Bắt đầu gửi mail thông báo')
+
+// ========================= Local Storage ============================
+// function createStorage(key){
+//     const store = JSON.parse(localStorage.getItem(key)) ?? {} // nếu localStorage.getItem(key) trả về undefined thì sẽ gán store = {}   
+//     console.log(store)
+
+//     const save = () =>{
+//         localStorage.setItem(key, JSON.stringify(store))
+//     }
+    
+//     const storage = {
+//         get(key){
+//             return store[key]
+//         },
+//         set(key, value){
+//             store[key] = value
+//             save()
+//         },
+//         remove(key){
+//             delete store[key]
+//             save()
+//         }
+//     }
+
+//     return storage
+// }
+// Profile.js
+
+// const ProfileSetting = createStorage('profile')
+
+// console.log(ProfileSetting)
+
+
+// console.log(ProfileSetting.set('name', 'DungLQ'))
+// console.log(ProfileSetting.get('name'))
+
+// const Age = createStorage('age')
+
+// console.log(Age.set('name', 'DungLQ'))
+// console.log(Age.get('name'))
+
+// console.log(store)
+
+// ========================== VD 2 ==============================
+function createApp(){
+    const cars = []
+    return {
+        add(car){
+            cars.push(car)
+        },
+        show(){
+            console.log(cars)
+        }
     }
-    return logger
 }
 
+
+const car = createApp()    
+car.add('BWM')
+car.show()
