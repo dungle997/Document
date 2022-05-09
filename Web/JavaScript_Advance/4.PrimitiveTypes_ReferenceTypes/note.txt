@@ -1,6 +1,6 @@
 ## Value types & Reference types
 
-### 1. Value types (Primitive data types)
+### 1. Value types (Primitive data types) Tham trị : khi a = b thì tạo một ô nhớ mới lưu giá trị của a và copy giá trị của b vào ô nhớ của a  
 - String
 - Number
 - Boolean
@@ -9,7 +9,8 @@
 - undefined
 - null
 
-### 2. Reference type (Non-primitive data types)
+### 2. Reference type (Non-primitive data types) Tham chiếu, gán địa chỉ ô nhớ cho một biến. 
+Tham chiếu trả về địa chỉ vùng nhớ nên khi so sánh 2 object giống y nhau thì trả về false
 - Object
 - Array
 - Function
@@ -20,3 +21,7 @@
 
 
 Array và function bản chất là object
+
+
+
+

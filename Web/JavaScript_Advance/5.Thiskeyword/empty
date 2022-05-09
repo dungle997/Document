@@ -1,55 +1,29 @@
-# Scope - Phạm vi
+<button onclick="console.log(this)">Click me!</button>
+    <!-- khi vết kiểu attribute thì nó sẽ gom các mã code lại và đóng vào 1 hàm tương tự như viết trong file js -->
 
-- Các loại phạm vi: 
-    - Global - Toàn cầu
-    - Code block - Khối mã: let, const. trong một khối code được khai báo bằng let, const thì nó chỉ là biến cục bộ. Phạm vi chỉ trong 1 khối. 
-    Không giống như var, biến var có thể truy cập từ ngoài khối code block nhảy ra ngay khối gần nhất ở bên ngoài . Khi sử dụng if else, for, while, v.v => khối code
-    {//code trong khối này}
-    Let không cho khai báo 2 biến cùng tên, var thì khai báo đc 2 biến cùng tên
-    - Local scope - Hàm: var, function (được tạo ra trong phần thân của 1 hàm, khi hàm đó được gọi)
-- Khi gọi mỗi hàm luôn có 1 phạm vi mới được tạo 
-- Các hàm có thể truy cập các biến được khai báo trong phạm vi của nó và bên ngoài nó
-- Cách thức một biến được truy cập
-- Khi nào một biến bị xóa khỏi bộ nhớ?
-    - Biến toàn cầu?
-    - Biến trong code block & trong hàm 
-    - Biến trong hàm được tham chiếu bởi 1 hàm?
-
-* Khi đặt trùng tên trong cùng 1 phạm vị thì lỗi
-* khi đặt trùng tên ở các phạm vi khác nhau thì ko lỗi
-const a= 18 // Biến global. Tương tự với let
-
-{   
-    const a= 16
-    {
-        const a= 14
-
-        {
-            const a= 12
-            
-            {
-                const a= 10
-                console.log(a) //10
-            }
-        }
-    }
-}
-Khi truy cập một biến, tìm trong phạm vi có biến nào như vậy không, không có thì ra ngoài 1 phạm vi cho đến khi ra phạm vi global, nếu ko có báo lỗi chưa được define
+arrow function không có context => không có this
+        // Vì không có this nên nó sẽ lấy this ở phạm vi bên ngoài của nó(hàm gần nhất chứa nó) => lấy context của hàm ngoài, trả về thís ở bên ngoài => lấy this chính là đối tượng porsche
 
 
-VD 2 
 
-const a= 18 // Biến global
 
-{   
-    {
-        {
-            {
-                console.log(a) //lỗi biến a canot access before initialization
-                const a= 10
-            }
-        }
-    }
-}
+context và scope
+// Điều đầu tiên là phải phân biệt: context và scope là 2 khái niệm khác nhau.
+//  Tôi thấy rất nhiều developer nhầm lẫn 2 thuật ngữ này trong một thời gian dài (bao gồm cả tôi).
 
-Đã tìm thấy biến a trong phạm vi, nhưng biến a chưa được cấp giá trị khởi tạo nên bị lỗi 
+// Mỗi khi function được gọi thì có cả scope và context kết hợp với nó. 
+// Về cơ bản, scope là dựa trên function, còn context dựa trên object. 
+// Nói cách khác, scope liên quan đến việc function truy xuất biến khi nó được gọi. 
+// Còn context luôn chỉ đến giá trị của từ khóa this tham chiếu đến object sở hữu đoạn code đang được thực thi.
+
+--------------------------------
+
+Trong các phương thức, trong các hàm của JS sẽ tồn tại khái niệm context chỉ duy nhất arrow function là không có 
+context thôi. Tùy vào cách gọi hàm hay gọi phương thức thì từ khóa this ở trong hàm,trong phương thức sẽ có thể 
+tham chiếu về đối tượng khác nhau (window hoặc đối tượng gọi đến phương thức)
+
+Khi gọi một phương thức thông qua một đối tượng thì từ khóa this tham chiếu về đối tượng mà chúng ta gọi phương thức đó
+(đối tượng trước dấu . )
+Khi gọi một function độc lập không thông qua một đối tượng thì :
+- Ở ngoài strict mode thì từ khóa this sẽ trỏ về đối tượng window (global)
+- Ở trong strict mode thì từ khóa this sẽ trả về là undefined 
