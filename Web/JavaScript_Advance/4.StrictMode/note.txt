@@ -1,0 +1,14 @@
+các trường hợp sử dụng strict mode
+1. Sử dụng ở đầu file, "use strict"; hoặc "use strict". Trước dòng này phải ko có đoạn mã nào
+2. Sử dụng ngay ở đầu thẻ  mở script
+3. Thêm "use strict"; vào đầu phạm vi hàm 
+Lợi ích khi sử dụng strict mode
+- Báo lỗi khi gán lại giá trị cho thuộc tính có writable: false
+- Báo lỗi khi hàm có tham số trùng tên
+- Khai báo hàm trong code block thì hàm sẽ thuộc phạm vi code block
+- Không đặt tên biến, tên hàm bằng một số từ khóa "nhạy cảm" của ngôn ngữ
+
+Công dụng: 
+1. Tránh quên từ khóa khai báo biến 
+2. Tránh trùng tên biến dẫn tới lỗi logic
+3. Sử dụng bộ nhớ hiệu quả vì tránh tạo biến global

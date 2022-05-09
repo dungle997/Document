@@ -1,16 +1,35 @@
-1. Function thực chất là 1 object trong javascript
-2. Mà đã là object thì có thể thêm thuộc tính cũng như method.
-3. Validator.isRequired() giống như obj.method()
-4. Giá trị trả về của Validator.isRequired() và các rule khác sẽ được
-lưu vào array lại chính là đối số truyền vào Validator
-5. Khi nhận được đối số thì Validator bắt đầu làm công việc validate và hiển thị
-kết quả validate của thằng test, khi đã đủ các options truyền vào rồi 
-thì công việc là hiển thị các invalid input nhờ vào 1 vài logic và 
-thao tác DOM
-6. Khá khoai và ảo ma Canada :))))
+- tạo thẳng rule vào trong attribute của thẻ input, attribute tên rules
+- bóc tách các rule này cho vào 1 đối tượng có key là input.name và value là 1 mảng chứa các rule dạng function(value) 
+- xử lý lắng nghe sự kiện từ các input element và đưa vào hàm handleValidate. sử dụng event.target để xác định được element đc tác động. Khác cách 1 sử dụng 1 hàm validate(inputelement, rule)
+- Khi xử lý thì có event.target.name tương ứng với input.name trong 1 đối tượng lưu trữ các rule của 1 thẻ input. Lúc đó thì lấy tương ứng đúng rule cho ô input đó
+- Khi ô input đc kích hoạt sự kiện thì có event.target.name xác định, lúc này lấy từ đối tượng lưu trũ ra đúng tên event.target.name thì ra được các rule tương ứng cho ô input đó. Đưa giá trị event.target.value vào các rule này và chạy => ra message và hiển thị lên màn hình
+- Bắt sự kiện onSubmit thì sử dụng hàm handleValidate ({
+	target : inputElement
+})
+
+phải cấp cho hàm này một đôi tượng trong đó có key là target với value là 1 element thì mới sử dụng để validate hàng loạt các rule đc
+- Phần lấy data tương tự validation 1
 
 
+Giải thích: Thay vì các ô input được onblur thì khi bấm submit cần quét qua 1 lượt các ô input. Ta phải sử dụng vòng for để quét qua một lượt rồi đưa tất cả chúng vào hàm handleValidate(). Nhưng đối số của hàm này là event và khi ta sử dụng thì lấy event.target ra dùng như là 1 element. Nên ta cần cấp cho hàm handleValidate này 1 đối tượng như trên. Thì khi sử dụng event.target bên trong hàm mới không bị lỗi. Nếu không cấp inputElement thì sẽ báo lỗi là không có đối tượng nào. lúc đó Không thể sử dụng event.target.value và event.target
 
-- Lắng nghe sự kiện onblur và nhập input vào các ô rồi trả lại thông báo
-- Tạo ra một đối tượng lưu trữ các element node và các rule tương ứng với các element này.
-Đảm bảo các rule cuối không hiên thị đè lên các rule trước. => Setup 1 element có nhiều rule
+Bản chất của việc sử dụng hàm handleValidate là sử dụng event.target => lấy thẻ cha ra rồi kiếm thẻ hiện message lỗi 
+sử dụng event.target.value để truyền vào hàm rule để kiểm tra value có đạt yêu cầu không 
+
+Sử dụng polyfill với các phương thức không đc trình duyệt hỗ trợ cho ES6
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+search string.prototype.includes
+
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+
+    if (search instanceof RegExp) {
+      throw TypeError('first argument must not be a RegExp');
+    }
+    if (start === undefined) { start = 0; }
+    return this.indexOf(search, start) !== -1;
+  };
+}
+

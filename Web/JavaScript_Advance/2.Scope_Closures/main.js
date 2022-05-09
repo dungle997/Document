@@ -162,3 +162,37 @@ function createApp(){
 const car = createApp()    
 car.add('BWM')
 car.show()
+
+
+
+//============================ Bonus================================
+// // VD về scope:
+// function sum(){
+//     // let b = 8
+//     console.log(a)
+//     function sum1(){
+//         let a = 6
+//         // console.log(b)
+//     }
+//     // sum1()
+// }
+
+// sum()
+// // sum1() // lỗi 
+
+// {
+//     function sum(){
+//         console.log(8)
+//     }
+// }
+
+// sum() // 8
+
+// 'use strict' // Sử dụng strict thì hàm trong code block chỉ thực thi được trong code block
+// {
+//     function sum(){
+//         console.log(8)
+//     }
+// }
+
+// sum() // 8

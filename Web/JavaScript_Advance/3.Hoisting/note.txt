@@ -1,0 +1,23 @@
+function declaration, var, let, const là các từ khóa nói rằng phần khai báo này sẽ được đưa lên đầu phạm vi của chúng (scope)
+
+hoisting : đưa lên trên
+
+Kết luận: Phần khai báo được đưa lên trên, phần gán không được đưa lên trên
+
+
+// Lý do phải hoist
+// vd 
+let fullName = 'Nguyen Van A'
+{
+    {
+        let fullName = 'Nguyen Van B'
+        {
+            console.log(fullName)
+
+            let fullName = 'Nguyen Van C'
+        }
+    }
+}
+
+// Trong trường hợp này nếu không hoising thì console.log sẽ in ra fullName ở phạm vi ngoài
+// Như vậy là sai, vì trong phạm vi của console.log cũng có biến fullName rồi 

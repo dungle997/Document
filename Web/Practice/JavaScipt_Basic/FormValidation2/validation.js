@@ -1,4 +1,8 @@
 function Validator(selector, options){
+    var _this = this
+    if (!options){
+        options = {}
+    }
     var formRules = {}
     var validatorRules = {
         required: function(value){
@@ -17,7 +21,7 @@ function Validator(selector, options){
     // console.log(validatorRules)
     var formElement = document.querySelector(selector)
     var inputElements = formElement.querySelectorAll('input[name][rules]:not([disabled])')
-    
+    var data = {}
     
     if (formElement){
         // console.log(formElement)
@@ -72,13 +76,16 @@ function Validator(selector, options){
                 }
             }
             if (isFormValid){
-                if (typeof options.onSubmit === 'function'){
+                if (typeof _this.onSubmit === 'function'){
+                
+                // if (typeof options.onSubmit === 'function'){
                     // Hành vi trả về các giá trị của các ô input | Cách trả về onSubmit
-                var data = {}
+                
                 for (var input of inputElements){
                     data[input.name] = input.value
                 }
-                options.onSubmit(data)
+                // options.onSubmit(data)
+                _this.onSubmit(data)
                 }else{
                     // Hành vi submit mặc định của trình duyệt 
                     formElement.submit();
@@ -88,8 +95,7 @@ function Validator(selector, options){
         }
 
     }
-
-
+ 
     function findFormGroup(inputElement,selector){
         // console.log(inputElement.parentElement)
         while(inputElement.parentElement){
@@ -112,18 +118,18 @@ function Validator(selector, options){
         var errorMessage
 
         // C1
-        // for (var rule of rules) {
-        //     errorMessage = rule(event.target.value)
-        //     // console.log(errorMessage)
-        //     if (errorMessage){
-        //         break
-        //     }
-        // }
-        // C2 
-        rules.find(function (rule){
+        for (var rule of rules) {
             errorMessage = rule(event.target.value)
-            return errorMessage
-        })
+            // console.log(errorMessage)
+            if (errorMessage){
+                break
+            }
+        }
+        // C2 
+        // rules.find(function (rule){
+        //     errorMessage = rule(event.target.value)
+        //     return errorMessage
+        // })
 
         //
         if (errorMessage){

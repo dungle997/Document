@@ -1,67 +1,57 @@
-// --------------------------------------------------------- Scope ---------------------------------------------------------------
-// function show(){
-//     var a = 5 
-//     if (a > 0) {
-//         var b = 6
-//         var b = 8
-//     }
-//     console.log(b)
+// hoisting với từ khóa var
+// VD 1 
+// console.log(age) // undefined
+// console.log(fullName) // ReferenceError: fullName is not defined
+// var age = 16
+// VD 2 
+
+// console.log(sum(6, 9)) //15
+
+// function sum(a, b){
+//     let c = 5 
+//     return a + b + c
 // }
 
-// show()
+// Kết luận: Phần khai báo được đưa lên trên, phần gán không được đưa lên trên đối với 1 biến 
+// Với hàm số thì nội dung bên trong {} sẽ vẫn được chạy trước
+// hoisting với từ khóa let, const
+// vD1
+// {
+// console.log(fullName) // ReferenceError : Cannot access 'fullName' before initialization
+// let fullName = "Nguyen Van A"
+// }
 
-// var a= 18 // Biến global. Tương tự với let
+// Lưu ý: Khai báo biến với let, const khi được hoisted không được tạo
+// giá trị và được đưa vào "Temporal Dead Zone"
 
-// {   
-//     var a= 16
+// Lý do phải hoist
+// vd 
+// let fullName = 'Nguyen Van A'
+// {
 //     {
-//         var a= 14
-
+//         let fullName = 'Nguyen Van B'
 //         {
-//             var a= 12
-            
-//             {
-//                 console.log(a) //12
-//                 var a= 10
-//             }
+//             console.log(fullName)
+
+//             let fullName = 'Nguyen Van C'
 //         }
 //     }
 // }
 
-// let a= 18 // Biến global. Tương tự với let
+// Trong trường hợp này nếu không hoising thì console.log sẽ in ra fullName ở phạm vi ngoài
+// Như vậy là sai, vì trong phạm vi của console.log cũng có biến fullName rồi 
 
-// {   
-//     let a= 16
-//     {
-//         let a= 14
+// VD 2:
 
-//         {
-//             let a= 12
-            
-//             {
-//                 console.log(a) //12
-//                 let a= 10
-//             }
-//         }
-//     }
-// }
+// const counter1 = makeCounter()
 
-//   Biến trong hàm được tham chiếu bởi 1 hàm?
+// console.log(counter1())
 
 // function makeCounter(){
-//     let counter = 0
+//     let counter = 0 
+//     return increase
+
 //     function increase(){
 //         return ++counter
 //     }
-//     return increase
 // }
-
-// const increase1 = makeCounter()
-
-// console.log(increase1())
-// console.log(increase1())
-// console.log(increase1())
-// console.log(increase1())
-// console.log(increase1())
-
-// ---------------------------------------------------------------------------- Closure ----------------------------------------------------------

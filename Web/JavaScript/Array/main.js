@@ -55,6 +55,7 @@
 // 7. Splicing   // (position, length, element muốn truyền vào)  Xóa từ vị trí với số lượng length
 // 8. Concat     Nối 2 array với nhau
 // 9. Slicing    Cắt Element trong array
+// 10. Tách String thành mảng, tùy biến dấu ngăn cách
 
 // var languages = [
 //     'Javascript',

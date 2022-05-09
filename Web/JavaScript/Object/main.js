@@ -103,32 +103,59 @@ console.log(`${year} ${month} ${day}`)
     Không phải là object constructor
 */
 
-console.log(Math.PI); // số  PI
-console.log(Math.round(3.568)); // làm tròn 
-console.log(Math.abs(-3.568));  // trị tuyệt đối 
-console.log(Math.ceil(-4.000001)); // làm tròn trên
-console.log(Math.floor(-4.000001)); // làm tròn dưới
-console.log(Math.random()*10); // làm tròn trên
-console.log(Math.floor(Math.random()*5));
+// console.log(Math.PI); // số  PI
+// console.log(Math.round(3.568)); // làm tròn 
+// console.log(Math.abs(-3.568));  // trị tuyệt đối 
+// console.log(Math.ceil(-4.000001)); // làm tròn trên
+// console.log(Math.floor(-4.000001)); // làm tròn dưới
+// console.log(Math.random()*10); // làm tròn trên
+// console.log(Math.floor(Math.random()*5));
 
-// var  random = Math.floor(Math.random()*5);
-// var bonus = [
-//     '10 coin', 
-//     '20 coin',
-//     '30 coin',
-//     '40 coin',
-//     '50 coin'
-// ];
-// console.log(bonus[random]);
+// // var  random = Math.floor(Math.random()*5);
+// // var bonus = [
+// //     '10 coin', 
+// //     '20 coin',
+// //     '30 coin',
+// //     '40 coin',
+// //     '50 coin'
+// // ];
+// // console.log(bonus[random]);
 
-var  random = Math.floor(Math.random()*100);
+// var  random = Math.floor(Math.random()*100);
 
-if (random < 5){
-    console.log('Cuong hoa thanh cong!')
+// if (random < 5){
+//     console.log('Cuong hoa thanh cong!')
+// }
+
+
+// console.log(Math.max(5, 9 ,8  , 8));
+
+// Làm bài tại đây
+function Student(firstName, lastName){
+    this.firstName = firstName
+    this.lastName = lastName
+    this.getFullName = function(){
+        return this.firstName + ' ' +  this.lastName
+    }
 }
 
 
-console.log(Math.max(5, 9 ,8  , 8));
+
+// Ví dụ khi sử dụng
+var student = new Student('Long', 'Bui');
+
+console.log(student.firstName);  // 'Long'
+console.log(student.lastName);  // 'Bui'
+console.log(student.getFullName());  // 'Long Bui'
+
+
+function getRandomItem(array){
+    var random = Math.floor(Math.random() *array.length)
+    return array[random]
+}
+
+var array = [1,2,3,4,5,6]
+console.log(getRandomItem(array))
 
 
 

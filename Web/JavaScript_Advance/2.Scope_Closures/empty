@@ -3,10 +3,12 @@
 - Các loại phạm vi: 
     - Global - Toàn cầu
     - Code block - Khối mã: let, const. trong một khối code được khai báo bằng let, const thì nó chỉ là biến cục bộ. Phạm vi chỉ trong 1 khối. 
-    Không giống như var, biến var có thể truy cập từ ngoài khối code block nhảy ra ngay khối gần nhất ở bên ngoài . Khi sử dụng if else, for, while, v.v => khối code
+    Không giống như var, biến var có thể truy cập từ ngoài khối code block nhảy ra ngay khối gần nhất ở bên ngoài . 
+	(đặc biệt: hàm trong 1 khối {} thì có thể vẫn gọi được từ ngoài phạm vi của {} bao lấy hàm đó) nếu dùng strict mode thì sẽ ko gọi đc
+    Khi sử dụng if else, for, while, v.v => khối code
     {//code trong khối này}
     Let không cho khai báo 2 biến cùng tên, var thì khai báo đc 2 biến cùng tên
-    - Local scope - Hàm: var, function (được tạo ra trong phần thân của 1 hàm, khi hàm đó được gọi)
+    - Local scope - Hàm: var, function (được tạo ra trong phần thân của 1 hàm, khi hàm đó được gọi): chỉ sử dụng được hàm, biến bên trong của hàm cha, hàm từ ngoài ko tác động đc ở 	trong
 - Khi gọi mỗi hàm luôn có 1 phạm vi mới được tạo 
 - Các hàm có thể truy cập các biến được khai báo trong phạm vi của nó và bên ngoài nó
 - Cách thức một biến được truy cập
