@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document.createElement()</title>
+</head>
+<body>
+    <!-- 
+        1. document.createElement()
+        2. document.body.appendChild()
+        3. console.dir()
+        4. innerText, id, className, style
+     -->
+    <div id="root"></div>
+    <h1 id="heading">Hello guys!</h1>
+    <script>
+        const h1 = document.getElementById('heading')
+        console.log(h1)
+        console.dir(h1)
+// ----------------------------
+        const h2 = document.createElement('h2')
+        h2.innerText = 'Hello anh em'
+        document.body.appendChild(h2)
+// ------------------------------
+        const root = document.getElementById('root')
+        const h3 = document.createElement('h3')
+        h3.innerText = 'Hello anh em'
+        root.appendChild(h3)
+// -------------------------------------
+        h1.id = 'heading-2'
+        h1.className = 'header heading'
+        h1.style.color = 'green'
+        h1.style = 'font-size: 20px; text-align: center; color: red'
+        Object.assign(h1.style, {
+            color: 'blue',
+            backgroundColor: '#333',
+            // background-color trong css nhưng js thì phải viết là backgroundColor mới đc
+            fontSize: '50px'
+        })
+    </script>
+        
+</body>
+</html>
+

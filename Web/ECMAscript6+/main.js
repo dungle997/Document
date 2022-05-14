@@ -259,6 +259,8 @@
 
 // var [a , b, c ] = array;
 // console.log(a,b,c);
+// console.log(typeof a);
+
 // ================================================2. Rest: Lấy phần còn lại===============================
 // var [a, ...b] = array;
 
@@ -410,12 +412,12 @@
 // console.log(html)  
 // --------------------------------------------------------------------- 12.Modules Import / Export---------------------------------------------------------------------------------------
 // Cách viết 2:
-import * as constant from './constant.js'   // Thay thế cách dùng phía trên 
-console.log(constant)
-// -----------------------------------------------------------------
-import logger from './logger.js'   // import cái module export default
-console.log(logger)
-logger('Looix roi', constant.TYPE_LOG)
+// import * as constant from './constant.js'   // Thay thế cách dùng phía trên 
+// console.log(constant)
+// // -----------------------------------------------------------------
+// import logger from './logger.js'   // import cái module export default
+// console.log(logger)
+// logger('Looix roi', constant.TYPE_LOG)
 // ===================================================
 // // Cách viết 1:
 // import {   
@@ -426,7 +428,7 @@ logger('Looix roi', constant.TYPE_LOG)
 // logger('Looix roi', TYPE_WARN)
 
 
-
+// Một module có thể export default 1 cái, export thường nhiều cái
 
 // -----------------------------------------------------------14. Optional chaining (?.)---------------------Dùng cho object, function, array----------------------------------------
 // console.log(' ------------------------- Optional chaining------------------------------')

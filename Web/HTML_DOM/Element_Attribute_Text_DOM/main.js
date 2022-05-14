@@ -1,5 +1,5 @@
 // HTML DOM
-
+//  có 3 loại node
 // 1. Element: ID, class, tag name, CSS selector, HTML collection
 // 2. Attribute
 // 3. Text

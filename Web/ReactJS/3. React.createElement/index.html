@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React.createElement</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+</head>
+<body>
+    <!--
+    1. React.createElement() -> React element. React element là thành phần nhỏ nhất khi làm việc với react
+    2. So sánh với document.createElement() -> DOM element. Thành phần nhỏ nhất của DOM là node
+    3. Thay đổi: id, className, style, ....
+    4. Thêm: text, HTML
+    5. Tạo: 
+        <h1 class="heading" title="Hello">Hello guys!</h1>   
+    6. Tạo: 
+        <ul>
+            <li>JavaScript</li>
+            <li>ReactJS</li>
+        </ul>
+    7. Tạo: 
+        <div class="post-item">
+            <h2 title="Học React tại F8">Học ReactJS</h2>
+            <p>Học ReactJS từ cơ bản tới nâng cao</p>
+        </div>
+     -->
+     
+    <script>
+        // DOM
+        const h1DOM = document.createElement('h1')
+
+        h1DOM.title = 'Hello'
+        h1DOM.className = 'heading'
+        h1DOM.innerText = 'Hello guyssssssssss!'
+        document.body.appendChild(h1DOM)
+
+        // React
+        // React.createElement(type, props, children, n) Từ đối số thứ 3 trở đi đêu là children
+        // React coi child(phần hiển thị giữa 2 thẻ tag) cũng là một props
+
+        const h1React = React.createElement('h1', {
+            title: 'Hello',
+            className:  'heading'
+        }, 'Hello guys')
+        // Với 1 khái niệm nằm giữa thẻ tag <h1>aaaa</h1> như vậy thì aaaa có thể là bất cứ kiểu dữ liệu gì trong JS(object, array, string)
+        console.dir(h1DOM)
+        console.log(h1React)
+    </script>
+    
+</body>
+</html>
