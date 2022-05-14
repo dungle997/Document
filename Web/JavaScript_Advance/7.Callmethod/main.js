@@ -59,11 +59,11 @@
 // }
 
 // // sử dụng bind 
-// // const fullName = showFullName.bind(this)
-// // fullName()
+// // const fullName = showFullName.bind(this) // tạo ra hàm fullName mới 
+// // fullName() // thực thi hàm mới
 // // sử dụng call
 
-// showFullName.call(this)
+// showFullName.call(this) // ko tạo ra hàm mới và chạy ngay 
 
 // ===============================================- Thể hiện tính kế thừa (extends) trong OOP ===========================================
 // function Animal(name, weight){

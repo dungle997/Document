@@ -1,0 +1,3 @@
+  // Map là một object đặc biệt. Khác object thường bởi:
+    // - tính chất lặp qua
+    // - Đặt key của object bằng bất kì kiểu dũ liệu trong JS. Object thông thường chỉ đặt được key là string
