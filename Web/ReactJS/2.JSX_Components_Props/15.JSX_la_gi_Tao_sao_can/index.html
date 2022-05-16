@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX - Javascript XML</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- <ul>
+        <li>JavaScript</li>
+        <li>PHP</li>
+    </ul> -->
+    <!-- 
+        JSX - JavaScript XML
+        1. Luôn dùng React.createElement() ? Vấn đề?
+        2. JSX? Live demo: https://bit.ly/2VOIMN7
+        3. JSX không phải là HTML,
+            Cần có Javascipt, Babel để dùng JSX
+        4. JSX và React-DOM?
+     -->
+
+     <!-- 
+         XML đặc trựng là ở cú pháp thẻ mở thẻ đóng 
+         HTML là cú pháp mở rộng của XML (HTML cũng là XML)
+         JSX ra đời để hỗ trợ viết XML HTML trong file JS 
+         JSX gần giống HTML
+         Khi tạo ra HTML thì lúc nào cũng cần React.createElement => khó khăn trong việc thiết kế giao diện => sử dụng JSX
+         Cần có thư viện Babel - phân tích cú pháp, chuyển đổi cú pháp. Chuyển đổi JSX thành JS
+      -->
+    <div id="root"></div>
+    <script type=text/babel>
+        // VD 1
+        // const reactCourse = 'ReactJS F8'
+        // const ul = <ul>
+        //         <li>JavaScript</li>
+        //         <li>{reactCourse}</li>
+        //     </ul>
+        // ReactDOM.render(ul, document.getElementById('root'))
+        // console.log(ul)
+
+        // VD 2 
+        const reactCourse = 'ReactJS F8'
+        const courses = [
+            {
+                name: 'HTML, CSS'
+            },
+            {
+                name: 'Responsive web design'
+            },
+            {
+                name: 'React JS'
+            }
+        ]
+        // var nameCourse = courses.map(course => <li>{course.name}</li>)
+
+        var nameCourse = courses.map(function(course) {
+            return <li>{course.name}</li>
+        })
+        console.log(nameCourse)
+        
+        const ul = <ul>{nameCourse}</ul>
+        console.log(ul)
+        ReactDOM.render(ul, document.getElementById('root'))
+    </script>
+</body>
+</html>

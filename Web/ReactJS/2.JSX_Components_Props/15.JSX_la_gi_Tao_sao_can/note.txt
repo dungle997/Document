@@ -1,0 +1,6 @@
+Khi truyền css với thẻ style có 2 cách
+
+- truyền object style = {color: 'red', fontSize: '50px'}
+- truyền chuỗi style = "color: red;font-size: 50px"
+
+Nhưng trong Với React.createElement thì prop “style” sẽ nhận value là object các bạn nhé, truyền chuỗi sẽ bị lỗi
