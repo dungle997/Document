@@ -4,115 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React.createElement</title>
+    <title>JSX - Javascript XML</title>
     <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-    <!-- 
-        0. ReactDOM được sử dụng để render ReactElement ra trình duyệt 
-        1. Là cầu nối giữa React và DOM. Dùng React tạo ra element và dùng element đó render vào DOM
-        2. Tại sao lại tách React-DOM
-
-
-        Khác: React-Native -> build ứng dụng ios, android
-        Lịch sử: 
-            - Khi chưa có react native: React và phần tường tác với DOM của React vẫn nằm chung một thư viện React. Nhúng và là dùng 
-            đc cả React và React DOM 
-            - Khi react native ra đời: Người ta nhận ra phần core React có thể tách ra => tách riêng thành phần làm việc với DOM 
-            trong thư viện react ra và đặt tên là ReactDOM => sỉnh ra React DOM và React Native (phần làm việc với Native (kolin, object C))
-        3. Render UI 
-     -->
     <div id="root"></div>
-    <script>
-        // // VD1
-        // // DOM
-        // const h1DOM = document.createElement('h1')
+    <script type=text/babel>
+        /*
+            Chữa bài tập: Render list khóa học 
 
-        // h1DOM.title = 'Hello'
-        // h1DOM.className = 'heading'
-        // h1DOM.innerText = 'Hello guyssssssssss!'
-        // document.body.appendChild(h1DOM)
+            * Câu hỏi thường gặp:
+                - Tại sao khi code thuần dùng map phải dùng join(). Vì khi đó phải return về 1 chuỗi
+                - Gặp lỗi khi render từ mảng prop "key"
+                - Không render được 2 elements cùng lúc 
+        */
+        // VD 2 
+        // const reactCourse = 'ReactJS F8'
+        // const courses = [
+        //     {
+        //         name: 'HTML, CSS'
+        //     },
+        //     {
+        //         name: 'Responsive web design'
+        //     },
+        //     {
+        //         name: 'React JS'
+        //     }
+        // ]
+        // // var nameCourse = courses.map(course => <li>{course.name}</li>)
 
-        // // React
-        // // React.createElement(type, props, children, n) Từ đối số thứ 3 trở đi đêu là children
-        // // React coi child(phần hiển thị giữa 2 thẻ tag) cũng là một props
+        // var nameCourse = courses.map(function(course) {
+        //     return <li>{course.name}</li>
+        // })
+        // console.log(nameCourse)
+        
+        // const ul = <ul>{nameCourse}</ul>
+        // console.log(ul)
+        // ReactDOM.render(ul, document.getElementById('root'))
+        // VD 3=====================
+        // const jsx = (
+        //     <div>
+        //         <h1>Heading 1</h1>
+        //         <h2>Heading 2</h2>
+        //     </div>
+        // )
+        // ReactDOM.render(jsx, document.getElementById('root'))
 
-        // const h1React = React.createElement('h1', {
-        //     title: 'Hello',
-        //     className:  'heading'
-        // }, 'Hello guys')
-        // // Với 1 khái niệm nằm giữa thẻ tag <h1>aaaa</h1> như vậy thì aaaa có thể là bất cứ kiểu dữ liệu gì trong JS(object, array, string)
-        // console.dir(h1DOM)
-        // console.log(h1React)
-
-        // ==========================JS fiddle ==========================
-        // // VD1
-
-        // VD 2 DOM
-
-        // const ul = document.createElement('ul')
-        // const li1 = document.createElement('li')
-        // const li2 = document.createElement('li')
-        // li1.innerText = 'JavaScript'
-        // li1.style = 'color: red; font-size: 30px'
-        // li2.innerText = 'ReactJS'
-        // document.body.appendChild(ul)
-        // ul.appendChild(li1)
-        // ul.appendChild(li2)
-        // Reacts JS 
-        // const ulReact = React.createElement(
-        //     'ul', 
-        //     {},
-        //     React.createElement('li', {style:'color: red; font-size: 30px', id: 'li-1'}, 'JavaScript'),
-        //     React.createElement('li', null, 'ReactJS')
-        //     )
-        //     console.log(ulReact)
-        //     // console.dir(ul)
-        // const wall = document.createElement('p')
-        // wall.innerText = '=========================finish vd2=============================='
-        // document.body.appendChild(wall)
-        //VD2
-
-        //VD3 DOM
-        // <div class="post-item">
-        //     <h2 title="Học React tại F8">Học ReactJS</h2>
-        //     <p>Học ReactJS từ cơ bản tới nâng cao</p>
-        // </div>
-            // const div = document.createElement('div')
-            // const h2 = document.createElement('h2')
-            // const p = document.createElement('p') 
-            // div.className = 'post-item' 
-            // h2.title = 'Học React tại F8'
-            // h2.innerText = 'Học ReactJS'
-            // p.textContent = 'Học ReactJS từ cơ bản tới nâng cao'
-            // document.body.appendChild(div)
-            // div.appendChild(h2)
-            // div.appendChild(p)
-            
-        // ReactJS 
-            const divReact = React.createElement(
-                'div',
-                {className: 'post-item'},
-                React.createElement('h2', {title: "Học React tại F8"}, 'Học ReactJS'),
-                React.createElement('p', null, 'Học ReactJS từ cơ bản tới nâng cao')
+        // Mỗi lần dùng từ 2 element trở lên lại phải bọc bằng 1 thẻ div => không thuận tiện
+        // VD4======================== Cách khắc phục
+        // viết kiểu jsx
+        // const jsx = ( 
+        //     <React.Fragment>
+        //         <h1>Heading 1</h1>
+        //         <h2>Heading 2</h2>
+        //     </React.Fragment>
+        // )
+        // viết kiểu react element
+        const jsx = React.createElement(
+            React.Fragment,
+            null,
+            React.createElement('h1', null, 'Heading 1'),
+            React.createElement('h2', null, 'Heading 2')
             )
-
-            // Get root element
-            const root = document.getElementById('root')
-            console.log(root)
-            // React-DOM -> render UI
-            ReactDOM.render(divReact, root)
-            console.log(divReact)
-        //VD3
-
-        // Sử dụng react18 thì reactDom khác
-        // const domContainer = document.querySelector('#like_button_container');
-        // const root = ReactDOM.createRoot(domContainer);
-        // root.render(divReact);
-
+        ReactDOM.render(jsx, document.getElementById('root'))
 
     </script>
-    
 </body>
 </html>
