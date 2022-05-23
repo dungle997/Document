@@ -1,0 +1,15 @@
+Node JS (JS runtime) khi cài Node JS thì tạo ra trên máy tính 1 cái môi trường độc lập để có thể chạy được code JS mà không cần sử dụng môi trường quen thuộc như trên các trình duyệt
+Trên Web là một môi trường độc lập khác (Node cũng là một mội trường độc lập khác),
+NodeJS có lõi Chrome's V8 JavaScript engine được phát triển bởi Google. Các trình duyệt cũng chạy lõi này: Chorme,...
+Node JS tạo ra máy chủ web chạy trên máy tính. (Live server: .......) 
+Khi sử dụng link cdn nhúng react react-dom thì ra sản phẩm không chuyên nghiệp
+=> Sử dụng Node JS để tạo ra môi trường đầy đủ để build code.
+
+Tại sao node js hỗ trợ ta tạo ra được: 
+Hệ sinh thái của NOde được quản lý bởi trang NpmJS quản lý những thư viện cho Node, những thư viên đc viết bằng JS 
+Khi cà node js thì cũng đồng thời cài thêm thư viện npm => dễ dàng cài đặt các thư viện hỗ trợ trên npmjs.com. 
+Không cần sử dụng thẻ script như trước nữa. Sử dụng extension html-webpack-plugin để hỗ trợ tạo ra thẻ script
+
+Facebook tạo ra creat react app đã có react reactDOM babel webpack giúp nhanh chóng tạo ra 1 project
+
+webpack:khi chia ra nhỏ file code => webpack compile lại  => tạo ra tối thiểu số lượng các file , file giảm dung lượng => giảm thời gian tải khi KH truy cập vào trang của bạn

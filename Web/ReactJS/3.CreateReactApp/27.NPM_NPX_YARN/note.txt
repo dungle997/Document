@@ -1,0 +1,10 @@
+- NPM
+	- Project scope
+	- Global scope
+- NPX
+	- Tại sao lại dùng NPX?
+	- Gặp lỗi khi: npx create-react-app tiktok
+- YARN & NPM
+- YARN install
+- Lưu ý:
+	- Luôn bật development server (npm start || yarn start)

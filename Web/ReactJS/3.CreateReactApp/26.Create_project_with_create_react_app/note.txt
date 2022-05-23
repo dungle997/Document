@@ -1,0 +1,9 @@
+create react app giúp đơn giản hóa khâu tạo môi trường. 1 dòng lệnh có thể đi vào code ngay
+
+npx create-react-app tiktok
+
+npm i tar
+
+fix lỗi: npm WARN deprecated tar@2.2.2: This version of tar is no longer supported, and will not receive security updates. Please upgrade asap.
+
+Window dùng git scm
