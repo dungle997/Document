@@ -1,10 +1,33 @@
 - NPM
 	- Project scope
+		- npm install react react-dom --save => dependencies
+		- npm i react react-dom => dependencies
+		- npm install --save-dev react react-dom => devDependencies
+		- npm i -D react react-dom => devDependencies
+		- npm uninstall react react-dom
 	- Global scope
-- NPX
+		- npm i --global create-react-app
+		- npm -i -g create-react-app
+		- npm uninstall -g create-react-app
+- NPX: cài Node => NPM, NPX
+	- NPX để hỗ trợ thực thi những thư viện cung cấp file bin như create-react-app
 	- Tại sao lại dùng NPX?
 	- Gặp lỗi khi: npx create-react-app tiktok
 - YARN & NPM
 - YARN install
 - Lưu ý:
 	- Luôn bật development server (npm start || yarn start)
+
+Giống nhau: 
+có file lock để lưu trữ các phụ thuộc, các thư viện cần dùng cho các library. 
+VD: có 5 thư viện cần dùng 1 cái thư viện A. Khi tải thư viện 1 cần dùng thư viện A. khi tải thư viện 2 ko cần cài thư viện A về nữa 
+Khi xóa file node_module thì npm i thì npm sẽ đọc trong file package-lock.json các thư viện cần tải về  
+
+Sự khác biệt giữa yarn và npm: (Cơ chế)
+- npm khi cài nhiều thư viện cùng 1 lúc thì nó cài tuần tự từng thư viện
+- yarn cài song song được. Tùy băng thông mạng, có thể nhanh hơn npm
+Cơ chế cache
+- yarn tốt hơn. Vì yarn lưu lại tên các thư viện đã được tải từ trước đó vào tại đâu đó trên máy, sau khi có lệnh install các thư viên đó, nó lây thẳng trên máy luôn,
+ko cần tải lại
+
+Yarn ưu điểm là sử dụng nhanh hơn nhờ cơ chế download đồng bộ và nhược điểm là tốn dung lượng lưu trữ hơn
