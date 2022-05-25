@@ -1,0 +1,29 @@
+
+
+As the other said you should assign a function.
+
+Just wanted to point out that in this case you want to pass a value so you need to assign an anonymous function (or a named function defined inline) like
+
+button.onclick = function() {otherfunction(parameter)};
+If the function you want to assign does NOT require a parameter you can use it directly
+
+button.onclick = otherfunction;
+Note that there is no parenthesis in this case
+
+button.onclick = otherfunction(); // this doesn't work
+won't work as it will call otherfunction as soon as it is parsed
+
+
+
+nên dùng 
+
+button.onclick = function() {otherfunction(parameter)};
+
+không phải nghí
+
+
+// h1Element.onclick = function(e){ // e chính là đối tượng vừa mới đc click. e.target để lấy ra element node đó
+//     console.log(e);
+//     console.log(e.target);
+
+Nếu sử dụng đối số e thì có thể gán trực tiếp như trên luôn không cần đi qua anonymous function
