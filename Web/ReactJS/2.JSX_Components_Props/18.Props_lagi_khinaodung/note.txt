@@ -1,0 +1,3 @@
+https://hocwebchuan.com/tutorial/reactjs/reactjs_embed_map_in_jsx.php
+
+phương thức map được sử dụng trong việc render nhiều phần tử trong 1 mảng 
