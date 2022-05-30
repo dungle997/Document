@@ -33,15 +33,17 @@ import {useEffect, useState} from 'react'
 // - gọi callback sau khi component thêm element vào DOM
 // 2. useEffect(callback, []). chỉ gọi callback một lần khi component được mounted
 function Content(){
+    const buttons = ['posts', 'comments', 'albums']
     const [title, setTitle] = useState('')
     const [contents, setContents] = useState([])
+    const [type, setType] = useState('posts')
 
+    document.title = title
     useEffect(()=>{
         // console.log('mounted')
-        // document.title = title
 
         // Sử dụng callAPI
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch(`https://jsonplaceholder.typicode.com/${type}`)
             .then(res => res.json())
             .then(posts => {
                 setContents(posts)
@@ -49,17 +51,24 @@ function Content(){
                 // Tạo thành vòng loop gửi fetch liên tục, dẫn đến treo web
                 // Giải pháp: sử dụng useEffect dependencies
             })
-    }, [])
+    }, [type])
 
     return (
         <div>
+            {buttons.map(button => <button 
+                                        key={button}
+                                        style = {button ===  type ? { color: '#fff', backgroundColor: '#333'} : {}}
+                                        onClick = {() => setType(button)}
+                                   >
+                                    {button}
+                                   </button>)}
             <input
                 value = {title} 
                 onChange={e=> setTitle(e.target.value)}
             />
             <ul>
                 {contents.map(content => (
-                    <li key={content.id}>{content.title}</li>
+                    <li key={content.id}>{content.title || content.email}</li>
                 ))}
             </ul>
             {console.log('rendered')}
