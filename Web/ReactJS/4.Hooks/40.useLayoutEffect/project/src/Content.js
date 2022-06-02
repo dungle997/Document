@@ -1,5 +1,5 @@
 
-import {useEffect, useState} from 'react'
+import {useEffect, useLayoutEffect,useState} from 'react'
 
 // sử dụng useEffect để thực hiện Side Effects: thuật ngữ lập trình 
 
@@ -40,49 +40,41 @@ import {useEffect, useState} from 'react'
 // 3. Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
 // -------------------------------------------------------
 
+
+// ========================= useLayoutEffect ======================
+// useEffect
+// 1. Cập nhật lại state
+// 2. Cập nhật DOM (mutated): đột biến, ví dụ một object sửa 1 property thay đổi => Đây là mutated (Thay đổi 1 property trong 1 Dom node)
+// 3. Render lại UI
+// 4. Gọi cleanup nếu deps thay đổi
+// 5. Gọi useEffect callback
+
+// useLayoutEffect
+// 1. Cập nhật lại state
+// 2. Cập nhật DOM (mutated)
+// 3. Gọi cleanup nếu deps thay đổi (sync)
+// 4. Gọi useLayoutEffect callback (sync)
+// 5. Render lại UI
 function Content(){
-    const [id, setId] = useState()
+    const [count, setCount] = useState(0)
 
-    const handleComment = ({detail}) =>{
-        console.log(detail)
+    useLayoutEffect(()=>{
+        if (count > 3){
+            setCount(0)
+        }
+    }, [count])
+
+    const handleClick = () => {
+        setCount(count + 1)
     }
-    useEffect(()=>{
-        window.addEventListener(`lesson-${id}`, handleComment)
-        return () => {
-            window.removeEventListener(`lesson-${id}`, handleComment)
-        }
-    }, [id])
-
-    const courses = [
-        {
-            id: 1,
-            title: "Toán Cao Cấp"
-        },
-        {
-            id: 2,
-            title: "Hình Học Họa Hình"
-        },
-        {
-            id: 3,
-            title: "Lâp trình CAD/CAM"
-        }
-    ]
     return (
         <div>
-            <ul>
-                {courses.map(course => (
-                    <li 
-                        key={course.id}
-                        style = {id === course.id ? {color: 'red', backgroundColor: '#fff'} : {}}
-                        onClick ={()=> {
-                            // console.log(course.id)
-                            setId(course.id)
-                        }}
-                    >
-                        {course.title}
-                    </li>
-                ))}
-            </ul>
+            <h1>{count}</h1>
+            <button
+                onClick = {handleClick}
+            >
+                Click!
+            </button>
         </div>
     )
 }
