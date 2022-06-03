@@ -32,6 +32,7 @@ import {useEffect, useState} from 'react'
 // - gọi callback mỗi khi component re-render
 // - gọi callback sau khi component thêm element vào DOM
 // 2. useEffect(callback, []). chỉ gọi callback một lần khi component được mounted
+// 3. Callback useEffect (kể cả dependencies)luôn được gọi 1 lần sau khi component được mount 
 function Content(){
     const buttons = ['posts', 'comments', 'albums']
     const [title, setTitle] = useState('')

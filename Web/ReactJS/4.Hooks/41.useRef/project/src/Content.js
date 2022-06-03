@@ -1,12 +1,26 @@
 
-import {useRef,useState} from 'react'
+import {useRef,useState, useEffect} from 'react'
 // Lưu các giá trị qua một tham chiếu bên ngoài
 // function component
+//3. Callback useEffect (kể cả dependencies)luôn được gọi 1 lần sau khi component được mount 
 
 function Content(){
     const [count, setCount] = useState(60)
-    let timerId = useRef(99)
-    console.log(timerId)
+    const timerId = useRef(99)
+    const preCount = useRef()
+    const h1Ref = useRef() // tương tự getElementById hay querySelector
+    // console.log(timerId)
+    // Lưu giá trị trước đó 
+    useEffect(()=>{
+        preCount.current = count
+    }, [count])
+
+    useEffect(()=>{
+        console.log(h1Ref.current)
+        console.log(h1Ref.current.getBoundingClientRect())
+    })
+
+
 
     const handleStop = () =>{
         clearInterval(timerId.current)
@@ -21,9 +35,10 @@ function Content(){
         }, 1000)
         console.log('Start ', timerId.current)
     }
+    console.log(count, preCount)
     return (
         <div>
-            <h1>{count}</h1>
+            <h1 ref={h1Ref}>{count}</h1>
             <button
                 onClick={handleStart}
             >
