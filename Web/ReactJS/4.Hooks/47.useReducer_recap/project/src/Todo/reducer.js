@@ -6,7 +6,7 @@ export const initState = {
 }
 // reducer
 const reducer = (state, action) =>{
-    console.log(action)
+    // console.log(action)
     switch(action.type){
         case SET_JOB:
             return {

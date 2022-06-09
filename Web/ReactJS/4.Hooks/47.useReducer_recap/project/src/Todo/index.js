@@ -1,17 +1,20 @@
 import {useState, useReducer, useRef} from 'react'
 import reducer, {initState} from './reducer'
 import {setJob, addJob, deleteJob} from './actions'
+import logger from './logger'
 // useReducer 
 // 1. Init state: 0
 // 2. Actions: Up (state +1) / Down (state -1)
 // 3. Reducer
 // 4. Dispatch
 
+
+// note: middle ware
 function TodoApp(){
-    const [state, dispatch] = useReducer(reducer, initState)
+    const [state, dispatch] = useReducer(logger(reducer), initState)
     const {job, jobs} = state
     const inputRef = useRef()
-    console.log(state)
+    // console.log(state)
     const handleSubmit = () => {
         dispatch(addJob(job))
         dispatch(setJob(''))
