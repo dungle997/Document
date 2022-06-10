@@ -1,0 +1,25 @@
+# Redux vs React-context
+
+1. Debugging capabilities
+2. Middleware
+3. Addons and cross-framework usage
+4. cross-platform and cross-framework usage
+5. Depending on your app's setup, much better performance than working with just context
+
+
+
+useReducer
+1. Init state:0
+2. Actions: 
+{
+    constant,
+    actions,
+}
+3. Reducer
+4. Dispatch
+
+------useContext-------
+1.createContext()
+2.Provider
+3.add Provider
+4.useContext()
