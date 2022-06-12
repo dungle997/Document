@@ -1,9 +1,9 @@
-import './Heading.css'
+import style from './Heading.module.css'
 
 function Heading(){
 
     return (
-        <h1 className="heading-title">Tĩnh tâm là gì?</h1>
+        <h1 className={style.headingTitle}>Tĩnh tâm là gì?</h1>
     )
 }
 

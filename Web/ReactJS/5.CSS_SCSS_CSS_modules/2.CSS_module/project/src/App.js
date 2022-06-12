@@ -17,7 +17,12 @@ function App(){
 
 export default App;
 
-// Development: npm start / yarn start => CSS internal
+// Vấn đề: Khi Css với các component khác nhau mà đặt trùng tên class hay selector thì các thuộc tính sẽ bị ảnh hưởng 
 
-// Production: npm run build / yarn build -> CSS external
+// 2 cách giải quyết
+// CSS module
+
+// Styled component
+
+// Đặt tên selector theo kiểu camel Case để dễ dùng trong JSX
 
