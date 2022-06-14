@@ -1,6 +1,5 @@
 import './App.css'
-import Heading from './components/Heading'
-import Paragraph from './components/Paragraph'
+import Button from './components/Button/'
 import GlobalStyles from './components/GlobalStyles/'
 
 function App(){
@@ -9,10 +8,8 @@ function App(){
 
   return (
     <GlobalStyles>
-          <div style = {{padding: 50}}>
-        <Heading/>
-        <Paragraph/>
-        {/* <h1 className="heading">CSS</h1> */}
+      <div style = {{padding: 50}}>
+        <Button primary/>
     </div>
     </GlobalStyles>
   )
