@@ -22,7 +22,7 @@ function Content(){
                 name,
                 price: +price,
             }]
-            ) 
+        ) 
         setName('')
         setPrice('')
         refName.current.focus()
