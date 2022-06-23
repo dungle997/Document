@@ -132,8 +132,17 @@
 //         console.log(courses);
 
 //     })
-//     .catch(function(){
+//     .then(function(courses){
+//         console.log('The co a`',courses) //undefined
+//     })
+
+//     .then(function(courses){
+//         console.log('the co a` 1', courses) //undefined
+//     })
+
+//     .catch(function(course){
 //         // khi reject được gọi thì callback của catch được gọi
+//         console.log(course)
 //         console.log('Failure!')
 
 //     })
@@ -164,10 +173,10 @@
 //         resolve()
 //     }
 // );
-// return ra một giá trị không phải promise thì chạy ngay .then ở sau
+// return ra một giá trị không phải promise thì chạy ngay .then ở dưới và truyền giá trị trong phần return vào đối số của .then ngay dưới
 // promise
 //     .then(function(){ // nếu không return gì thì sẽ trả về undefined
-//         // nếu không return ra một promise thì nó chạy ngay .then ở dưới
+//         // nếu không return ra một promise thì nó chạy ngay .then ở dưới  
 //         return 1;
 //     })
 //     .then(function(data){
@@ -475,99 +484,99 @@
 // ================= Example Thêm sửa xóa khóa học với Fetch và REST API =============
 
 
-var listCoursesBlock = document.querySelector('#comment-block');
+// var listCoursesBlock = document.querySelector('#comment-block');
 
-var courseAPI = 'http://localhost:3000/courses'
+// var courseAPI = 'http://localhost:3000/courses'
+
+// // function start(){
+// //     getCourses1(function(courses){
+// //         renderCourses(courses)
+// //     })
+// // }
+
+// // start();
+
+// // function getCourses(){
+// //     fetch(courseAPI)
+// //         .then(function(response){
+// //             return response.json()
+// //         })
+// //         .then(function(course){
+// //             console.log(course)
+// //         })
+// // }
 
 // function start(){
-//     getCourses1(function(courses){
-//         renderCourses(courses)
-//     })
+//     getCourses1(renderCourses);
 // }
 
 // start();
-
-// function getCourses(){
+// handleCreateForm();
+// function getCourses1(callback){
 //     fetch(courseAPI)
 //         .then(function(response){
 //             return response.json()
 //         })
-//         .then(function(course){
-//             console.log(course)
-//         })
+//         .then(callback)
+// }
+// function renderCourses(courses){
+//     // c1
+//     // var html = ``
+//     // courses.forEach(function(course){
+//     //     html += `<li>${course.name} : ${course.author}</li>`
+//     // })
+//     // listCoursesBlock.innerHTML = html;
+//     // c2 
+//     console.log("course_post",courses)
+//     var htmls = courses.map(function(course){
+//         return `
+//                 <li>
+//                     <h4>${course.name}</h4>
+//                     <p>${course.author}</p> 
+//                 </li>
+//                 `
+//     })
+//     listCoursesBlock.innerHTML = htmls.join('');
+
 // }
 
-function start(){
-    getCourses1(renderCourses);
-}
-
-start();
-handleCreateForm();
-function getCourses1(callback){
-    fetch(courseAPI)
-        .then(function(response){
-            return response.json()
-        })
-        .then(callback)
-}
-function renderCourses(courses){
-    // c1
-    // var html = ``
-    // courses.forEach(function(course){
-    //     html += `<li>${course.name} : ${course.author}</li>`
-    // })
-    // listCoursesBlock.innerHTML = html;
-    // c2 
-    console.log("course_post",courses)
-    var htmls = courses.map(function(course){
-        return `
-                <li>
-                    <h4>${course.name}</h4>
-                    <p>${course.author}</p> 
-                </li>
-                `
-    })
-    listCoursesBlock.innerHTML = htmls.join('');
-
-}
-
-function handleCreateForm(){
-    var createBtn = document.querySelector('#creat')
-    createBtn.onclick = function(){
-        // alert('alo')
-        var name = document.querySelector('input[name="name"]').value;
-        console.log(name)
-        var author = document.querySelector('input[name="author"]').value;
-        console.log(author)
-        var formData = {
-            name: name,
-            author: author,
-        };
-        // console.log(formData)
-        // createCourse(formData);
-        createCourse(formData, function(){
-            getCourses1(renderCourses);
-        });
+// function handleCreateForm(){
+//     var createBtn = document.querySelector('#creat')
+//     createBtn.onclick = function(){
+//         // alert('alo')
+//         var name = document.querySelector('input[name="name"]').value;
+//         console.log(name)
+//         var author = document.querySelector('input[name="author"]').value;
+//         console.log(author)
+//         var formData = {
+//             name: name,
+//             author: author,
+//         };
+//         // console.log(formData)
+//         // createCourse(formData);
+//         createCourse(formData, function(){
+//             getCourses1(renderCourses);
+//         });
 
 
-    }
-}
-function createCourse(data, callback){
-    var options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    }
-    fetch(courseAPI, options)
-        .then(function(response){
-            // console.log('reponse.json() =', response.json()) // 1 promise
-            return response.json();
-        })
-        .then(callback)
-}
+//     }
+// }
+// function createCourse(data, callback){
+//     var options = {
+//         method: 'POST',
+//         body: JSON.stringify(data),
+//         headers: {
+//             'Content-Type': 'application/json'
+//             // 'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//     }
+//     fetch(courseAPI, options)
+//         .then(function(response){
+//             // console.log('reponse.json() =', response.json()) // 1 promise
+//             return response.json();
+//         })
+//         .then(callback)
+// }
 
-// Khi post vào thì sẽ nhận lại được dữ liệu vừa thêm vào
-// Làm cách nào đó để đẩy ngay cái kết quả đó vao trong array html đang hiển thị, không cần phải gọi lại hàm start để load lại database
+// // Khi post vào thì sẽ nhận lại được dữ liệu vừa thêm vào
+// // Làm cách nào đó để đẩy ngay cái kết quả đó vao trong array html đang hiển thị, không cần phải gọi lại hàm start để load lại database
