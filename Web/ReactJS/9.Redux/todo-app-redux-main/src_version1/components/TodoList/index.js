@@ -46,12 +46,13 @@ export default function TodoList() {
 
   return (
     <Row style={{ height: 'calc(100% - 40px)' }}>
+      {console.log(`1`)}
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
         {/* <Todo name='Learn React' prioriry='High' />
         <Todo name='Learn Redux' prioriry='Medium' />
         <Todo name='Learn JavaScript' prioriry='Low' /> */}
         {
-          todoList.map( todo => <Todo key={todo.id} name={todo.name} prioriry={todo.priority} completed={todo.completed}/>)
+          todoList.map( todo => <Todo key={todo.id} name={todo.name} prioriry={todo.priority} />)
         }
       </Col>
       <Col span={24}>

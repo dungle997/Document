@@ -1,40 +1,22 @@
-const initState = {
-    filters: {
-        search: '',
-        status: 'All',
-        priority: []
-    },
-    todoList: [
-        {id: 1, name: 'Learn Yoga', completed: false, priority: 'Medium'},
-        {id: 2, name: 'Learn Redux', completed: true, priority: 'High'},
-        {id: 3, name: 'Learn JavaScript', completed: false, priority: 'Low'},
-    ]
-}
+import { combineReducers } from 'redux'
 
-const rootReducer = (state = initState, action) =>{
-    /*
-        {
-            type: 'todoList/addTodo',
-            payload: {id: 3, name: 'Learn JavaScript', completed: false, priority: 'Low'}
+import filtersReducer from '../../src/components/Filters/FiltersSlice'
+import todoListReducer from '../../src/components/TodoList/TodosSlice'
 
-        }
-    */
+// Nguyên bản 
+// const rootReducer = (state = {}, action) =>{
+    //    return {
+//        filters: filtersReducer(state.filters, action),
+//        todoList: todoListReducer(state.todoList, action),
+//    }
+// }
 
-    // console.log(state, action)
+    // sử dụng combine
+    const rootReducer = combineReducers({
+        filters: filtersReducer,
+        todoList: todoListReducer,
+    })
 
-    switch(action.type){
-        case 'todoList/addTodo':
-            return {
-                ...state, 
-                todoList: [
-                    ...state.todoList, 
-                    action.payload
-                ]
-            }
-        default: 
-            return state
-    }
-}
 
 
 export default rootReducer
