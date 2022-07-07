@@ -16,6 +16,8 @@ yarn add redux react-redux
 yarn add uuid
 yarn add redux-devtools-extension
 
+yarn add @reduxjs/toolkit
+
 sử dụng useSelector để lấy thông tin trong kho chung, từ các component con có thể dùng cái này để render lại thông tin cần thiết
 
 khái niệm về actions function. Tạo ra các action theo đúng type mong muốn mà ko phải hard code 
