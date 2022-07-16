@@ -12,7 +12,7 @@ function App(){
           <div style = {{padding: 50}}>
         <Heading/>
         <Paragraph/>
-        {/* <h1 className="heading">CSS</h1> */}
+        {/* <h1 className="heading">CSS</h1> */}  
     </div>
     </GlobalStyles>
   )

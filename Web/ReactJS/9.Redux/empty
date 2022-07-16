@@ -11,8 +11,8 @@ V. Kiến trúc của Redux và các khái niệm cần nắm(5/6)
 - Immutability (Bất biến)
 
 
-
-yarn add redux react-redux
+yarn install tương tự npm -i để cập nhật lại các gói được note trong file package.json
+yarn add redux react-redux   ( sử dụng useDispatch : custom hook)
 yarn add uuid
 yarn add redux-devtools-extension
 
@@ -22,3 +22,8 @@ sử dụng useSelector để lấy thông tin trong kho chung, từ các compon
 
 khái niệm về actions function. Tạo ra các action theo đúng type mong muốn mà ko phải hard code 
 khái niệm về selectors function. Tạo ra các selectors chỉ 1 lần là sử dụng lại ở nhiều chỗ 
+
+
+Redux core và Redux toolkit:
+Khác nhau: Redux core cần cài thêm redux-devtools-extension để dùng redux-devtool này trên trình duyệt
+Redux toolkit đã tích hợp sẵn 
