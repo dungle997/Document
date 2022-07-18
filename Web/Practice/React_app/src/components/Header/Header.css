@@ -1,0 +1,14 @@
+.header{
+    color: green;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    /* text-align: right; */
+}
+.title{
+    color: green;
+    font-size : 40px;
+}
+h1{
+    font-size: 40px;
+}
