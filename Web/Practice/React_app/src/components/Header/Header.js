@@ -7,7 +7,7 @@ function Header() {
                 <span className="title">React </span> 
                 Notes
             </h1>
-            <button style = {{fontSize: 15}}>Toggle Mode</button>
+            <button style = {{fontSize: 15}} className="change-mode">Toggle Mode</button>
         </div>
     )
 }
