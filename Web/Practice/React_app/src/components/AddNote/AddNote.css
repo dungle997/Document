@@ -1,0 +1,16 @@
+.save-button{
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: solid black 4px
+}
+
+.save-button:hover{
+    background-color: #308d46;
+    color: #fff
+}
+.text-note{
+    background-color: #fff;
+    border: none;
+    outline: none;
+    word-break: break-all;
+}

@@ -1,11 +1,13 @@
 .note{
-    min-height: 170px;
+    /* width: 30%; */
+    min-height: 202px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 16px;
     background-color: #308d46;
     border-radius: 10px;
+    word-break: break-all;
 }
 
 .note-footer{
