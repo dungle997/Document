@@ -1,21 +1,38 @@
 import { nanoid } from "nanoid"
 import './Note.css'
 import {MdDeleteForever} from 'react-icons/md'
+import {MdEdit} from 'react-icons/md'
+import {useState} from 'react'
 
 function Note({id, text, date, handleDeteleNote, handleEditNote}){
     // console.log(id, text, date)
+    const [data, setData] = useState(text)
+    const [editFlag, setEditFlag] = useState(false)
     const handleOnChange = (e) => {
-        handleEditNote(id, e.target.value)
+        setData(e.target.value)
+    }
+    const handleSaveClick = () =>{
+        handleEditNote(id, data)
+        setEditFlag(prev => !prev)
+    }
+    const handleCancelClick = () => {
+        handleEditNote(id, text)
+        setEditFlag(prev => !prev)
+        setData(text)
     }
 
-    let state = false
-    if (!state){
+    const editMode = () =>{
+        setEditFlag(prev => !prev)
+    }
+    let limit = 300
+    if (!editFlag){
         return (
-                <div className="note">
+                <div  className="note">
                     <span>{text}</span>
                     <div className="note-footer">
                         <span>{date}</span>
-                        <MdDeleteForever onClick={() => handleDeteleNote(id)} size="1.3rem"/>
+                        <MdEdit onClick={editMode} className="edit-icon"size="1.3rem"/>
+                        <MdDeleteForever className="delete-icon" onClick={() => handleDeteleNote(id)} size="1.3rem"/>
                     </div>    
                 </div>
         )
@@ -23,20 +40,31 @@ function Note({id, text, date, handleDeteleNote, handleEditNote}){
     else{
         return (
             <div className="note">
-            <textarea 
-                className='text-note' 
-                placeholder="Type to add a new note..."
-                rows= "8"
-                cols = "10"
-                value={text}
-                onChange={handleOnChange}
-            >
-            </textarea>
-            <div className="note-footer">
-                {/* <span>{limit - text.length} remaining</span> */}
-                <button className="save-button">Save</button>
-            </div>    
-        </div>
+                <textarea 
+                    className='text-note' 
+                    placeholder="Type to add a new note..."
+                    rows= "8"
+                    cols = "10"
+                    value={data}
+                    onChange={handleOnChange}
+                >
+                </textarea>
+                <div className="note-footer">
+                    <span>{limit - text.length} remaining</span>
+                    <button 
+                        className="save-button"
+                        onClick={handleSaveClick}
+                    >
+                        Save
+                    </button>
+                    <button 
+                        className="save-button"
+                        onClick={handleCancelClick}
+                    >
+                        Cancel
+                    </button>
+                </div>    
+            </div>
         )
     }
 }

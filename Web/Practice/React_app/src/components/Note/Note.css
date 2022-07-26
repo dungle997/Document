@@ -14,3 +14,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+.edit-icon{
+    margin-left: 130px;
+}
+.delete-icon{
+
+}
