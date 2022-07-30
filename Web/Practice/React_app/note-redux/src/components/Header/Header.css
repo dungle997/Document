@@ -1,0 +1,24 @@
+.title{
+    color: #308d46
+}
+.header{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+}
+h1{
+    font-size: 40px;
+}
+
+.background-btn{
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: solid #308d46 4px;
+}
+
+.background-btn:hover{
+    background-color: #308d46;
+    cursor: pointer;
+}

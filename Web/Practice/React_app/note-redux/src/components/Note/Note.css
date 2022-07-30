@@ -1,0 +1,60 @@
+.note{
+    min-height: 202px;
+    background-color: #308d46;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 15px;
+    white-space: pre-wrap;
+    max-height: 220px;
+    overflow:auto;
+    position: relative;
+    word-break: break-all;
+    background-image: linear-gradient(to bottom, #10a30b 0%, #3cba92 100%);
+
+}
+
+.note-footer{
+    display: flex;
+    justify-content: space-between;
+    position:sticky;
+    bottom: 0px;
+}
+.edit-icon{
+    margin-left: 130px;
+}
+
+
+/* width */
+.note::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+.note::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+.note::-webkit-scrollbar-thumb {
+    background: #f1f1f1
+}
+  
+  /* Handle on hover */
+.note::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+/* dark mode */
+.dark-mode .note::-webkit-scrollbar-track {
+    background: black;
+  }
+  
+.dark-mode .note::-webkit-scrollbar-thumb {
+    background: black
+}
+  
+.dark-mode .note::-webkit-scrollbar-thumb:hover {
+    background: white
+  }
