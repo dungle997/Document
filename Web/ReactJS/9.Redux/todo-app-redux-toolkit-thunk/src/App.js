@@ -4,20 +4,40 @@ import TodoList from './components/TodoList';
 import Filters from './components/Filters';
 import { setupServer } from './fakeApi';
 import { useEffect } from 'react';
-setupServer();
+import { useDispatch } from 'react-redux';
+import { fetchTodos } from './components/TodoList/TodosSlice';
+
+if (process.env.NODE_ENV === 'development'){
+  setupServer();
+}
 const { Title } = Typography;
 
 function App() {
+  const dispatch = useDispatch()
+  // Test API
+  // useEffect(()=>{
+  //   fetch('/api/todos', {
+  //     method: 'POST',
+  //     body: JSON.stringify({id: 1, name: 'Learn Yoga', completed: false, priority: 'Medium'})
+  //   })
+  //     .then(res => {
+  //       fetch('/api/todos')
+  //         .then(res => res.json())
+  //         .then(res => console.log(res))
+  //       fetch('/api/updateTodo', {
+  //         method: 'POST',
+  //         body: JSON.stringify({id: 1, name: 'Learn JavaScript', completed: true, priority: 'Medium'})
+  //       })
+  //         .then(res => {
+  //           fetch('/api/todos')
+  //             .then(res => res.json())
+  //             .then(res => console.log(res))
+  //         })
+  //     })
+  // }, [])
+
   useEffect(()=>{
-    fetch('/api/todos', {
-      method: 'POST',
-      body: JSON.stringify({id: 1, name: 'Learn Yoga', completed: false, priority: 'Medium'})
-    })
-      .then(res => {
-        fetch('/api/todos')
-          .then(res => res.json())
-          .then(res => console.log(res))
-      })
+    dispatch(fetchTodos())
   }, [])
   return (
     <div

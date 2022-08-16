@@ -13,6 +13,11 @@ export const setupServer = () => {
                 const payload = JSON.parse(request.requestBody)
                 return schema.todos.create(payload)
             })
+            this.post('/api/updateTodo', (schema, request)=> {
+                const payload = JSON.parse(request.requestBody)
+                const currentTodo = schema.todos.find(payload.id)
+                currentTodo.update(payload)
+            })
         }
         
     })

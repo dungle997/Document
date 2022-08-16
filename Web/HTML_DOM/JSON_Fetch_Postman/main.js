@@ -456,7 +456,7 @@
 //     })
 // ==================== 4.1 JSON server: Fake API Server / Mock API ========================
 
-//- Cài nodejs
+// - Cài nodejs
 // tạo thư mục json_server
 // npm-v
 // npm-init

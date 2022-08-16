@@ -1,0 +1,14 @@
+redux thunk để viết logic bất đồng bộ trong redux
+Khi chưa có middle ware thì: tất cả các task call api đều phải thực hiện ở ngoài redux
+Nhưng đôi khi ứng dụng phải thực hiện các side effect trước khi cập nhật state ở trong 1 store chung. => Viết các đoạn bất đồng bộ và side effect ở redux thunk. Khi chúng ta ko thể viết nó trong reducer
+
+redux thunk(middle ware) là một fuction, nó giúp xử lí các tác vụ bất đồng bộ trước khi thực sự gửi đi action đến store
+Function nhận 2 tham số là dispatch và getState
+dispatch: của redux
+
+dispatch(action) => dispatch(thunk action). Trong thunk function => dispatch(action) 
+
+Thay vì dispatch một action thông thường thì dispatch một thunk action, hay còn gọi là thunk function. Trong cái thunk function này thì mới 
+dispatch một cái action thực sự
+Cấu hình redux toolkit đã phù hợp với redux thunk nên không cần cấu hình thêm nữa
+
