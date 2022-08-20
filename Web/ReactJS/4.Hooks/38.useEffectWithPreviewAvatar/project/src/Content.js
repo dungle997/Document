@@ -40,29 +40,29 @@ import {useEffect, useState} from 'react'
 // 3. Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
 
 // VD 1:  Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
-function Content(){
-    const [count, setCount] = useState(1)
+// function Content(){
+//     const [count, setCount] = useState(1)
 
-    // Sử dụng setInterval
-    useEffect(()=>{
-        console.log(`Mounted or Re-render lần ${count}`)
+//     // Sử dụng setInterval
+//     useEffect(()=>{
+//         console.log(`Mounted or Re-render lần ${count}`)
         
-        // Cleanup func 
-        return () => {
-            console.log(`Clean up lần ${count}`)
-        }
+//         // Cleanup func 
+//         return () => {
+//             console.log(`Clean up lần ${count}`)
+//         }
 
-    }, [count])
+//     }, [count])
 
-    return (
-        <div>
-            <h1>{count}</h1>
-            <button onClick={() => setCount(count +1)}>
-                Click me!
-            </button>
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <h1>{count}</h1>
+//             <button onClick={() => setCount(count +1)}>
+//                 Click me!
+//             </button>
+//         </div>
+//     )
+// }
 //VD 2: 
 // function Content(){
 //     const [avatar, setAvatar] = useState()

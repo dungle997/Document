@@ -27,15 +27,15 @@ const todosSlice =  createSlice({
     name: 'todoList',
     initialState: {status: 'idle', todos: []},
     reducers: {
-        addTodo: (state, action) => {
-            state.push(action.payload)
-        }, // tạo ra 1 action creator
-        toggleTodoStatus: (state, action) => {
-            const currentTodo = state.find(todo => todo.id === action.payload)
-            if (currentTodo){
-                currentTodo.completed = !currentTodo.completed
-            }
-        },
+        // addTodo: (state, action) => {
+        //     state.push(action.payload)
+        // }, // tạo ra 1 action creator
+        // toggleTodoStatus: (state, action) => {
+        //     const currentTodo = state.find(todo => todo.id === action.payload)
+        //     if (currentTodo){
+        //         currentTodo.completed = !currentTodo.completed
+        //     }
+        // },
     },
     extraReducers: builder => {
         builder.addCase(fetchTodos.pending, (state, action)=> {
@@ -47,7 +47,21 @@ const todosSlice =  createSlice({
             state.status = 'idle'
         })
         .addCase(addNewTodo.fulfilled, (state, action) => {
+            console.log(state)
             state.todos.push(action.payload)
+        })
+        .addCase(updateTodo.fulfilled, (state, action) => {
+            // console.log('action = ',{action})
+            // // console.log('state = ', state)
+            // let currentTodo = state.todos.find(todo => {
+            //     console.log(todo)
+            //     return todo.id === action.payload.id
+            // })
+            // currentTodo = action.payload  
+            state.todos.map(todo => {
+                return todo.id === action.payload.id ? todo.completed = !todo.completed : todo
+            })
+
         })
     }
 })
@@ -55,7 +69,7 @@ const todosSlice =  createSlice({
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
     const res = await fetch('/api/todos')
     const data = await res.json()
-    console.log(data)
+    console.log({data})
     return data.todos
 })
 // thunk action to add new todo
@@ -73,7 +87,13 @@ export const addNewTodo = createAsyncThunk('todos/addNewTodo', async(newTodo) =>
 // thunk action to add new status todo
 
 export const updateTodo = createAsyncThunk('todos/updateTodo', async (updatedTodo) => {
-
+    const res = await fetch('/api/updateTodo', {
+        method: 'POST',
+        body: JSON.stringify(updatedTodo)
+    })
+    const data = await res.json()
+    console.log('[data = ]',{data})
+    return data.todos
 })
 
 // createAsyncThunk tạo ra 3 cái action như sau: 

@@ -1,0 +1,84 @@
+React.memo HOC: Là một HOC có nhiệm vụ so sánh các thay đổi trong component. Nếu có thì sẽ render lại component
+------------------------------------------------------------------------------------------
+useCallback hook: Sử dụng giống useEffect, có 3 dependencies. Nhiệm vụ là giữ nguyên giá trị tham chiếu của một function khi render lại một component
+VD: Hàm xử lí onClick = {handleOnclick} có giá trị tham chiếu là #jdaflkdjasf thì sau khi render lại vẫn có giá trị là #jdaflkdjasf => kết hợp memo thì sẽ không render lại component (sử dụng dependencies [])
+nếu dùng [var] thì sẽ phụ thuộc vào biến bên ngoài, nếu biến bên ngoài thay đổi thì giá trị tham chiếu của function cũng thay đổi
+
+Sự khác nhau của function declaration và function expression là function declaration được hoisting, còn lại thì không
+-------------------------------------------------------------------------------------------
+useMemo hook: để tránh việc thực hiện lại một logic không cần thiết
+Ví dụ: Tính tổng tiền của một todoList. 
+có 1 đoạn xử lí tính tổng của mảng data. Nhưng nó luôn thực hiện lại cái logic này mỗi khi re-render.
+ sử dụng useMemo cũng có 3 dependencies giống useEffect và useCallback
+Nếu sử dụng [] thì sẽ chỉ tính 1 lần
+Nếu sử dụng [var] thì sẽ tính mỗi khi var thay đổi
+ 
+VD:
+products = [....] 
+	const total= useMemo(()=>{
+	const result = products.reduce((result, prod)=> {
+		return result + prod.price	
+	}, 0)
+	return result
+}, [products])
+--------------------------------------------------------------------------------------------------
+// useEffect
+// 1. Cập nhật lại state
+// 2. Cập nhật DOM (mutated): đột biến, ví dụ một object sửa 1 property thay đổi => Đây là mutated (Thay đổi 1 property trong 1 Dom node)
+// 3. Render lại UI
+// 4. Gọi cleanup nếu deps thay đổi
+// 5. Gọi useEffect callback
+
+// useLayoutEffect
+// 1. Cập nhật lại state
+// 2. Cập nhật DOM (mutated)
+// 3. Gọi cleanup nếu deps thay đổi (sync)
+// 4. Gọi useLayoutEffect callback (sync)
+// 5. Render lại UI
+
+// 1.Callback luôn được gọi sau khi component mounted 
+// - gọi callback mỗi khi component re-render
+// - gọi callback sau khi component thêm element vào DOM
+// 2. useEffect(callback, []). chỉ gọi callback một lần khi component được mounted
+// 3. useEffect(callback, [deps])
+// - Callback sẽ được gọi lại mỗi khi deps thay đổi
+// -------------------------------------
+// 1. Callback luôn được gọi sau khi component mounted. 
+// 2. Cleanup function luôn được gọi trước khi component unmounted
+// 3. Cleanup function luôn được gọi trước khi callback được gọi (trừ lần mounted)
+------------------------------------------------------------------------------------------------------
+useRef: lấy một element ra (tương tư querySelector hay getElementById)
+cách dùng: 
+const var = useRef()
+....
+return (
+	<input ref={var}>
+)
+----------------------------------------------------------------------------------------------------
+useImperativeHandle 
+// Lưu ý là function component không có ref, chỉ nhưng element như h1, p, input mới có ref thôi
+// Không thể truyền ref cho một function component
+// React không hỗ trợ truyền ref từ component cha xuống component con
+// => Sử dụng HOC
+Cách chọn một Function component thông qua useRef
+- Có 2 component. Cha và con
+- Tạo 1 useRef bên cha và truyền xuống thằng con qua ref
+- Phải sử dụng HOC forwardRef bên thằng con để nhận được ref từ thằng cha. Ref được nhận thông qua tham số thứ 2 của thằng con
+VD: Video(props, ref)
+- Tạo 1 useRef bên thằng con để lấy ra thẻ mong muốn. sau đó sử dụng ở trong useImperativeHandle
+
+VD: 
+useImperativeHandle(ref, () => ({
+        play(){
+            videoRef1.current.play() // có nghĩa là videoRef1 = videoRef ở file App
+        },
+        pause(){
+            videoRef1.current.pause()
+        }
+    }))
+
+Tại sao lại dùng: 
+Do tính đóng gói và tính bảo mật của dữ liệu nên ta cần dùng 
+
+
+

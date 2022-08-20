@@ -3,6 +3,7 @@ import video from './video/download.mp4'
 // import {useRef} from 'react'
 
 function Video(props, ref){ // ref = videoRef bên file App
+    console.log(props)
     // console.log(ref)
     const videoRef1 = useRef()
 
@@ -14,9 +15,11 @@ function Video(props, ref){ // ref = videoRef bên file App
             videoRef1.current.pause()
         }
     }))
+    // Khi viết như vậy thì bên ngoài thằng videoRef bên component App sẽ nhận được 2 method ở trong này
     return(
         <video 
             ref = {videoRef1}
+            // ref = {ref}. Truyền trực tiếp từ ref nhận đc bên App
             src={video}
             height={500}   
             // controls
