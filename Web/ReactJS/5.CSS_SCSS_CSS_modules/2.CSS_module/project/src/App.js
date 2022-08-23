@@ -29,3 +29,5 @@ export default App;
 
 // Đặt tên selector theo kiểu camel Case để dễ dùng trong JSX
 
+// Css module thì không thể module đc các thẻ (tag, *), nếu viết ở cấp 1 thì vẫn ảnh hưởng tất cả. Nhưng nếu được viết trong nested thì vẫn đc (sử dụng scss)
+

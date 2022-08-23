@@ -24,4 +24,4 @@ function Button({primary}){
 
 export default Button
 
-// clsx sử dụng với class động
+// clsx sử dụng với class động, nghĩa là tùy trang thái của biến mà thay đổi có cho css đó vào không
