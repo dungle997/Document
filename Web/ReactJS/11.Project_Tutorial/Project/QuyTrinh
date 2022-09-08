@@ -1,0 +1,6 @@
+tạo store trong file store.js
+cài redux-devtools-extension
+import composeWithDevTools
+import createStore 
+tạo rootReducer
+sử dụng createStore để tạo store

@@ -1,0 +1,4 @@
+1. Tạo GlobalStyles component
+2. Cài thư viện SASS: `npm i -D sass`
+3. Reset CSS: npm install --save normalize.css
+4. Default CSS: font-family, font-size, line-height
