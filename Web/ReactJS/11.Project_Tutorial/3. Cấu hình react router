@@ -1,0 +1,16 @@
+1. Phân tích tổng quan Layout
+2. Cài đặt react-router-dom: npm i react-router-dom
+3. Đưa cấu hình routes ra ngoài 
+	tạo ra 1 mảng chứa thông tin của tất cả các trang của project. Có 2 key path và component ứng với các key trong Route là path và element 
+4. Xây dựng cơ chế tải Layout
+
+
+
+ctrl + shift + P: mở emmet trong vs: chọn wrap with abbehavior, Gõ thẻ tag ôm đoạn code cần dùng
+tải extension htmltagwrap: ALT+w
+
+
+Kiến thức: 
+Default Layout: Giao diện sử dụng nhiều nhất trên trang web của mình.
+Layout phụ: Các giao diện cho từng chức năng riêng
+Cấu hình bên ngoài cho Route để thêm các component vào dễ dàng. Có 1 file ở bên ngoài cấu hình cho hiển thị các component theo mong muốn của dev
