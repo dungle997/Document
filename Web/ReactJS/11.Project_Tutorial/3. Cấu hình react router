@@ -4,7 +4,9 @@
 	tạo ra 1 mảng chứa thông tin của tất cả các trang của project. Có 2 key path và component ứng với các key trong Route là path và element 
 4. Xây dựng cơ chế tải Layout
 
-
+Cài extension htmltagwrap
+Cài extension Simple React Snippets
+cài extension auto rename tag
 
 ctrl + shift + P: mở emmet trong vs: chọn wrap with abbehavior, Gõ thẻ tag ôm đoạn code cần dùng
 tải extension htmltagwrap: ALT+w
