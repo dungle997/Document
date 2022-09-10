@@ -1,6 +1,12 @@
+import './Header.scss'
+
 function Header() {
     return (  
-        <h2>Header</h2>
+        <div className="header">
+            <div className="header__inner">
+                <h2>Header</h2>
+            </div>
+        </div>
     );
 }
 

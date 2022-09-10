@@ -1,16 +1,21 @@
+import './DefaultLayout.scss'
 import Header from '../common/Header'
-import Sidebar from './Sidebar'
+import Sidebar from './SidebarLeft'
+import SidebarRight from './SidebarRight';
+import SidebarLeft from './SidebarLeft';
 
 function DefaultLayout( {children} ) {
     return (  
-        <div>
-            <Header />
-            <div className='container'>
-                <Sidebar />
+        <div className="default">
+            <SidebarLeft />
+            <div className="container">
+                <Header />
                 <div className='content'>
-                    {children}
+                        {children}
                 </div>
             </div>
+            <SidebarRight />
+                
         </div>
     );
 }
